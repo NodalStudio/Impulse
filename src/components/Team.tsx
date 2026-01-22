@@ -21,77 +21,101 @@ const founders = [
 export default function Team() {
   return (
     <section id="equipe" className="snap-section section-alt">
-      <div className="container-impulse px-4 h-full flex flex-col py-4 lg:py-6 justify-center">
+      <div className="container-impulse px-4 h-full flex flex-col py-4 lg:py-4 justify-center">
         {/* Section header */}
-        <div className="mb-3 lg:mb-4 animate-fade-in-up flex-shrink-0">
+        <div className="mb-3 lg:mb-[1.5vh] animate-fade-in-up flex-shrink-0 text-center lg:text-left">
           <p className="font-montserrat uppercase tracking-[0.3em] text-navy text-sm mb-1">
             Équipe
           </p>
-          <div className="w-24 h-[2px] bg-gradient-to-r from-gold to-transparent"></div>
+          <div className="w-24 h-[2px] bg-gradient-to-r from-gold to-transparent mx-auto lg:mx-0"></div>
         </div>
 
-        {/* Mobile layout - shows all text, fills viewport */}
-        <div className="lg:hidden flex-1 flex flex-col gap-3">
+        {/* Mobile layout - Circular photos centered, elegant stack */}
+        <div className="lg:hidden flex-1 flex flex-col gap-4 overflow-y-auto">
           {founders.map((founder, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl shadow-md overflow-hidden animate-fade-in-up flex-1 flex min-h-0"
+              className="animate-fade-in-up flex-shrink-0"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              {/* Photo */}
-              <div className="w-24 flex-shrink-0 bg-gradient-to-br from-rose to-beige">
-                <Image
-                  src="/Impulse/images/placeholder-team.svg"
-                  alt={founder.name}
-                  width={96}
-                  height={180}
-                  className="w-full h-full object-cover"
-                />
+              {/* Photo + Name header */}
+              <div className="flex items-center gap-4 mb-2">
+                {/* Circular photo with gold ring */}
+                <div className="relative flex-shrink-0">
+                  <div className="w-20 h-20 rounded-full p-[3px] bg-gradient-to-br from-gold via-gold/60 to-gold">
+                    <div className="w-full h-full rounded-full overflow-hidden bg-gradient-to-br from-rose to-beige">
+                      <Image
+                        src="/Impulse/images/placeholder-team.svg"
+                        alt={founder.name}
+                        width={80}
+                        height={80}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </div>
+                </div>
+                {/* Name + Role */}
+                <div className="flex-1 min-w-0">
+                  <p className="font-greatvibes text-2xl text-navy leading-tight">{founder.name}</p>
+                  <p className="font-montserrat uppercase tracking-wider text-[9px] text-gold">
+                    {founder.role}
+                  </p>
+                </div>
               </div>
-
-              {/* Info */}
-              <div className="flex-1 p-3 flex flex-col">
-                <p className="font-greatvibes text-xl text-navy leading-tight">{founder.name}</p>
-                <p className="font-montserrat uppercase tracking-wider text-[8px] text-gold mb-1">
-                  {founder.role}
-                </p>
-                <p className="font-source text-[10px] text-navy/70 leading-snug flex-1">
-                  {founder.bio}
-                </p>
-              </div>
+              {/* Bio */}
+              <p className="font-source text-[11px] text-navy/70 leading-relaxed pl-1">
+                {founder.bio}
+              </p>
+              {/* Separator */}
+              {index < founders.length - 1 && (
+                <div className="w-16 h-[1px] bg-gradient-to-r from-gold/40 to-transparent mt-4 mx-auto"></div>
+              )}
             </div>
           ))}
         </div>
 
-        {/* Desktop layout - dynamic sizing based on viewport */}
-        <div className="hidden lg:flex lg:gap-3 xl:gap-4 lg:justify-center">
+        {/* Desktop layout - Elegant horizontal cards with circular photos */}
+        <div className="hidden lg:flex lg:flex-col gap-[1.5vh] xl:gap-[2vh] max-w-4xl mx-auto w-full">
           {founders.map((founder, index) => (
             <div
               key={index}
-              className="w-72 xl:w-80 bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group animate-fade-in-up flex flex-col"
+              className="group animate-fade-in-up"
               style={{ animationDelay: `${index * 150}ms` }}
             >
-              {/* Photo - dynamic height */}
-              <div className="h-[12vh] xl:h-[15vh] relative overflow-hidden bg-gradient-to-br from-rose to-beige flex-shrink-0">
-                <Image
-                  src="/Impulse/images/placeholder-team.svg"
-                  alt={founder.name}
-                  width={300}
-                  height={176}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-navy/0 group-hover:bg-navy/5 transition-colors duration-300"></div>
-              </div>
+              <div className="flex items-start gap-4 xl:gap-5 p-[1.5vh] xl:p-[2vh] rounded-2xl bg-white/60 backdrop-blur-sm border border-beige/30 hover:bg-white/80 hover:shadow-lg transition-all duration-500">
+                {/* Circular photo with gold ring */}
+                <div className="relative flex-shrink-0">
+                  <div className="w-[9vh] h-[9vh] min-w-[70px] min-h-[70px] max-w-[100px] max-h-[100px] rounded-full p-[2px] bg-gradient-to-br from-gold via-gold/70 to-gold/40 group-hover:from-gold group-hover:via-gold group-hover:to-gold/60 transition-all duration-500">
+                    <div className="w-full h-full rounded-full overflow-hidden bg-gradient-to-br from-rose to-beige">
+                      <Image
+                        src="/Impulse/images/placeholder-team.svg"
+                        alt={founder.name}
+                        width={120}
+                        height={120}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                  </div>
+                  {/* Decorative dot */}
+                  <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-gold rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
 
-              {/* Info - dynamic text */}
-              <div className="p-3 xl:p-4">
-                <p className="font-greatvibes text-[clamp(1rem,2.5vh,1.25rem)] text-navy mb-0.5">{founder.name}</p>
-                <p className="font-montserrat uppercase tracking-wider text-[8px] xl:text-[9px] text-gold mb-[0.5vh]">
-                  {founder.role}
-                </p>
-                <p className="font-source text-[clamp(0.6rem,1.3vh,0.7rem)] text-navy/70 leading-relaxed">
-                  {founder.bio}
-                </p>
+                {/* Content */}
+                <div className="flex-1 min-w-0">
+                  {/* Name + Role inline */}
+                  <div className="flex items-baseline gap-3 mb-[0.5vh] flex-wrap">
+                    <p className="font-greatvibes text-[clamp(1.5rem,3.5vh,2rem)] text-navy leading-none">
+                      {founder.name}
+                    </p>
+                    <p className="font-montserrat uppercase tracking-[0.15em] text-[10px] xl:text-[11px] text-gold font-medium">
+                      {founder.role}
+                    </p>
+                  </div>
+                  {/* Bio */}
+                  <p className="font-source text-[clamp(0.7rem,1.4vh,0.8rem)] text-navy/70 leading-relaxed">
+                    {founder.bio}
+                  </p>
+                </div>
               </div>
             </div>
           ))}
