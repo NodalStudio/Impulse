@@ -33,7 +33,7 @@ export default function Header() {
     >
       <div className="container-impulse flex items-center justify-between px-4">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2">
+        <a href="#hero" className="flex items-center gap-2">
           <span className="logo-text text-lg md:text-xl">Impulse</span>
         </a>
 
