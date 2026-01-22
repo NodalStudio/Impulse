@@ -18,8 +18,8 @@ const nextConfig: NextConfig = {
     // Turbopack is now the default bundler
   },
 
-  // Uncomment and set basePath if deploying to github.com/username/repo-name
-  // basePath: '/Impulse',
+  // Set basePath for GitHub Pages deployment
+  basePath: '/Impulse',
 }
 
 export default nextConfig
