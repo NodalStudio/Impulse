@@ -84,7 +84,7 @@ export default function Hero() {
                 <div className="h-48 rounded-2xl overflow-hidden shadow-lg group cursor-pointer">
                   <div className="relative w-full h-full">
                     <Image
-                      src="/images/placeholder-photo.svg"
+                      src="/Impulse/images/placeholder-photo.svg"
                       alt="Événement Impulse"
                       width={240}
                       height={192}
@@ -96,7 +96,7 @@ export default function Hero() {
                 <div className="h-56 rounded-2xl overflow-hidden shadow-lg group cursor-pointer">
                   <div className="relative w-full h-full">
                     <Image
-                      src="/images/placeholder-photo.svg"
+                      src="/Impulse/images/placeholder-photo.svg"
                       alt="Networking"
                       width={240}
                       height={224}
@@ -111,7 +111,7 @@ export default function Hero() {
                 <div className="h-72 rounded-2xl overflow-hidden shadow-lg group cursor-pointer">
                   <div className="relative w-full h-full">
                     <Image
-                      src="/images/placeholder-photo.svg"
+                      src="/Impulse/images/placeholder-photo.svg"
                       alt="Conférence"
                       width={240}
                       height={288}

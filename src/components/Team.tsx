@@ -41,7 +41,7 @@ export default function Team() {
               {/* Photo */}
               <div className="w-24 flex-shrink-0 bg-gradient-to-br from-rose to-beige">
                 <Image
-                  src="/images/placeholder-team.svg"
+                  src="/Impulse/images/placeholder-team.svg"
                   alt={founder.name}
                   width={96}
                   height={180}
@@ -74,7 +74,7 @@ export default function Team() {
               {/* Photo */}
               <div className="aspect-square relative overflow-hidden bg-gradient-to-br from-rose to-beige">
                 <Image
-                  src="/images/placeholder-team.svg"
+                  src="/Impulse/images/placeholder-team.svg"
                   alt={founder.name}
                   width={400}
                   height={400}
