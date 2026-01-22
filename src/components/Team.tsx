@@ -21,9 +21,9 @@ const founders = [
 export default function Team() {
   return (
     <section id="equipe" className="snap-section section-alt">
-      <div className="container-impulse px-4 h-full flex flex-col py-3 lg:py-0 lg:justify-center">
+      <div className="container-impulse px-4 h-full flex flex-col py-4 lg:py-6 justify-center">
         {/* Section header */}
-        <div className="mb-3 lg:mb-10 animate-fade-in-up flex-shrink-0">
+        <div className="mb-3 lg:mb-4 animate-fade-in-up flex-shrink-0">
           <p className="font-montserrat uppercase tracking-[0.3em] text-navy text-sm mb-1">
             Équipe
           </p>
@@ -63,32 +63,33 @@ export default function Team() {
           ))}
         </div>
 
-        {/* Desktop layout - original grid */}
-        <div className="hidden lg:grid lg:grid-cols-3 gap-8">
+        {/* Desktop layout - dynamic sizing based on viewport */}
+        <div className="hidden lg:flex lg:gap-3 xl:gap-4 lg:justify-center">
           {founders.map((founder, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group animate-fade-in-up"
+              className="w-72 xl:w-80 bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group animate-fade-in-up flex flex-col"
               style={{ animationDelay: `${index * 150}ms` }}
             >
-              {/* Photo */}
-              <div className="aspect-square relative overflow-hidden bg-gradient-to-br from-rose to-beige">
+              {/* Photo - dynamic height */}
+              <div className="h-[12vh] xl:h-[15vh] relative overflow-hidden bg-gradient-to-br from-rose to-beige flex-shrink-0">
                 <Image
                   src="/Impulse/images/placeholder-team.svg"
                   alt={founder.name}
-                  width={400}
-                  height={400}
+                  width={300}
+                  height={176}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
+                <div className="absolute inset-0 bg-navy/0 group-hover:bg-navy/5 transition-colors duration-300"></div>
               </div>
 
-              {/* Info */}
-              <div className="p-5">
-                <p className="font-greatvibes text-2xl text-navy mb-1">{founder.name}</p>
-                <p className="font-montserrat uppercase tracking-wider text-xs text-gold mb-3">
+              {/* Info - dynamic text */}
+              <div className="p-3 xl:p-4">
+                <p className="font-greatvibes text-[clamp(1rem,2.5vh,1.25rem)] text-navy mb-0.5">{founder.name}</p>
+                <p className="font-montserrat uppercase tracking-wider text-[8px] xl:text-[9px] text-gold mb-[0.5vh]">
                   {founder.role}
                 </p>
-                <p className="font-source text-xs text-navy/70 leading-relaxed line-clamp-6">
+                <p className="font-source text-[clamp(0.6rem,1.3vh,0.7rem)] text-navy/70 leading-relaxed">
                   {founder.bio}
                 </p>
               </div>
