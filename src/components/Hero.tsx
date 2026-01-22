@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 export default function Hero() {
   return (
-    <section className="snap-section bg-gradient-hero">
+    <section id="hero" className="snap-section bg-gradient-hero">
       <div className="container-impulse px-4 h-full flex items-center">
         {/* Mobile: centered vertical layout - uses min-h to fill viewport minus header */}
         <div className="lg:hidden w-full min-h-[calc(100dvh-72px)] flex flex-col justify-center items-center -mt-8">
@@ -39,7 +39,7 @@ export default function Hero() {
         </div>
 
         {/* Desktop layout - dynamic sizing based on viewport */}
-        <div className="hidden lg:grid lg:grid-cols-2 gap-6 xl:gap-12 items-center w-full">
+        <div className="hidden lg:grid lg:grid-cols-2 gap-6 xl:gap-12 items-center w-full max-w-5xl mx-auto">
           {/* Left content */}
           <div className="text-left">
             {/* 3 Piliers - vertical stack with editorial styling */}
@@ -76,48 +76,45 @@ export default function Hero() {
           </div>
 
           {/* Right - Photo Grid with dynamic sizing */}
-          <div className="relative animate-fade-in delay-300">
+          <div className="relative animate-fade-in delay-300 justify-self-end">
             {/* Constrained photo grid - 3 images in elegant arrangement */}
             <div className="grid grid-cols-2 gap-3 max-w-sm xl:max-w-md">
               {/* Left column */}
               <div className="space-y-3">
-                <div className="h-[15vh] xl:h-[18vh] rounded-xl overflow-hidden shadow-lg group cursor-pointer">
+                <div className="h-[15vh] xl:h-[18vh] rounded-xl overflow-hidden shadow-lg group transition-all duration-500 hover:shadow-xl hover:shadow-gold/20">
                   <div className="relative w-full h-full">
                     <Image
                       src="/Impulse/images/placeholder-photo.svg"
                       alt="Événement Impulse"
                       width={240}
                       height={192}
-                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                      className="w-full h-full object-cover transition-all duration-700 ease-out group-hover:brightness-105 group-hover:saturate-[1.1]"
                     />
-                    <div className="absolute inset-0 bg-navy/0 group-hover:bg-navy/10 transition-colors duration-500"></div>
                   </div>
                 </div>
-                <div className="h-[18vh] xl:h-[22vh] rounded-xl overflow-hidden shadow-lg group cursor-pointer">
+                <div className="h-[18vh] xl:h-[22vh] rounded-xl overflow-hidden shadow-lg group transition-all duration-500 hover:shadow-xl hover:shadow-gold/20">
                   <div className="relative w-full h-full">
                     <Image
                       src="/Impulse/images/placeholder-photo.svg"
                       alt="Networking"
                       width={240}
                       height={224}
-                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                      className="w-full h-full object-cover transition-all duration-700 ease-out group-hover:brightness-105 group-hover:saturate-[1.1]"
                     />
-                    <div className="absolute inset-0 bg-navy/0 group-hover:bg-navy/10 transition-colors duration-500"></div>
                   </div>
                 </div>
               </div>
               {/* Right column - offset for asymmetry */}
               <div className="pt-[4vh]">
-                <div className="h-[25vh] xl:h-[30vh] rounded-xl overflow-hidden shadow-lg group cursor-pointer">
+                <div className="h-[25vh] xl:h-[30vh] rounded-xl overflow-hidden shadow-lg group transition-all duration-500 hover:shadow-xl hover:shadow-gold/20">
                   <div className="relative w-full h-full">
                     <Image
                       src="/Impulse/images/placeholder-photo.svg"
                       alt="Conférence"
                       width={240}
                       height={288}
-                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                      className="w-full h-full object-cover transition-all duration-700 ease-out group-hover:brightness-105 group-hover:saturate-[1.1]"
                     />
-                    <div className="absolute inset-0 bg-navy/0 group-hover:bg-navy/10 transition-colors duration-500"></div>
                   </div>
                 </div>
               </div>
