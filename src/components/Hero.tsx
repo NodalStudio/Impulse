@@ -5,7 +5,7 @@ import Image from 'next/image';
 export default function Hero() {
   return (
     <section className="snap-section bg-gradient-hero">
-      <div className="container-impulse px-4 h-full flex items-center">
+      <div className="container-impulse px-4 h-full flex items-start pt-8 lg:pt-16">
         {/* Mobile: centered vertical layout - uses min-h to fill viewport minus header */}
         <div className="lg:hidden w-full min-h-[calc(100dvh-72px)] flex flex-col justify-center items-center -mt-8">
           {/* 3 Piliers - vertical stack with editorial styling */}

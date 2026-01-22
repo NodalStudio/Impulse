@@ -106,57 +106,57 @@ export default function Pricing() {
           </div>
         </div>
 
-        {/* Desktop: Full layout */}
-        <div className="hidden lg:grid lg:grid-cols-2 gap-8 max-w-5xl">
+        {/* Desktop: Full layout - compact to fit viewport */}
+        <div className="hidden lg:grid lg:grid-cols-2 gap-6 max-w-5xl">
           {/* Essentielle */}
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-beige/50 animate-fade-in-up">
-            <p className="font-greatvibes text-5xl text-navy mb-4">
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-beige/50 animate-fade-in-up">
+            <p className="font-greatvibes text-4xl text-navy mb-3">
               Essentielle
             </p>
 
-            <div className="flex items-center gap-3 mb-6">
-              <span className="text-gold text-xl">&gt;</span>
+            <div className="flex items-center gap-3 mb-4">
+              <span className="text-gold text-lg">&gt;</span>
               <p className="font-montserrat uppercase tracking-wider text-xs text-navy font-semibold">
                 Rester connectée
               </p>
             </div>
 
-            <ul className="space-y-4 mb-8">
+            <ul className="space-y-3 mb-6">
               {essentiellFeatures.map((feature, index) => (
                 <li key={index} className="flex items-start gap-3">
-                  <span className="text-gold mt-1">•</span>
-                  <span className="font-source text-sm text-navy/80 leading-relaxed">
+                  <span className="text-gold mt-0.5">•</span>
+                  <span className="font-source text-sm text-navy/80 leading-snug">
                     {feature}
                   </span>
                 </li>
               ))}
             </ul>
 
-            <div className="pt-4 border-t border-beige/50">
-              <p className="font-greatvibes text-3xl text-gold text-center">
+            <div className="pt-3 border-t border-beige/50">
+              <p className="font-greatvibes text-2xl text-gold text-center">
                 Offert
               </p>
             </div>
           </div>
 
           {/* Expérience */}
-          <div className="bg-white rounded-2xl p-8 shadow-xl border-2 border-gold/30 animate-fade-in-up delay-100">
-            <p className="font-greatvibes text-5xl text-navy mb-4">
+          <div className="bg-white rounded-2xl p-6 shadow-xl border-2 border-gold/30 animate-fade-in-up delay-100">
+            <p className="font-greatvibes text-4xl text-navy mb-3">
               Expérience
             </p>
 
-            <div className="flex items-center gap-3 mb-6">
-              <span className="text-gold text-xl">&gt;</span>
+            <div className="flex items-center gap-3 mb-4">
+              <span className="text-gold text-lg">&gt;</span>
               <p className="font-montserrat uppercase tracking-wider text-xs text-navy font-semibold">
                 S&apos;impliquer, contribuer, grandir plus vite
               </p>
             </div>
 
-            <p className="font-cormorant text-base text-navy mb-6 italic">
+            <p className="font-cormorant text-sm text-navy mb-4 italic">
               Accès à toute l&apos;offre essentielle
             </p>
 
-            <div className="grid grid-cols-2 gap-x-4 gap-y-3 mb-6">
+            <div className="grid grid-cols-2 gap-x-4 gap-y-2 mb-4">
               {experienceFeatures.map((feature, index) => (
                 <div key={index} className="flex items-start gap-2">
                   <span className="text-gold text-sm mt-0.5">+</span>
@@ -165,7 +165,7 @@ export default function Pricing() {
                       {feature.title}
                     </span>
                     {feature.items && (
-                      <ul className="mt-1 ml-2 space-y-0.5">
+                      <ul className="mt-0.5 ml-2 space-y-0">
                         {feature.items.map((item, i) => (
                           <li key={i} className="text-xs text-navy/60 flex items-center gap-1">
                             <span>•</span> {item}
@@ -179,17 +179,17 @@ export default function Pricing() {
             </div>
 
             {/* Pricing callout */}
-            <div className="bg-gradient-to-r from-cream to-rose/30 rounded-xl p-5 text-center">
-              <p className="font-greatvibes text-xl text-gold mb-2">
+            <div className="bg-gradient-to-r from-cream to-rose/30 rounded-xl p-4 text-center">
+              <p className="font-greatvibes text-lg text-gold mb-1">
                 Offre de lancement
               </p>
-              <p className="font-cormorant text-2xl text-navy font-semibold">
+              <p className="font-cormorant text-xl text-navy font-semibold">
                 seulement 79€HT pour 6 mois*
               </p>
-              <p className="font-source text-sm text-navy/70 mt-1">
+              <p className="font-source text-xs text-navy/70 mt-1">
                 + ~25€HT / event en earlybird
               </p>
-              <p className="font-source text-xs text-navy/50 mt-3">
+              <p className="font-source text-[10px] text-navy/50 mt-2">
                 *janvier - juin 2026
               </p>
             </div>
