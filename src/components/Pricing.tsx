@@ -20,40 +20,40 @@ const experienceFeatures = [
 export default function Pricing() {
   return (
     <section id="offres" className="snap-section section bg-gradient-to-br from-cream via-white to-rose/20">
-      <div className="container-impulse px-4 h-full flex flex-col justify-center">
+      <div className="container-impulse px-4 h-full flex flex-col pt-[1vh] pb-[2vh] lg:justify-center">
         {/* Section header */}
-        <div className="mb-3 lg:mb-12 animate-fade-in-up flex-shrink-0">
-          <p className="font-montserrat uppercase tracking-[0.3em] text-navy text-sm mb-2">
+        <div className="mb-[1.5vh] lg:mb-12 animate-fade-in-up flex-shrink-0">
+          <p className="font-montserrat uppercase tracking-[0.3em] text-navy text-xs lg:text-sm mb-1">
             Offres
           </p>
           <div className="w-24 h-[2px] bg-gradient-to-r from-gold to-transparent"></div>
         </div>
 
-        {/* Mobile: Compact stacked cards */}
-        <div className="lg:hidden flex flex-col gap-3 flex-1 min-h-0 overflow-y-auto">
-          {/* Essentielle - Compact */}
-          <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-beige/50 animate-fade-in-up flex-shrink-0">
-            <div className="flex items-center justify-between mb-2">
-              <p className="font-greatvibes text-2xl text-navy">
+        {/* Mobile: Cards fill viewport */}
+        <div className="lg:hidden flex flex-col gap-[2vh] flex-1 justify-around">
+          {/* Essentielle - Fills space */}
+          <div className="bg-white/80 backdrop-blur-sm rounded-xl p-[2vh] border border-beige/50 animate-fade-in-up">
+            <div className="flex items-center justify-between mb-[1vh]">
+              <p className="font-greatvibes text-[3vh] text-navy">
                 Essentielle
               </p>
-              <p className="font-greatvibes text-xl text-gold">
+              <p className="font-greatvibes text-[2.5vh] text-gold">
                 Offert
               </p>
             </div>
 
-            <div className="flex items-center gap-2 mb-3">
-              <span className="text-gold text-sm">&gt;</span>
-              <p className="font-montserrat uppercase tracking-wider text-[10px] text-navy font-semibold">
+            <div className="flex items-center gap-2 mb-[1.5vh]">
+              <span className="text-gold text-[1.5vh]">&gt;</span>
+              <p className="font-montserrat uppercase tracking-wider text-[1.2vh] text-navy font-semibold">
                 Rester connectée
               </p>
             </div>
 
-            <ul className="grid grid-cols-2 gap-x-2 gap-y-1">
+            <ul className="grid grid-cols-2 gap-x-2 gap-y-[0.8vh]">
               {essentiellFeatures.map((feature, index) => (
                 <li key={index} className="flex items-start gap-1">
-                  <span className="text-gold text-xs">•</span>
-                  <span className="font-source text-[11px] text-navy/80 leading-tight">
+                  <span className="text-gold text-[1.3vh]">•</span>
+                  <span className="font-source text-[1.3vh] text-navy/80 leading-tight">
                     {feature}
                   </span>
                 </li>
@@ -61,45 +61,45 @@ export default function Pricing() {
             </ul>
           </div>
 
-          {/* Expérience - Compact */}
-          <div className="bg-white rounded-xl p-4 shadow-lg border-2 border-gold/30 animate-fade-in-up delay-100 flex-shrink-0">
-            <div className="flex items-center justify-between mb-2">
-              <p className="font-greatvibes text-2xl text-navy">
+          {/* Expérience - Fills space */}
+          <div className="bg-white rounded-xl p-[2vh] shadow-lg border-2 border-gold/30 animate-fade-in-up delay-100">
+            <div className="flex items-center justify-between mb-[1vh]">
+              <p className="font-greatvibes text-[3vh] text-navy">
                 Expérience
               </p>
             </div>
 
-            <div className="flex items-center gap-2 mb-2">
-              <span className="text-gold text-sm">&gt;</span>
-              <p className="font-montserrat uppercase tracking-wider text-[10px] text-navy font-semibold">
+            <div className="flex items-center gap-2 mb-[1vh]">
+              <span className="text-gold text-[1.5vh]">&gt;</span>
+              <p className="font-montserrat uppercase tracking-wider text-[1.2vh] text-navy font-semibold">
                 S&apos;impliquer, contribuer, grandir
               </p>
             </div>
 
-            <p className="font-cormorant text-sm text-navy mb-2 italic">
+            <p className="font-cormorant text-[1.5vh] text-navy mb-[1vh] italic">
               + Accès à toute l&apos;offre essentielle
             </p>
 
-            <div className="grid grid-cols-2 gap-x-3 gap-y-1 mb-3">
+            <div className="grid grid-cols-2 gap-x-3 gap-y-[0.8vh] mb-[1.5vh]">
               {experienceFeatures.map((feature, index) => (
                 <div key={index} className="flex items-start gap-1">
-                  <span className="text-gold text-[10px] mt-0.5">+</span>
-                  <span className="font-source text-[11px] text-navy font-medium leading-tight">
+                  <span className="text-gold text-[1.2vh] mt-0.5">+</span>
+                  <span className="font-source text-[1.3vh] text-navy font-medium leading-tight">
                     {feature.title}
                   </span>
                 </div>
               ))}
             </div>
 
-            {/* Pricing callout - Compact */}
-            <div className="bg-gradient-to-r from-cream to-rose/30 rounded-lg p-3 text-center">
-              <p className="font-greatvibes text-base text-gold">
+            {/* Pricing callout */}
+            <div className="bg-gradient-to-r from-cream to-rose/30 rounded-lg p-[1.5vh] text-center">
+              <p className="font-greatvibes text-[2vh] text-gold">
                 Offre de lancement
               </p>
-              <p className="font-cormorant text-lg text-navy font-semibold">
+              <p className="font-cormorant text-[2.2vh] text-navy font-semibold">
                 79€HT pour 6 mois*
               </p>
-              <p className="font-source text-[10px] text-navy/70">
+              <p className="font-source text-[1.2vh] text-navy/70">
                 + ~25€HT / event • *jan-juin 2026
               </p>
             </div>

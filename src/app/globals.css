@@ -46,17 +46,17 @@ body {
   padding-top: 80px; /* Account for fixed header */
 }
 
-/* Allow scrollable content within sections on mobile */
+/* Mobile sections - fixed height to fill viewport */
 @media (max-width: 1024px) {
   .snap-container {
     scroll-snap-type: y proximity;
   }
 
   .snap-section {
-    min-height: 100vh;
-    height: auto;
-    overflow: visible;
-    padding-top: 72px; /* Smaller header on mobile */
+    min-height: 100svh;
+    height: 100svh;
+    overflow: hidden;
+    padding-top: 60px; /* Compact header on mobile */
   }
 }
 

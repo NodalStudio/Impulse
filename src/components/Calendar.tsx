@@ -35,21 +35,21 @@ const events = [
 export default function Calendar() {
   return (
     <section id="calendrier" className="snap-section section bg-white">
-      <div className="container-impulse px-4 h-full flex flex-col justify-center">
+      <div className="container-impulse px-4 h-full flex flex-col py-[3vh]">
         {/* Section header */}
-        <div className="mb-4 lg:mb-12 animate-fade-in-up flex-shrink-0">
+        <div className="mb-[2vh] lg:mb-12 animate-fade-in-up flex-shrink-0">
           <p className="font-montserrat uppercase tracking-[0.3em] text-navy text-sm mb-2">
             Calendrier 2026
           </p>
           <div className="w-32 h-[2px] bg-gradient-to-r from-gold to-transparent"></div>
         </div>
 
-        {/* Mobile: Compact 2x3 grid that fits on one screen */}
-        <div className="lg:hidden grid grid-cols-2 gap-2 flex-1 min-h-0">
+        {/* Mobile: Compact 2x3 grid that fills the screen */}
+        <div className="lg:hidden grid grid-cols-2 gap-[2vh] flex-1 auto-rows-fr">
           {events.map((event, index) => (
             <div
               key={index}
-              className={`rounded-xl p-3 transition-all duration-300 animate-fade-in-up flex flex-col ${
+              className={`rounded-xl p-[1.5vh] transition-all duration-300 animate-fade-in-up flex flex-col justify-center ${
                 event.isSpecial
                   ? 'bg-navy text-white'
                   : 'bg-gradient-to-b from-cream to-rose/30'
@@ -57,21 +57,21 @@ export default function Calendar() {
               style={{ animationDelay: `${index * 50}ms` }}
             >
               {/* Theme */}
-              <h3 className={`font-cormorant text-sm font-semibold leading-tight mb-1 ${
+              <h3 className={`font-cormorant text-[2vh] font-semibold leading-tight mb-[0.5vh] ${
                 event.isSpecial ? 'text-white' : 'text-navy'
               }`}>
                 {event.theme}
               </h3>
 
               {/* Month */}
-              <p className={`font-greatvibes text-base mb-1 ${
+              <p className={`font-greatvibes text-[2.5vh] mb-[0.5vh] ${
                 event.isSpecial ? 'text-gold' : 'text-gold'
               }`}>
                 {event.month}
               </p>
 
               {/* Description - truncated on mobile */}
-              <p className={`font-source text-[10px] leading-snug line-clamp-3 ${
+              <p className={`font-source text-[1.3vh] leading-snug line-clamp-4 ${
                 event.isSpecial ? 'text-white/80' : 'text-navy/70'
               }`}>
                 {event.description}

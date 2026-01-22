@@ -21,28 +21,28 @@ const founders = [
 export default function Team() {
   return (
     <section id="equipe" className="snap-section section-alt">
-      <div className="container-impulse px-4 h-full flex flex-col py-4 lg:py-4 justify-center">
+      <div className="container-impulse px-4 h-full flex flex-col pt-[1vh] pb-[2vh] lg:py-4">
         {/* Section header */}
-        <div className="mb-3 lg:mb-[1.5vh] animate-fade-in-up flex-shrink-0 text-center lg:text-left">
-          <p className="font-montserrat uppercase tracking-[0.3em] text-navy text-sm mb-1">
+        <div className="mb-[1.5vh] lg:mb-[1.5vh] animate-fade-in-up flex-shrink-0 text-center lg:text-left">
+          <p className="font-montserrat uppercase tracking-[0.3em] text-navy text-xs lg:text-sm mb-1">
             Équipe
           </p>
           <div className="w-24 h-[2px] bg-gradient-to-r from-gold to-transparent mx-auto lg:mx-0"></div>
         </div>
 
-        {/* Mobile layout - Circular photos centered, elegant stack */}
-        <div className="lg:hidden flex-1 flex flex-col gap-4 overflow-y-auto">
+        {/* Mobile layout - Cards fill viewport height */}
+        <div className="lg:hidden flex-1 flex flex-col justify-around">
           {founders.map((founder, index) => (
             <div
               key={index}
-              className="animate-fade-in-up flex-shrink-0"
+              className="animate-fade-in-up"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              {/* Photo + Name header */}
-              <div className="flex items-center gap-4 mb-2">
+              {/* Photo + Name + Bio in horizontal layout */}
+              <div className="flex items-start gap-3">
                 {/* Circular photo with gold ring */}
                 <div className="relative flex-shrink-0">
-                  <div className="w-20 h-20 rounded-full p-[3px] bg-gradient-to-br from-gold via-gold/60 to-gold">
+                  <div className="w-[9vh] h-[9vh] rounded-full p-[2px] bg-gradient-to-br from-gold via-gold/60 to-gold">
                     <div className="w-full h-full rounded-full overflow-hidden bg-gradient-to-br from-rose to-beige">
                       <Image
                         src="/Impulse/images/placeholder-team.svg"
@@ -54,22 +54,17 @@ export default function Team() {
                     </div>
                   </div>
                 </div>
-                {/* Name + Role */}
+                {/* Name + Role + Bio */}
                 <div className="flex-1 min-w-0">
-                  <p className="font-greatvibes text-2xl text-navy leading-tight">{founder.name}</p>
-                  <p className="font-montserrat uppercase tracking-wider text-[9px] text-gold">
+                  <p className="font-greatvibes text-[3vh] text-navy leading-tight">{founder.name}</p>
+                  <p className="font-montserrat uppercase tracking-wider text-[1.2vh] text-gold mb-[0.5vh]">
                     {founder.role}
+                  </p>
+                  <p className="font-source text-[1.4vh] text-navy/70 leading-snug line-clamp-5">
+                    {founder.bio}
                   </p>
                 </div>
               </div>
-              {/* Bio */}
-              <p className="font-source text-[11px] text-navy/70 leading-relaxed pl-1">
-                {founder.bio}
-              </p>
-              {/* Separator */}
-              {index < founders.length - 1 && (
-                <div className="w-16 h-[1px] bg-gradient-to-r from-gold/40 to-transparent mt-4 mx-auto"></div>
-              )}
             </div>
           ))}
         </div>

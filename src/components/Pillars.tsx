@@ -19,39 +19,39 @@ export default function Pillars() {
 
   return (
     <section id="piliers" className="snap-section section bg-cream">
-      <div className="container-impulse px-4 h-full flex flex-col">
+      <div className="container-impulse px-4 h-full flex flex-col pt-[1vh] pb-[2vh] lg:py-0">
         {/* Section header */}
-        <div className="mb-2 animate-fade-in-up flex-shrink-0">
-          <p className="font-montserrat uppercase tracking-[0.3em] text-navy text-sm mb-2">
+        <div className="mb-[1vh] lg:mb-2 animate-fade-in-up flex-shrink-0">
+          <p className="font-montserrat uppercase tracking-[0.3em] text-navy text-xs lg:text-sm mb-1">
             3 Piliers
           </p>
           <div className="w-24 h-[2px] bg-gradient-to-r from-gold to-transparent"></div>
         </div>
 
-        {/* Triangle visual with pillars - Desktop */}
+        {/* Triangle visual with pillars - Desktop - scaled for smaller viewports */}
         <div className="hidden lg:flex flex-1 items-center justify-center">
-          <div className="relative flex flex-col items-center">
+          <div className="relative flex flex-col items-center scale-[0.85] xl:scale-100 origin-center">
 
             {/* Pillar 1 - apprendre - centered at top */}
-            <div className="text-center mb-4 animate-fade-in-up">
-              <div className="flex items-center justify-center gap-4 mb-2">
-                <span className="w-12 h-12 rounded-full border-2 border-gold flex items-center justify-center font-source text-xl text-gold">
+            <div className="text-center mb-[1vh] animate-fade-in-up">
+              <div className="flex items-center justify-center gap-3 mb-1">
+                <span className="w-[5vh] h-[5vh] rounded-full border-2 border-gold flex items-center justify-center font-source text-[2vh] text-gold">
                   1
                 </span>
-                <span className="font-greatvibes text-6xl text-navy">
+                <span className="font-greatvibes text-[6vh] text-navy">
                   {pillars[0].title}
                 </span>
               </div>
-              <p className="font-cormorant text-xl text-navy/70">
+              <p className="font-cormorant text-[2vh] text-navy/70">
                 {pillars[0].description}
               </p>
             </div>
 
-            {/* Triangle SVG */}
+            {/* Triangle SVG - dynamic height */}
             <div className="relative">
               <svg
                 viewBox="0 0 400 280"
-                className="w-[420px] h-auto"
+                className="w-[50vh] max-w-[420px] h-auto"
                 style={{ filter: 'drop-shadow(0 4px 20px rgba(30, 58, 95, 0.1))' }}
               >
                 <defs>
@@ -70,34 +70,34 @@ export default function Pillars() {
               </svg>
             </div>
 
-            {/* Bottom pillars row - with more space between */}
-            <div className="flex justify-center gap-36 mt-4">
-              {/* Pillar 2 - s'entraider - bottom left */}
+            {/* Bottom pillars row */}
+            <div className="flex justify-center gap-[15vh] mt-[1vh]">
+              {/* Pillar 2 - s'entraider */}
               <div className="text-center animate-fade-in-up delay-100">
-                <div className="flex items-center justify-center gap-4 mb-2">
-                  <span className="w-12 h-12 rounded-full border-2 border-gold flex items-center justify-center font-source text-xl text-gold">
+                <div className="flex items-center justify-center gap-3 mb-1">
+                  <span className="w-[5vh] h-[5vh] rounded-full border-2 border-gold flex items-center justify-center font-source text-[2vh] text-gold">
                     2
                   </span>
-                  <span className="font-greatvibes text-6xl text-navy">
+                  <span className="font-greatvibes text-[6vh] text-navy">
                     {pillars[1].title}
                   </span>
                 </div>
-                <p className="font-cormorant text-xl text-navy/70">
+                <p className="font-cormorant text-[2vh] text-navy/70">
                   {pillars[1].description}
                 </p>
               </div>
 
-              {/* Pillar 3 - réussir - bottom right */}
+              {/* Pillar 3 - réussir */}
               <div className="text-center animate-fade-in-up delay-200">
-                <div className="flex items-center justify-center gap-4 mb-2">
-                  <span className="w-12 h-12 rounded-full border-2 border-gold flex items-center justify-center font-source text-xl text-gold">
+                <div className="flex items-center justify-center gap-3 mb-1">
+                  <span className="w-[5vh] h-[5vh] rounded-full border-2 border-gold flex items-center justify-center font-source text-[2vh] text-gold">
                     3
                   </span>
-                  <span className="font-greatvibes text-6xl text-navy">
+                  <span className="font-greatvibes text-[6vh] text-navy">
                     {pillars[2].title}
                   </span>
                 </div>
-                <p className="font-cormorant text-xl text-navy/70">
+                <p className="font-cormorant text-[2vh] text-navy/70">
                   {pillars[2].description}
                 </p>
               </div>
@@ -105,29 +105,27 @@ export default function Pillars() {
           </div>
         </div>
 
-        {/* Mobile/Tablet - Vertical list with better centering */}
-        <div className="lg:hidden min-h-[calc(100dvh-140px)] flex items-center justify-center -mt-8">
-          <div className="space-y-10">
-            {pillars.map((pillar, index) => (
-              <div
-                key={index}
-                className="flex items-start gap-5 animate-fade-in-up"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <span className="w-14 h-14 rounded-full border-2 border-gold flex items-center justify-center font-source text-xl text-gold flex-shrink-0">
-                  {pillar.number}
-                </span>
-                <div>
-                  <p className="font-greatvibes text-4xl text-navy mb-2">
-                    {pillar.title}
-                  </p>
-                  <p className="font-cormorant text-xl text-navy/70">
-                    {pillar.description}
-                  </p>
-                </div>
+        {/* Mobile - Pillars fill viewport */}
+        <div className="lg:hidden flex-1 flex flex-col justify-around">
+          {pillars.map((pillar, index) => (
+            <div
+              key={index}
+              className="flex items-start gap-4 animate-fade-in-up"
+              style={{ animationDelay: `${index * 100}ms` }}
+            >
+              <span className="w-[7vh] h-[7vh] rounded-full border-2 border-gold flex items-center justify-center font-source text-[2.5vh] text-gold flex-shrink-0">
+                {pillar.number}
+              </span>
+              <div>
+                <p className="font-greatvibes text-[5vh] text-navy mb-[0.5vh]">
+                  {pillar.title}
+                </p>
+                <p className="font-cormorant text-[2vh] text-navy/70">
+                  {pillar.description}
+                </p>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

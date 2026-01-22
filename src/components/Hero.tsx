@@ -6,32 +6,32 @@ export default function Hero() {
   return (
     <section id="hero" className="snap-section bg-gradient-hero">
       <div className="container-impulse px-4 h-full flex items-center">
-        {/* Mobile: centered vertical layout - uses min-h to fill viewport minus header */}
-        <div className="lg:hidden w-full min-h-[calc(100dvh-72px)] flex flex-col justify-center items-center -mt-8">
+        {/* Mobile: fills viewport with distributed content */}
+        <div className="lg:hidden w-full h-full flex flex-col justify-around items-center py-[2vh]">
           {/* 3 Piliers - vertical stack with editorial styling */}
-          <div className="mb-6 animate-fade-in-up">
+          <div className="animate-fade-in-up">
             <div className="inline-flex flex-col items-start text-left border-l-2 border-gold/40 pl-5 py-1">
-              <span className="font-cormorant text-xl text-navy/70 italic tracking-wide">Apprendre</span>
-              <span className="font-cormorant text-xl text-navy/70 italic tracking-wide">S&apos;entraider</span>
-              <span className="font-cormorant text-xl text-navy/70 italic tracking-wide">
+              <span className="font-cormorant text-[3vh] text-navy/70 italic tracking-wide">Apprendre</span>
+              <span className="font-cormorant text-[3vh] text-navy/70 italic tracking-wide">S&apos;entraider</span>
+              <span className="font-cormorant text-[3vh] text-navy/70 italic tracking-wide">
                 Réussir<span className="text-gold font-bold">.</span>
               </span>
             </div>
           </div>
 
-          <h1 className="font-cormorant text-[2rem] sm:text-4xl font-semibold text-navy leading-[1.15] mb-8 animate-fade-in-up delay-100 text-center">
+          <h1 className="font-cormorant text-[5vh] font-semibold text-navy leading-[1.15] animate-fade-in-up delay-100 text-center">
             Le rendez-vous business<br />
             des <span className="text-gold">femmes d&apos;impact</span><br />
             à Barcelone
           </h1>
 
-          <div className="flex flex-col gap-4 w-full max-w-xs animate-fade-in-up delay-200">
-            <a href="#contact" className="btn-primary group text-center">
+          <div className="flex flex-col gap-[2vh] w-full max-w-xs animate-fade-in-up delay-200">
+            <a href="#contact" className="btn-primary group text-center py-[2vh] text-[1.8vh]">
               <span className="relative z-10">Rejoindre la communauté</span>
             </a>
-            <a href="#calendrier" className="btn-secondary group text-center">
+            <a href="#calendrier" className="btn-secondary group text-center py-[2vh] text-[1.8vh]">
               Voir le calendrier
-              <svg className="w-4 h-4 ml-2 inline-block transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-[2vh] h-[2vh] ml-2 inline-block transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </a>
