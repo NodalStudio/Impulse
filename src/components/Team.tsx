@@ -21,7 +21,7 @@ const founders = [
 export default function Team() {
   return (
     <section id="equipe" className="snap-section section-alt">
-      <div className="container-impulse px-4 h-full flex flex-col pt-[1vh] pb-[2vh] lg:py-4">
+      <div className="container-impulse px-4 h-full flex flex-col justify-center pt-[1vh] pb-[2vh] lg:py-4">
         {/* Section header */}
         <div className="mb-[1.5vh] lg:mb-[1.5vh] animate-fade-in-up flex-shrink-0 text-center lg:text-left">
           <p className="font-montserrat uppercase tracking-[0.3em] text-navy text-xs lg:text-sm mb-1">

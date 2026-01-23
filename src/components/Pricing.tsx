@@ -20,7 +20,7 @@ const experienceFeatures = [
 export default function Pricing() {
   return (
     <section id="offres" className="snap-section section bg-gradient-to-br from-cream via-white to-rose/20">
-      <div className="container-impulse px-4 h-full flex flex-col pt-[1vh] pb-[2vh] lg:justify-center">
+      <div className="container-impulse px-4 h-full flex flex-col justify-center pt-[1vh] pb-[2vh]">
         {/* Section header */}
         <div className="mb-[1.5vh] lg:mb-12 animate-fade-in-up flex-shrink-0">
           <p className="font-montserrat uppercase tracking-[0.3em] text-navy text-xs lg:text-sm mb-1">
