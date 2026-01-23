@@ -39,6 +39,9 @@ const config: Config = {
           'Georgia',
           'Cambria',
           '"Times New Roman"',
+          '"Liberation Serif"',     // Linux
+          '"DejaVu Serif"',         // Linux
+          '"Noto Serif"',           // Linux/Android
           'Times',
           'serif',
         ],
@@ -48,6 +51,7 @@ const config: Config = {
           '"Segoe Script"',         // Windows
           '"Lucida Handwriting"',   // Windows/macOS
           '"Bradley Hand"',         // macOS
+          '"URW Chancery L"',       // Linux
           'cursive',
         ],
         source: [
@@ -56,6 +60,10 @@ const config: Config = {
           'system-ui',
           '-apple-system',          // macOS/iOS
           'Roboto',                 // Android/Chrome OS
+          '"Liberation Sans"',     // Linux
+          '"DejaVu Sans"',         // Linux
+          '"Noto Sans"',           // Linux/Android
+          'Ubuntu',                // Ubuntu Linux
           '"Helvetica Neue"',
           'Arial',
           'sans-serif',
@@ -66,6 +74,10 @@ const config: Config = {
           'system-ui',
           '-apple-system',
           'Roboto',
+          '"Liberation Sans"',     // Linux
+          '"DejaVu Sans"',         // Linux
+          '"Noto Sans"',           // Linux/Android
+          'Ubuntu',                // Ubuntu Linux
           '"Helvetica Neue"',
           'Arial',
           'sans-serif',
