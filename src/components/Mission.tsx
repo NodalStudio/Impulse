@@ -30,8 +30,8 @@ export default function Mission() {
 
             {/* Founders signatures */}
             <div className="border-t border-gold/30 pt-[1.5vh] lg:pt-6 animate-fade-in-up delay-200">
-              <p className="font-greatvibes text-[2.5vh] lg:text-[clamp(1.25rem,3.5vh,1.875rem)] text-navy mb-1">
-                Anaïs, Marina &amp; Sophie
+              <p className="font-greatvibes text-[2.2vh] lg:text-[clamp(1.05rem,2.8vh,1.5rem)] text-navy mb-1">
+                Marina, Anaïs &amp; Sophie
               </p>
               <div className="w-20 h-[2px] bg-gradient-to-r from-transparent via-gold to-transparent mx-auto"></div>
             </div>
