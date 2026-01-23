@@ -6,7 +6,6 @@ const navLinks = [
   { href: '#mission', label: 'Notre Mission' },
   { href: '#piliers', label: 'Les 3 Piliers' },
   { href: '#calendrier', label: 'Calendrier' },
-  { href: '#offres', label: 'Offres' },
   { href: '#equipe', label: 'Équipe' },
   { href: '#contact', label: 'Contact' },
 ];
@@ -17,17 +16,23 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
+    // Scroll happens inside .snap-container, not on window
+    const snapContainer = document.querySelector('.snap-container');
+    if (!snapContainer) return;
+
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(snapContainer.scrollTop > 50);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    snapContainer.addEventListener('scroll', handleScroll);
+    return () => snapContainer.removeEventListener('scroll', handleScroll);
   }, []);
 
   // Observe when Contact section is visible
   useEffect(() => {
     const contactSection = document.getElementById('contact');
-    if (!contactSection) return;
+    const snapContainer = document.querySelector('.snap-container');
+    if (!contactSection || !snapContainer) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -35,6 +40,7 @@ export default function Header() {
         setIsOnContact(entry.isIntersecting);
       },
       {
+        root: snapContainer, // Use snap-container as the viewport
         threshold: 0.1,
         rootMargin: '-80px 0px 0px 0px', // Account for header height
       }
@@ -50,8 +56,10 @@ export default function Header() {
       return 'bg-white border-b-2 border-gold py-3';
     }
     if (isScrolled) {
-      return 'bg-white/95 backdrop-blur-sm shadow-md py-3';
+      // Semi-transparent with blur when scrolled
+      return 'bg-white/50 backdrop-blur-md shadow-sm py-3';
     }
+    // Completely transparent at top
     return 'bg-transparent py-5';
   };
 
