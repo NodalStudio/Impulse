@@ -15,22 +15,32 @@
 }
 
 /* Snap Scroll Container */
+/* Prevent iOS overscroll rubber-band effect */
 html {
   scroll-behavior: smooth;
+  overscroll-behavior: none;
+  overflow: hidden;
+  height: 100%;
 }
 
 body {
   font-family: 'Source Sans 3', sans-serif;
   color: var(--navy);
   background-color: var(--cream);
+  overscroll-behavior: none;
+  overflow: hidden;
+  height: 100%;
 }
 
 /* Main scroll container for snap */
 .snap-container {
   height: 100vh;
+  height: 100dvh; /* Dynamic viewport height for iOS */
   overflow-y: auto;
   scroll-snap-type: y proximity;
   scroll-behavior: smooth;
+  overscroll-behavior: contain; /* Prevent scroll chaining */
+  -webkit-overflow-scrolling: touch; /* Smooth momentum scrolling on iOS */
 }
 
 /* Each section snaps */
@@ -50,11 +60,12 @@ body {
 @media (max-width: 1024px) {
   .snap-container {
     scroll-snap-type: y proximity;
+    height: 100dvh; /* Dynamic viewport for iOS */
   }
 
   .snap-section {
-    min-height: 100svh;
-    height: 100svh;
+    min-height: 100dvh;
+    height: 100dvh;
     overflow: hidden;
     padding-top: 60px; /* Compact header on mobile */
   }

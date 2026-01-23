@@ -193,7 +193,7 @@ export default function Contact() {
         </div>
 
         {/* Footer compact */}
-        <div className="bg-navy/5 border-t border-navy/10 py-[1.5vh] px-4 flex-shrink-0">
+        <div className="bg-navy/5 border-t border-navy/10 py-[1.5vh] px-4 flex-shrink-0 mt-[2vh]">
           <div className="container-impulse flex justify-between items-center">
             <p className="font-source text-[1.3vh] text-navy/50">
               © {currentYear} Impulse
