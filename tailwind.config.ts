@@ -34,10 +34,42 @@ const config: Config = {
         },
       },
       fontFamily: {
-        cormorant: ['Cormorant Garamond', 'serif'],
-        greatvibes: ['Great Vibes', 'cursive'],
-        source: ['Source Sans 3', 'sans-serif'],
-        montserrat: ['Montserrat', 'sans-serif'],
+        cormorant: [
+          'Cormorant Garamond',
+          'Georgia',
+          'Cambria',
+          '"Times New Roman"',
+          'Times',
+          'serif',
+        ],
+        greatvibes: [
+          'Great Vibes',
+          '"Snell Roundhand"',      // macOS
+          '"Segoe Script"',         // Windows
+          '"Lucida Handwriting"',   // Windows/macOS
+          '"Bradley Hand"',         // macOS
+          'cursive',
+        ],
+        source: [
+          'Source Sans 3',
+          '"Segoe UI"',             // Windows
+          'system-ui',
+          '-apple-system',          // macOS/iOS
+          'Roboto',                 // Android/Chrome OS
+          '"Helvetica Neue"',
+          'Arial',
+          'sans-serif',
+        ],
+        montserrat: [
+          'Montserrat',
+          '"Segoe UI"',
+          'system-ui',
+          '-apple-system',
+          'Roboto',
+          '"Helvetica Neue"',
+          'Arial',
+          'sans-serif',
+        ],
       },
       backgroundImage: {
         'gradient-impulse': 'linear-gradient(135deg, #faf7f2 0%, #f5e6e0 50%, #efe8e1 100%)',
