@@ -7,8 +7,9 @@ export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    company: '',
-    interest: 'essentielle',
+    profession: '',
+    age: '',
+    location: '',
     message: ''
   });
   const currentYear = new Date().getFullYear();
@@ -31,8 +32,9 @@ export default function Contact() {
         setFormData({
           name: '',
           email: '',
-          company: '',
-          interest: 'essentielle',
+          profession: '',
+          age: '',
+          location: '',
           message: ''
         });
       } else {
@@ -141,22 +143,68 @@ export default function Contact() {
                     </div>
                   </div>
 
-                  <div>
-                    <label htmlFor="interest" className="block font-source text-[1.4vh] font-medium text-navy mb-[0.5vh]">
-                      Je suis intéressée par *
-                    </label>
-                    <select
-                      id="interest"
-                      name="interest"
-                      required
-                      value={formData.interest}
-                      onChange={(e) => setFormData({ ...formData, interest: e.target.value })}
-                      className="w-full px-[1.5vh] py-[1.2vh] rounded-lg border border-beige focus:border-gold outline-none font-source text-[1.5vh] bg-white"
-                    >
-                      <option value="essentielle">Offre Essentielle (Offert)</option>
-                      <option value="experience">Offre Expérience (79€HT / 6 mois)</option>
-                      <option value="information">Simplement des informations</option>
-                    </select>
+                  {/* Profession, Age, Location - 3 columns on mobile */}
+                  <div className="grid grid-cols-3 gap-[1vh]">
+                    <div>
+                      <label htmlFor="profession" className="block font-source text-[1.3vh] font-medium text-navy mb-[0.5vh]">
+                        Profession *
+                      </label>
+                      <select
+                        id="profession"
+                        name="profession"
+                        required
+                        value={formData.profession}
+                        onChange={(e) => setFormData({ ...formData, profession: e.target.value })}
+                        className="w-full px-[1vh] py-[1.2vh] rounded-lg border border-beige focus:border-gold outline-none font-source text-[1.3vh] bg-white"
+                      >
+                        <option value="">Choisir...</option>
+                        <option value="entrepreneure">Entrepreneure</option>
+                        <option value="dirigeante">Dirigeante</option>
+                        <option value="cadre">Cadre</option>
+                        <option value="independante">Indépendante</option>
+                        <option value="consultante">Consultante</option>
+                        <option value="autre">Autre</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label htmlFor="age" className="block font-source text-[1.3vh] font-medium text-navy mb-[0.5vh]">
+                        Âge *
+                      </label>
+                      <select
+                        id="age"
+                        name="age"
+                        required
+                        value={formData.age}
+                        onChange={(e) => setFormData({ ...formData, age: e.target.value })}
+                        className="w-full px-[1vh] py-[1.2vh] rounded-lg border border-beige focus:border-gold outline-none font-source text-[1.3vh] bg-white"
+                      >
+                        <option value="">Choisir...</option>
+                        <option value="25-34">25-34 ans</option>
+                        <option value="35-44">35-44 ans</option>
+                        <option value="45-54">45-54 ans</option>
+                        <option value="55+">55+ ans</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label htmlFor="location" className="block font-source text-[1.3vh] font-medium text-navy mb-[0.5vh]">
+                        Localisation *
+                      </label>
+                      <select
+                        id="location"
+                        name="location"
+                        required
+                        value={formData.location}
+                        onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+                        className="w-full px-[1vh] py-[1.2vh] rounded-lg border border-beige focus:border-gold outline-none font-source text-[1.3vh] bg-white"
+                      >
+                        <option value="">Choisir...</option>
+                        <option value="barcelone">Barcelone</option>
+                        <option value="catalogne">Catalogne</option>
+                        <option value="espagne">Espagne</option>
+                        <option value="france">France</option>
+                        <option value="autre">Autre</option>
+                      </select>
+                    </div>
                   </div>
 
                   <div className="flex-1">
@@ -323,22 +371,68 @@ export default function Contact() {
                   </div>
                 </div>
 
-                <div>
-                  <label htmlFor="interest-desktop" className="block font-source text-xs font-medium text-navy mb-1.5">
-                    Je suis intéressée par *
-                  </label>
-                  <select
-                    id="interest-desktop"
-                    name="interest"
-                    required
-                    value={formData.interest}
-                    onChange={(e) => setFormData({ ...formData, interest: e.target.value })}
-                    className="w-full px-3 py-2.5 rounded-lg border border-beige focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all font-source text-sm bg-white"
-                  >
-                    <option value="essentielle">Offre Essentielle (Offert)</option>
-                    <option value="experience">Offre Expérience (79€HT / 6 mois)</option>
-                    <option value="information">Simplement des informations</option>
-                  </select>
+                {/* Profession, Age, Location - 3 columns */}
+                <div className="grid grid-cols-3 gap-3">
+                  <div>
+                    <label htmlFor="profession-desktop" className="block font-source text-xs font-medium text-navy mb-1.5">
+                      Profession *
+                    </label>
+                    <select
+                      id="profession-desktop"
+                      name="profession"
+                      required
+                      value={formData.profession}
+                      onChange={(e) => setFormData({ ...formData, profession: e.target.value })}
+                      className="w-full px-3 py-2.5 rounded-lg border border-beige focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all font-source text-sm bg-white"
+                    >
+                      <option value="">Choisir...</option>
+                      <option value="entrepreneure">Entrepreneure</option>
+                      <option value="dirigeante">Dirigeante</option>
+                      <option value="cadre">Cadre</option>
+                      <option value="independante">Indépendante</option>
+                      <option value="consultante">Consultante</option>
+                      <option value="autre">Autre</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label htmlFor="age-desktop" className="block font-source text-xs font-medium text-navy mb-1.5">
+                      Âge *
+                    </label>
+                    <select
+                      id="age-desktop"
+                      name="age"
+                      required
+                      value={formData.age}
+                      onChange={(e) => setFormData({ ...formData, age: e.target.value })}
+                      className="w-full px-3 py-2.5 rounded-lg border border-beige focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all font-source text-sm bg-white"
+                    >
+                      <option value="">Choisir...</option>
+                      <option value="25-34">25-34 ans</option>
+                      <option value="35-44">35-44 ans</option>
+                      <option value="45-54">45-54 ans</option>
+                      <option value="55+">55+ ans</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label htmlFor="location-desktop" className="block font-source text-xs font-medium text-navy mb-1.5">
+                      Localisation *
+                    </label>
+                    <select
+                      id="location-desktop"
+                      name="location"
+                      required
+                      value={formData.location}
+                      onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+                      className="w-full px-3 py-2.5 rounded-lg border border-beige focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all font-source text-sm bg-white"
+                    >
+                      <option value="">Choisir...</option>
+                      <option value="barcelone">Barcelone</option>
+                      <option value="catalogne">Catalogne</option>
+                      <option value="espagne">Espagne</option>
+                      <option value="france">France</option>
+                      <option value="autre">Autre</option>
+                    </select>
+                  </div>
                 </div>
 
                 <div>
