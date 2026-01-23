@@ -80,34 +80,34 @@ export default function Calendar() {
           ))}
         </div>
 
-        {/* Desktop: Full 6-column grid */}
-        <div className="hidden lg:grid lg:grid-cols-6 gap-4">
+        {/* Desktop: Full 6-column grid with equal height cards */}
+        <div className="hidden lg:grid lg:grid-cols-6 gap-4 items-stretch">
           {events.map((event, index) => (
             <div
               key={index}
-              className={`rounded-2xl p-5 transition-all duration-300 hover:shadow-lg animate-fade-in-up ${
+              className={`rounded-2xl p-5 transition-all duration-300 hover:shadow-lg animate-fade-in-up flex flex-col ${
                 event.isSpecial
                   ? 'bg-navy text-white'
                   : 'bg-gradient-to-b from-cream to-rose/30'
               }`}
               style={{ animationDelay: `${index * 80}ms` }}
             >
-              {/* Theme */}
-              <h3 className={`font-cormorant text-lg font-semibold mb-3 leading-tight ${
+              {/* Theme - fixed height to align all titles */}
+              <h3 className={`font-cormorant text-base font-semibold leading-tight min-h-[2.5rem] ${
                 event.isSpecial ? 'text-white' : 'text-navy'
               }`}>
                 {event.theme}
               </h3>
 
-              {/* Month */}
-              <p className={`font-greatvibes text-xl mb-4 ${
+              {/* Month - aligned across all cards */}
+              <p className={`font-greatvibes text-lg mb-3 ${
                 event.isSpecial ? 'text-gold' : 'text-gold'
               }`}>
                 {event.month}
               </p>
 
-              {/* Description */}
-              <p className={`font-source text-xs leading-relaxed ${
+              {/* Description - flex-grow to fill remaining space */}
+              <p className={`font-source text-xs leading-relaxed flex-grow ${
                 event.isSpecial ? 'text-white/80' : 'text-navy/70'
               }`}>
                 {event.description}
