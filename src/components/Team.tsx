@@ -31,7 +31,7 @@ export default function Team() {
         </div>
 
         {/* Mobile layout - Cards fill viewport height */}
-        <div className="lg:hidden flex-1 flex flex-col justify-around">
+        <div className="lg:hidden flex-1 flex flex-col justify-around py-[1vh]">
           {founders.map((founder, index) => (
             <div
               key={index}
@@ -39,10 +39,10 @@ export default function Team() {
               style={{ animationDelay: `${index * 100}ms` }}
             >
               {/* Photo + Name + Bio in horizontal layout */}
-              <div className="flex items-start gap-3">
-                {/* Circular photo with gold ring */}
+              <div className="flex items-start gap-2">
+                {/* Circular photo with gold ring - smaller */}
                 <div className="relative flex-shrink-0">
-                  <div className="w-[9vh] h-[9vh] rounded-full p-[2px] bg-gradient-to-br from-gold via-gold/60 to-gold">
+                  <div className="w-[7vh] h-[7vh] rounded-full p-[2px] bg-gradient-to-br from-gold via-gold/60 to-gold">
                     <div className="w-full h-full rounded-full overflow-hidden bg-gradient-to-br from-rose to-beige">
                       <Image
                         src="/Impulse/images/placeholder-team.svg"
@@ -54,13 +54,13 @@ export default function Team() {
                     </div>
                   </div>
                 </div>
-                {/* Name + Role + Bio */}
+                {/* Name + Role + Bio - more compact */}
                 <div className="flex-1 min-w-0">
-                  <p className="font-greatvibes text-[3vh] text-navy leading-tight">{founder.name}</p>
-                  <p className="font-montserrat uppercase tracking-wider text-[1.2vh] text-gold mb-[0.5vh]">
+                  <p className="font-greatvibes text-[2.5vh] text-navy leading-tight">{founder.name}</p>
+                  <p className="font-montserrat uppercase tracking-wider text-[1vh] text-gold mb-[0.3vh]">
                     {founder.role}
                   </p>
-                  <p className="font-source text-[1.4vh] text-navy/70 leading-snug line-clamp-5">
+                  <p className="font-source text-[1.2vh] text-navy/70 leading-snug">
                     {founder.bio}
                   </p>
                 </div>
