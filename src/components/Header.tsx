@@ -13,6 +13,7 @@ const navLinks = [
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isOnContact, setIsOnContact] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -23,13 +24,40 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Observe when Contact section is visible
+  useEffect(() => {
+    const contactSection = document.getElementById('contact');
+    if (!contactSection) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // Trigger when at least 10% of section is visible
+        setIsOnContact(entry.isIntersecting);
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '-80px 0px 0px 0px', // Account for header height
+      }
+    );
+
+    observer.observe(contactSection);
+    return () => observer.disconnect();
+  }, []);
+
+  // Determine header style based on state
+  const getHeaderClasses = () => {
+    if (isOnContact) {
+      return 'bg-white border-b-2 border-gold py-3';
+    }
+    if (isScrolled) {
+      return 'bg-white/95 backdrop-blur-sm shadow-md py-3';
+    }
+    return 'bg-transparent py-5';
+  };
+
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-white/95 backdrop-blur-sm shadow-md py-3'
-          : 'bg-transparent py-5'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${getHeaderClasses()}`}
     >
       <div className="container-impulse flex items-center justify-between px-4">
         {/* Logo */}
