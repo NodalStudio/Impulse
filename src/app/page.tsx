@@ -7,7 +7,6 @@ import Pillars from '@/components/Pillars';
 import Audience from '@/components/Audience';
 import HowItWorks from '@/components/HowItWorks';
 import Calendar from '@/components/Calendar';
-import Pricing from '@/components/Pricing';
 import Benefits from '@/components/Benefits';
 import Team from '@/components/Team';
 import Testimonials from '@/components/Testimonials';
@@ -26,7 +25,6 @@ export default function Home() {
         <Audience />
         <HowItWorks />
         <Calendar />
-        <Pricing />
         <Benefits />
         <Team />
         <Testimonials />
