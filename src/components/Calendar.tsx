@@ -35,9 +35,9 @@ const events = [
 export default function Calendar() {
   return (
     <section id="calendrier" className="snap-section section bg-white">
-      <div className="container-impulse px-4 h-full flex flex-col py-[3vh]">
+      <div className="container-impulse px-4 h-full flex flex-col justify-center py-[3vh]">
         {/* Section header */}
-        <div className="mb-[2vh] lg:mb-12 animate-fade-in-up flex-shrink-0">
+        <div className="mb-[2vh] lg:mb-8 animate-fade-in-up flex-shrink-0">
           <p className="font-montserrat uppercase tracking-[0.3em] text-navy text-sm mb-2">
             Calendrier 2026
           </p>
