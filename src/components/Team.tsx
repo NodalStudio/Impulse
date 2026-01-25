@@ -21,9 +21,9 @@ const founders = [
 export default function Team() {
   return (
     <section id="equipe" className="snap-section section-alt">
-      <div className="container-impulse px-4 h-full flex flex-col justify-center pt-[1vh] pb-[2vh] lg:py-4">
+      <div className="container-impulse px-4 h-full flex flex-col justify-center pt-[8vh] pb-[2vh] lg:py-4">
         {/* Section header */}
-        <div className="mb-[1.5vh] lg:mb-[1.5vh] animate-fade-in-up flex-shrink-0 text-center lg:text-left">
+        <div className="mb-[1vh] lg:mb-[1.5vh] animate-fade-in-up flex-shrink-0 text-center lg:text-left">
           <p className="font-montserrat uppercase tracking-[0.3em] text-navy text-xs lg:text-sm mb-1">
             Équipe
           </p>
@@ -31,18 +31,18 @@ export default function Team() {
         </div>
 
         {/* Mobile layout - Cards fill viewport height */}
-        <div className="lg:hidden flex-1 flex flex-col justify-around py-[1vh]">
+        <div className="lg:hidden flex-1 flex flex-col justify-between gap-[1vh]">
           {founders.map((founder, index) => (
             <div
               key={index}
-              className="animate-fade-in-up"
+              className="animate-fade-in-up flex-1"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               {/* Photo + Name + Bio in horizontal layout */}
-              <div className="flex items-start gap-2">
+              <div className="flex items-start gap-3">
                 {/* Circular photo with gold ring - smaller */}
                 <div className="relative flex-shrink-0">
-                  <div className="w-[7vh] h-[7vh] rounded-full p-[2px] bg-gradient-to-br from-gold via-gold/60 to-gold">
+                  <div className="w-[5.5vh] h-[5.5vh] rounded-full p-[2px] bg-gradient-to-br from-gold via-gold/60 to-gold">
                     <div className="w-full h-full rounded-full overflow-hidden bg-gradient-to-br from-rose to-beige">
                       <Image
                         src="/images/placeholder-team.svg"
@@ -56,11 +56,11 @@ export default function Team() {
                 </div>
                 {/* Name + Role + Bio - more compact */}
                 <div className="flex-1 min-w-0">
-                  <p className="font-greatvibes text-[2.5vh] text-navy leading-tight">{founder.name}</p>
-                  <p className="font-montserrat uppercase tracking-wider text-[1vh] text-gold mb-[0.3vh]">
+                  <p className="font-greatvibes text-[2.6vh] text-navy leading-none">{founder.name}</p>
+                  <p className="font-montserrat uppercase tracking-wider text-[1.2vh] text-gold">
                     {founder.role}
                   </p>
-                  <p className="font-source text-[1.2vh] text-navy/70 leading-snug">
+                  <p className="font-source text-[1.4vh] text-navy/70 leading-snug line-clamp-2 mt-[0.3vh]">
                     {founder.bio}
                   </p>
                 </div>
