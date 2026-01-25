@@ -45,7 +45,7 @@ export default function Team() {
                   <div className="w-[7vh] h-[7vh] rounded-full p-[2px] bg-gradient-to-br from-gold via-gold/60 to-gold">
                     <div className="w-full h-full rounded-full overflow-hidden bg-gradient-to-br from-rose to-beige">
                       <Image
-                        src="/Impulse/images/placeholder-team.svg"
+                        src="/images/placeholder-team.svg"
                         alt={founder.name}
                         width={80}
                         height={80}
@@ -83,7 +83,7 @@ export default function Team() {
                   <div className="w-[9vh] h-[9vh] min-w-[70px] min-h-[70px] max-w-[100px] max-h-[100px] rounded-full p-[2px] bg-gradient-to-br from-gold via-gold/70 to-gold/40 group-hover:from-gold group-hover:via-gold group-hover:to-gold/60 transition-all duration-500">
                     <div className="w-full h-full rounded-full overflow-hidden bg-gradient-to-br from-rose to-beige">
                       <Image
-                        src="/Impulse/images/placeholder-team.svg"
+                        src="/images/placeholder-team.svg"
                         alt={founder.name}
                         width={120}
                         height={120}
