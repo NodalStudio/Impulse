@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Great+Vibes&family=Montserrat:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap');
 
+/* Custom script font - Above The Beyond */
+@font-face {
+  font-family: 'Above The Beyond';
+  src: url('/Impulse/fonts/above-the-beyond-script.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

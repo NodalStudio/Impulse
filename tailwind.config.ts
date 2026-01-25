@@ -46,7 +46,8 @@ const config: Config = {
           'serif',
         ],
         greatvibes: [
-          'Great Vibes',
+          'Above The Beyond',       // Custom script font
+          'Great Vibes',            // First fallback (Google Fonts)
           '"Snell Roundhand"',      // macOS
           '"Segoe Script"',         // Windows
           '"Lucida Handwriting"',   // Windows/macOS
