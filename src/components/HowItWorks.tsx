@@ -32,7 +32,7 @@ export default function HowItWorks() {
       <div className="container-impulse px-4 h-full flex flex-col justify-center">
         {/* Section header */}
         <div className="mb-10 lg:mb-16 animate-fade-in-up">
-          <p className="font-montserrat uppercase tracking-[0.3em] text-navy text-sm mb-2">
+          <p className="font-montserrat uppercase tracking-[0.3em] text-navy text-sm lg:text-xl mb-2">
             Fonctionnement
           </p>
           <div className="w-32 h-[2px] bg-gradient-to-r from-gold to-transparent"></div>

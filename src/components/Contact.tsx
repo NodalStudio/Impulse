@@ -258,7 +258,7 @@ export default function Contact() {
         <div className="container-impulse px-4 flex-1 flex flex-col justify-center py-6">
           {/* Section header */}
           <div className="mb-8 animate-fade-in-up">
-            <p className="font-montserrat uppercase tracking-[0.3em] text-navy text-sm mb-2">
+            <p className="font-montserrat uppercase tracking-[0.3em] text-navy text-sm lg:text-xl mb-2">
               Contact
             </p>
             <div className="w-24 h-[2px] bg-gradient-to-r from-gold to-transparent"></div>

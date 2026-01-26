@@ -32,20 +32,20 @@ export default function Problem() {
       <div className="container-impulse px-4 h-full flex flex-col justify-center">
         {/* Section header */}
         <div className="mb-10 lg:mb-16 animate-fade-in-up">
-          <p className="font-montserrat uppercase tracking-[0.3em] text-navy text-sm mb-2">
+          <p className="font-montserrat uppercase tracking-[0.3em] text-navy text-sm lg:text-xl mb-2">
             Constat
           </p>
           <div className="w-32 h-[2px] bg-gradient-to-r from-gold to-transparent"></div>
         </div>
 
         {/* Main headline */}
-        <div className="max-w-4xl mb-10 lg:mb-14 animate-fade-in-up delay-100">
+        <div className="max-w-5xl mb-10 lg:mb-14 animate-fade-in-up delay-100">
           <h2 className="font-cormorant text-2xl md:text-3xl lg:text-4xl text-navy leading-relaxed">
             Entreprendre et diriger seule a{' '}
             <span className="font-greatvibes text-3xl md:text-4xl lg:text-5xl text-gold">
               un coût invisible
-            </span>{' '}
-            :
+            </span>
+            &nbsp;:
           </h2>
         </div>
 

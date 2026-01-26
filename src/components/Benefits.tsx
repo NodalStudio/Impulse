@@ -27,7 +27,7 @@ export default function Benefits() {
       <div className="container-impulse px-4 h-full flex flex-col justify-center py-4 lg:py-0">
         {/* Section header */}
         <div className="mb-4 lg:mb-16 animate-fade-in-up flex-shrink-0">
-          <p className="font-montserrat uppercase tracking-[0.3em] text-navy text-sm mb-2">
+          <p className="font-montserrat uppercase tracking-[0.3em] text-navy text-sm lg:text-xl mb-2">
             Bénéfices
           </p>
           <div className="w-24 h-[2px] bg-gradient-to-r from-gold to-transparent"></div>
