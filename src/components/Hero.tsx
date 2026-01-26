@@ -81,7 +81,7 @@ export default function Hero() {
             <div className="grid grid-cols-2 gap-3 max-w-md xl:max-w-lg">
               {/* Left column */}
               <div className="space-y-3">
-                <div className="h-[18vh] xl:h-[20vh] rounded-xl overflow-hidden shadow-lg group transition-all duration-500 hover:shadow-2xl hover:shadow-gold/40 hover:-translate-y-1">
+                <div className="h-[18vh] xl:h-[20vh] rounded-xl overflow-hidden shadow-lg group transition-all duration-500 hover:shadow-2xl hover:shadow-gold/40 hover:-translate-y-1 border-2 border-gold/30 hover:border-gold">
                   <div className="relative w-full h-full">
                     <Image
                       src="/images/community-event.jpg"
@@ -92,7 +92,7 @@ export default function Hero() {
                     />
                   </div>
                 </div>
-                <div className="h-[20vh] xl:h-[22vh] rounded-xl overflow-hidden shadow-lg group transition-all duration-500 hover:shadow-2xl hover:shadow-gold/40 hover:-translate-y-1">
+                <div className="h-[20vh] xl:h-[22vh] rounded-xl overflow-hidden shadow-lg group transition-all duration-500 hover:shadow-2xl hover:shadow-gold/40 hover:-translate-y-1 border-2 border-gold/30 hover:border-gold">
                   <div className="relative w-full h-full">
                     <Image
                       src="/images/community-networking.jpg"
@@ -106,7 +106,7 @@ export default function Hero() {
               </div>
               {/* Right column - offset for asymmetry */}
               <div className="pt-[4vh] space-y-3">
-                <div className="h-[20vh] xl:h-[22vh] rounded-xl overflow-hidden shadow-lg group transition-all duration-500 hover:shadow-2xl hover:shadow-gold/40 hover:-translate-y-1">
+                <div className="h-[20vh] xl:h-[22vh] rounded-xl overflow-hidden shadow-lg group transition-all duration-500 hover:shadow-2xl hover:shadow-gold/40 hover:-translate-y-1 border-2 border-gold/30 hover:border-gold">
                   <div className="relative w-full h-full">
                     <Image
                       src="/images/community-garden.jpg"
@@ -117,7 +117,7 @@ export default function Hero() {
                     />
                   </div>
                 </div>
-                <div className="h-[18vh] xl:h-[20vh] rounded-xl overflow-hidden shadow-lg group transition-all duration-500 hover:shadow-2xl hover:shadow-gold/40 hover:-translate-y-1">
+                <div className="h-[18vh] xl:h-[20vh] rounded-xl overflow-hidden shadow-lg group transition-all duration-500 hover:shadow-2xl hover:shadow-gold/40 hover:-translate-y-1 border-2 border-gold/30 hover:border-gold">
                   <div className="relative w-full h-full">
                     <Image
                       src="/images/community-workshop.jpg"
