@@ -34,7 +34,7 @@ export default function Team() {
         <div className="lg:hidden flex-1 flex flex-col justify-center gap-[4vh]">
           {/* Section header - Mobile */}
           <div className="animate-fade-in-up">
-            <p className="font-montserrat uppercase tracking-[0.3em] text-navy text-xs mb-1">
+            <p className="font-montserrat uppercase tracking-[0.3em] text-navy text-sm mb-1">
               Équipe
             </p>
             <div className="w-24 h-[2px] bg-gradient-to-r from-gold to-transparent"></div>
