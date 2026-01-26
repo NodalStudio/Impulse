@@ -77,43 +77,54 @@ export default function Hero() {
 
           {/* Right - Photo Grid with dynamic sizing */}
           <div className="relative animate-fade-in delay-300 justify-self-end">
-            {/* Constrained photo grid - 3 images in elegant arrangement */}
-            <div className="grid grid-cols-2 gap-3 max-w-sm xl:max-w-md">
+            {/* Constrained photo grid - 4 images in elegant arrangement */}
+            <div className="grid grid-cols-2 gap-3 max-w-md xl:max-w-lg">
               {/* Left column */}
               <div className="space-y-3">
-                <div className="h-[15vh] xl:h-[18vh] rounded-xl overflow-hidden shadow-lg group transition-all duration-500 hover:shadow-xl hover:shadow-gold/20">
+                <div className="h-[18vh] xl:h-[20vh] rounded-xl overflow-hidden shadow-lg group transition-all duration-500 hover:shadow-2xl hover:shadow-gold/40 hover:-translate-y-1">
                   <div className="relative w-full h-full">
                     <Image
-                      src="/images/placeholder-photo.svg"
+                      src="/images/community-event.jpg"
                       alt="Événement Impulse"
-                      width={240}
-                      height={192}
-                      className="w-full h-full object-cover transition-all duration-700 ease-out group-hover:brightness-105 group-hover:saturate-[1.1]"
+                      width={280}
+                      height={220}
+                      className="w-full h-full object-cover transition-all duration-500 ease-out group-hover:scale-105 group-hover:brightness-110"
                     />
                   </div>
                 </div>
-                <div className="h-[18vh] xl:h-[22vh] rounded-xl overflow-hidden shadow-lg group transition-all duration-500 hover:shadow-xl hover:shadow-gold/20">
+                <div className="h-[20vh] xl:h-[22vh] rounded-xl overflow-hidden shadow-lg group transition-all duration-500 hover:shadow-2xl hover:shadow-gold/40 hover:-translate-y-1">
                   <div className="relative w-full h-full">
                     <Image
-                      src="/images/placeholder-photo.svg"
+                      src="/images/community-networking.jpg"
                       alt="Networking"
-                      width={240}
-                      height={224}
-                      className="w-full h-full object-cover transition-all duration-700 ease-out group-hover:brightness-105 group-hover:saturate-[1.1]"
+                      width={280}
+                      height={250}
+                      className="w-full h-full object-cover transition-all duration-500 ease-out group-hover:scale-105 group-hover:brightness-110"
                     />
                   </div>
                 </div>
               </div>
               {/* Right column - offset for asymmetry */}
-              <div className="pt-[4vh]">
-                <div className="h-[25vh] xl:h-[30vh] rounded-xl overflow-hidden shadow-lg group transition-all duration-500 hover:shadow-xl hover:shadow-gold/20">
+              <div className="pt-[4vh] space-y-3">
+                <div className="h-[20vh] xl:h-[22vh] rounded-xl overflow-hidden shadow-lg group transition-all duration-500 hover:shadow-2xl hover:shadow-gold/40 hover:-translate-y-1">
                   <div className="relative w-full h-full">
                     <Image
-                      src="/images/placeholder-photo.svg"
-                      alt="Conférence"
-                      width={240}
-                      height={288}
-                      className="w-full h-full object-cover transition-all duration-700 ease-out group-hover:brightness-105 group-hover:saturate-[1.1]"
+                      src="/images/community-garden.jpg"
+                      alt="Communauté"
+                      width={280}
+                      height={250}
+                      className="w-full h-full object-cover transition-all duration-500 ease-out group-hover:scale-105 group-hover:brightness-110"
+                    />
+                  </div>
+                </div>
+                <div className="h-[18vh] xl:h-[20vh] rounded-xl overflow-hidden shadow-lg group transition-all duration-500 hover:shadow-2xl hover:shadow-gold/40 hover:-translate-y-1">
+                  <div className="relative w-full h-full">
+                    <Image
+                      src="/images/community-workshop.jpg"
+                      alt="Atelier"
+                      width={280}
+                      height={220}
+                      className="w-full h-full object-cover transition-all duration-500 ease-out group-hover:scale-105 group-hover:brightness-110"
                     />
                   </div>
                 </div>
