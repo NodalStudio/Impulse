@@ -32,10 +32,10 @@ const highlights = [
 export default function Testimonials() {
   return (
     <section id="temoignages" className="snap-section section bg-cream">
-      <div className="container-impulse px-4 h-full flex flex-col py-4 lg:py-0 lg:justify-center">
-        {/* Section header */}
-        <div className="mb-3 lg:mb-8 animate-fade-in-up flex-shrink-0">
-          <p className="font-montserrat uppercase tracking-[0.3em] text-navy text-sm mb-2">
+      <div className="container-impulse px-4 h-full flex flex-col lg:py-0 lg:justify-center">
+        {/* Section header - Desktop only */}
+        <div className="hidden lg:block mb-[1.5vh] animate-fade-in-up flex-shrink-0">
+          <p className="font-montserrat uppercase tracking-[0.3em] text-navy text-sm lg:text-xl mb-1">
             Témoignages
           </p>
           <div className="w-32 h-[2px] bg-gradient-to-r from-gold to-transparent"></div>
@@ -80,9 +80,6 @@ export default function Testimonials() {
                   &ldquo;{testimonials[4].quote}&rdquo;
                 </p>
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-rose to-beige flex items-center justify-center">
-                    <span className="font-greatvibes text-lg text-navy">{testimonials[4].author[0]}</span>
-                  </div>
                   <p className="font-greatvibes text-2xl text-navy">
                     {testimonials[4].author}
                   </p>
@@ -154,35 +151,43 @@ export default function Testimonials() {
         </div>
 
         {/* Mobile/Tablet layout - fills full viewport height */}
-        <div className="lg:hidden flex-1 flex flex-col gap-3">
-          {/* Highlights - compact card */}
-          <div className="bg-white rounded-xl p-4 border-2 border-gold/30">
-            <p className="font-greatvibes text-xl text-navy text-center mb-3">
+        <div className="lg:hidden flex-1 flex flex-col justify-center gap-[4vh] min-h-0">
+          {/* Section header - Mobile */}
+          <div className="animate-fade-in-up">
+            <p className="font-montserrat uppercase tracking-[0.3em] text-navy text-sm mb-1">
+              Témoignages
+            </p>
+            <div className="w-24 h-[2px] bg-gradient-to-r from-gold to-transparent"></div>
+          </div>
+
+          {/* Highlights - compact inline */}
+          <div className="bg-white rounded-lg p-[1.5vh] border border-gold/30 flex-shrink-0">
+            <p className="font-greatvibes text-[2.5vh] text-navy text-center mb-[0.8vh]">
               Les points forts du groupe
             </p>
-            <div className="space-y-1.5">
-              {highlights.slice(0, 4).map((highlight, index) => (
-                <div key={index} className="font-cormorant text-sm text-navy flex items-center gap-2">
+            <div className="flex flex-wrap justify-center gap-x-3 gap-y-1">
+              {highlights.slice(0, 3).map((highlight, index) => (
+                <span key={index} className="font-cormorant text-[2vh] text-navy flex items-center gap-1">
                   <span className="text-gold">·</span>
                   {highlight}
-                </div>
+                </span>
               ))}
             </div>
           </div>
 
-          {/* 2 testimonials side by side - takes remaining space */}
-          <div className="grid grid-cols-2 gap-3 flex-1 min-h-0">
+          {/* 2 testimonials side by side */}
+          <div className="grid grid-cols-2 gap-[1.5vh]">
             {testimonials.slice(0, 2).map((testimonial, index) => (
               <div
                 key={index}
-                className="bg-beige/50 rounded-xl p-4 animate-fade-in-up flex flex-col"
+                className="bg-beige/50 rounded-lg p-[1.5vh] animate-fade-in-up flex flex-col"
                 style={{ animationDelay: `${index * 50}ms` }}
               >
-                <span className="text-gold text-lg leading-none">&ldquo;</span>
-                <p className="font-cormorant text-sm text-navy leading-relaxed flex-1">
+                <span className="text-gold text-[2vh] leading-none">&ldquo;</span>
+                <p className="font-cormorant text-[2.2vh] text-navy leading-snug flex-1">
                   {testimonial.quote}
                 </p>
-                <p className="font-greatvibes text-lg text-navy text-right mt-2">
+                <p className="font-greatvibes text-[2vh] text-navy text-right mt-[0.5vh]">
                   {testimonial.author}
                 </p>
               </div>
@@ -190,14 +195,14 @@ export default function Testimonials() {
           </div>
 
           {/* Featured testimonial at bottom */}
-          <div className="bg-beige/50 rounded-xl p-4">
-            <div className="flex items-start gap-3">
-              <span className="text-gold text-lg leading-none">&ldquo;</span>
+          <div className="bg-beige/50 rounded-lg p-[1.5vh] flex-shrink-0">
+            <div className="flex items-start gap-2">
+              <span className="text-gold text-[2vh] leading-none">&ldquo;</span>
               <div className="flex-1">
-                <p className="font-cormorant text-sm text-navy leading-relaxed">
+                <p className="font-cormorant text-[2vh] text-navy leading-snug">
                   {testimonials[3].quote}
                 </p>
-                <p className="font-greatvibes text-lg text-navy text-right mt-2">
+                <p className="font-greatvibes text-[2vh] text-navy text-right mt-[0.5vh]">
                   {testimonials[3].author}
                 </p>
               </div>

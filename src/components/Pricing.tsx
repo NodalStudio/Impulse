@@ -20,17 +20,24 @@ const experienceFeatures = [
 export default function Pricing() {
   return (
     <section id="offres" className="snap-section section bg-gradient-to-br from-cream via-white to-rose/20">
-      <div className="container-impulse px-4 h-full flex flex-col justify-center pt-[1vh] pb-[2vh]">
-        {/* Section header */}
-        <div className="mb-[1.5vh] lg:mb-12 animate-fade-in-up flex-shrink-0">
-          <p className="font-montserrat uppercase tracking-[0.3em] text-navy text-xs lg:text-sm mb-1">
+      <div className="container-impulse px-4 h-full flex flex-col justify-center">
+        {/* Section header - Desktop only */}
+        <div className="hidden lg:block mb-[1.5vh] animate-fade-in-up flex-shrink-0">
+          <p className="font-montserrat uppercase tracking-[0.3em] text-navy text-sm mb-1">
             Offres
           </p>
           <div className="w-24 h-[2px] bg-gradient-to-r from-gold to-transparent"></div>
         </div>
 
-        {/* Mobile: Cards fill viewport */}
-        <div className="lg:hidden flex flex-col gap-[2vh] flex-1 justify-around">
+        {/* Mobile: Cards centered */}
+        <div className="lg:hidden flex-1 flex flex-col justify-center gap-[4vh]">
+          {/* Section header - Mobile */}
+          <div className="animate-fade-in-up">
+            <p className="font-montserrat uppercase tracking-[0.3em] text-navy text-xs mb-1">
+              Offres
+            </p>
+            <div className="w-24 h-[2px] bg-gradient-to-r from-gold to-transparent"></div>
+          </div>
           {/* Essentielle - Fills space */}
           <div className="bg-white/80 backdrop-blur-sm rounded-xl p-[2vh] border border-beige/50 animate-fade-in-up">
             <div className="flex items-center justify-between mb-[1vh]">

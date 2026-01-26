@@ -35,17 +35,26 @@ const events = [
 export default function Calendar() {
   return (
     <section id="calendrier" className="snap-section section bg-white">
-      <div className="container-impulse px-4 h-full flex flex-col justify-center py-[3vh]">
-        {/* Section header */}
-        <div className="mb-[2vh] lg:mb-8 animate-fade-in-up flex-shrink-0">
-          <p className="font-montserrat uppercase tracking-[0.3em] text-navy text-sm mb-2">
+      <div className="container-impulse px-4 h-full flex flex-col justify-center">
+        {/* Section header - Desktop only */}
+        <div className="hidden lg:block mb-14 animate-fade-in-up flex-shrink-0">
+          <p className="font-montserrat uppercase tracking-[0.3em] text-navy text-sm lg:text-xl mb-2">
             Calendrier 2026
           </p>
           <div className="w-32 h-[2px] bg-gradient-to-r from-gold to-transparent"></div>
         </div>
 
-        {/* Mobile: Compact 2x3 grid that fills the screen */}
-        <div className="lg:hidden grid grid-cols-2 gap-[2vh] flex-1 auto-rows-fr">
+        {/* Mobile: Compact 2x3 grid */}
+        <div className="lg:hidden flex-1 flex flex-col justify-center gap-[4vh]">
+          {/* Section header - Mobile */}
+          <div className="animate-fade-in-up">
+            <p className="font-montserrat uppercase tracking-[0.3em] text-navy text-sm mb-1">
+              Calendrier 2026
+            </p>
+            <div className="w-32 h-[2px] bg-gradient-to-r from-gold to-transparent"></div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-[1vh] auto-rows-fr">
           {events.map((event, index) => (
             <div
               key={index}
@@ -71,13 +80,14 @@ export default function Calendar() {
               </p>
 
               {/* Description - truncated on mobile */}
-              <p className={`font-source text-[1.3vh] leading-snug line-clamp-4 ${
+              <p className={`font-source text-[1.3vh] leading-snug  ${
                 event.isSpecial ? 'text-white/80' : 'text-navy/70'
               }`}>
                 {event.description}
               </p>
             </div>
           ))}
+          </div>
         </div>
 
         {/* Desktop: Full 6-column grid with equal height cards */}

@@ -19,18 +19,18 @@ export default function Pillars() {
 
   return (
     <section id="piliers" className="snap-section section bg-cream">
-      <div className="container-impulse px-4 h-full flex flex-col pt-[1vh] pb-[2vh] lg:py-0">
-        {/* Section header */}
-        <div className="mb-[1vh] lg:mb-2 animate-fade-in-up flex-shrink-0">
-          <p className="font-montserrat uppercase tracking-[0.3em] text-navy text-xs lg:text-sm mb-1">
-            3 Piliers
-          </p>
-          <div className="w-24 h-[2px] bg-gradient-to-r from-gold to-transparent"></div>
-        </div>
-
+      <div className="container-impulse px-4 h-full flex flex-col lg:py-0">
         {/* Triangle visual with pillars - Desktop - scaled for smaller viewports */}
-        <div className="hidden lg:flex flex-1 items-center justify-center">
+        <div className="hidden lg:flex mb-10 flex-1 items-center justify-center">
           <div className="relative flex flex-col items-center scale-[0.85] xl:scale-100 origin-center">
+
+            {/* Section header - inside centered container */}
+            <div className="mb-8 animate-fade-in-up text-left self-start">
+              <p className="font-montserrat uppercase tracking-[0.3em] text-navy text-sm lg:text-xl mb-1">
+                3 Piliers
+              </p>
+              <div className="w-24 h-[2px] bg-gradient-to-r from-gold to-transparent"></div>
+            </div>
 
             {/* Pillar 1 - apprendre - centered at top */}
             <div className="text-center mb-[1vh] animate-fade-in-up">
@@ -106,21 +106,29 @@ export default function Pillars() {
         </div>
 
         {/* Mobile - Pillars fill viewport */}
-        <div className="lg:hidden flex-1 flex flex-col justify-around">
+        <div className="lg:hidden flex-1 flex flex-col justify-center gap-[4vh]">
+          {/* Section header - Mobile */}
+          <div className="animate-fade-in-up">
+            <p className="font-montserrat uppercase tracking-[0.3em] text-navy text-xs mb-1">
+              3 Piliers
+            </p>
+            <div className="w-24 h-[2px] bg-gradient-to-r from-gold to-transparent"></div>
+          </div>
+
           {pillars.map((pillar, index) => (
             <div
               key={index}
               className="flex items-start gap-4 animate-fade-in-up"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <span className="w-[7vh] h-[7vh] rounded-full border-2 border-gold flex items-center justify-center font-source text-[2.5vh] text-gold flex-shrink-0">
+              <span className="w-[6vh] h-[6vh] rounded-full border-2 border-gold flex items-center justify-center font-source text-[2.2vh] text-gold flex-shrink-0">
                 {pillar.number}
               </span>
               <div>
-                <p className="font-greatvibes text-[5vh] text-navy mb-[0.5vh]">
+                <p className="font-greatvibes text-[4.5vh] text-navy mb-[0.3vh]">
                   {pillar.title}
                 </p>
-                <p className="font-cormorant text-[2vh] text-navy/70">
+                <p className="font-cormorant text-[2.2vh] text-navy/70">
                   {pillar.description}
                 </p>
               </div>
