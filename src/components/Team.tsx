@@ -21,28 +21,36 @@ const founders = [
 export default function Team() {
   return (
     <section id="equipe" className="snap-section section-alt">
-      <div className="container-impulse px-4 h-full flex flex-col justify-center pt-[8vh] pb-[2vh] lg:py-4">
-        {/* Section header */}
-        <div className="mb-[1vh] lg:mb-[1.5vh] animate-fade-in-up flex-shrink-0 text-center lg:text-left">
-          <p className="font-montserrat uppercase tracking-[0.3em] text-navy text-xs lg:text-sm mb-1">
+      <div className="container-impulse px-4 h-full flex flex-col justify-center lg:py-4">
+        {/* Section header - Desktop only */}
+        <div className="hidden lg:block mb-14 animate-fade-in-up flex-shrink-0 lg:text-left">
+          <p className="font-montserrat uppercase tracking-[0.3em] text-navy text-sm lg:text-xl mb-1">
             Équipe
           </p>
-          <div className="w-24 h-[2px] bg-gradient-to-r from-gold to-transparent mx-auto lg:mx-0"></div>
+          <div className="w-24 h-[2px] bg-gradient-to-r from-gold to-transparent lg:mx-0"></div>
         </div>
 
-        {/* Mobile layout - Cards fill viewport height */}
-        <div className="lg:hidden flex-1 flex flex-col justify-between gap-[1vh]">
+        {/* Mobile layout - Cards centered */}
+        <div className="lg:hidden flex-1 flex flex-col justify-center gap-[4vh]">
+          {/* Section header - Mobile */}
+          <div className="animate-fade-in-up">
+            <p className="font-montserrat uppercase tracking-[0.3em] text-navy text-xs mb-1">
+              Équipe
+            </p>
+            <div className="w-24 h-[2px] bg-gradient-to-r from-gold to-transparent"></div>
+          </div>
+
           {founders.map((founder, index) => (
             <div
               key={index}
-              className="animate-fade-in-up flex-1"
+              className="animate-fade-in-up"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               {/* Photo + Name + Bio in horizontal layout */}
               <div className="flex items-start gap-3">
                 {/* Circular photo with gold ring - smaller */}
                 <div className="relative flex-shrink-0">
-                  <div className="w-[5.5vh] h-[5.5vh] rounded-full p-[2px] bg-gradient-to-br from-gold via-gold/60 to-gold">
+                  <div className="w-[5vh] h-[5vh] rounded-full p-[2px] bg-gradient-to-br from-gold via-gold/60 to-gold">
                     <div className="w-full h-full rounded-full overflow-hidden bg-gradient-to-br from-rose to-beige">
                       <Image
                         src="/images/placeholder-team.svg"
@@ -56,11 +64,11 @@ export default function Team() {
                 </div>
                 {/* Name + Role + Bio - more compact */}
                 <div className="flex-1 min-w-0">
-                  <p className="font-greatvibes text-[2.6vh] text-navy leading-none">{founder.name}</p>
-                  <p className="font-montserrat uppercase tracking-wider text-[1.2vh] text-gold">
+                  <p className="font-greatvibes text-[2.4vh] text-navy leading-normal">{founder.name}</p>
+                  <p className="font-montserrat uppercase tracking-wider text-[1.1vh] text-gold">
                     {founder.role}
                   </p>
-                  <p className="font-source text-[1.4vh] text-navy/70 leading-snug line-clamp-2 mt-[0.3vh]">
+                  <p className="font-source text-[1.35vh] text-navy/70 leading-snug mt-[0.3vh]">
                     {founder.bio}
                   </p>
                 </div>
@@ -69,49 +77,45 @@ export default function Team() {
           ))}
         </div>
 
-        {/* Desktop layout - Elegant horizontal cards with circular photos */}
-        <div className="hidden lg:flex lg:flex-col gap-[1.5vh] xl:gap-[2vh] max-w-4xl mx-auto w-full">
+        {/* Desktop layout - 3 column grid */}
+        <div className="hidden lg:grid lg:grid-cols-3 gap-8 xl:gap-12 max-w-5xl mx-auto">
           {founders.map((founder, index) => (
             <div
               key={index}
-              className="group animate-fade-in-up"
+              className="group animate-fade-in-up text-center"
               style={{ animationDelay: `${index * 150}ms` }}
             >
-              <div className="flex items-start gap-4 xl:gap-5 p-[1.5vh] xl:p-[2vh] rounded-2xl bg-white/60 backdrop-blur-sm border border-beige/30 hover:bg-white/80 hover:shadow-lg transition-all duration-500">
-                {/* Circular photo with gold ring */}
-                <div className="relative flex-shrink-0">
-                  <div className="w-[9vh] h-[9vh] min-w-[70px] min-h-[70px] max-w-[100px] max-h-[100px] rounded-full p-[2px] bg-gradient-to-br from-gold via-gold/70 to-gold/40 group-hover:from-gold group-hover:via-gold group-hover:to-gold/60 transition-all duration-500">
-                    <div className="w-full h-full rounded-full overflow-hidden bg-gradient-to-br from-rose to-beige">
-                      <Image
-                        src="/images/placeholder-team.svg"
-                        alt={founder.name}
-                        width={120}
-                        height={120}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                    </div>
+              {/* Photo centrée avec ring doré */}
+              <div className="relative mx-auto mb-6 w-28 h-28 xl:w-32 xl:h-32">
+                <div className="w-full h-full rounded-full p-[3px] bg-gradient-to-br from-gold via-gold/60 to-gold/30 group-hover:from-gold group-hover:to-gold/60 transition-all duration-500">
+                  <div className="w-full h-full rounded-full overflow-hidden bg-gradient-to-br from-rose to-beige">
+                    <Image
+                      src="/images/placeholder-team.svg"
+                      alt={founder.name}
+                      width={128}
+                      height={128}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
                   </div>
-                  {/* Decorative dot */}
-                  <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-gold rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
-
-                {/* Content */}
-                <div className="flex-1 min-w-0">
-                  {/* Name + Role inline */}
-                  <div className="flex items-baseline gap-3 mb-[0.5vh] flex-wrap">
-                    <p className="font-greatvibes text-[clamp(1.5rem,3.5vh,2rem)] text-navy leading-none">
-                      {founder.name}
-                    </p>
-                    <p className="font-montserrat uppercase tracking-[0.15em] text-[10px] xl:text-[11px] text-gold font-medium">
-                      {founder.role}
-                    </p>
-                  </div>
-                  {/* Bio */}
-                  <p className="font-source text-[clamp(0.7rem,1.4vh,0.8rem)] text-navy/70 leading-relaxed">
-                    {founder.bio}
-                  </p>
-                </div>
+                {/* Decorative dot on hover */}
+                <div className="absolute -bottom-1 right-1/2 translate-x-1/2 w-2 h-2 bg-gold rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
+
+              {/* Nom en Great Vibes */}
+              <p className="font-greatvibes text-3xl xl:text-4xl text-navy mb-2">
+                {founder.name}
+              </p>
+
+              {/* Rôle en gold */}
+              <p className="font-montserrat uppercase tracking-wider text-[10px] xl:text-xs text-gold font-medium mb-4">
+                {founder.role}
+              </p>
+
+              {/* Bio */}
+              <p className="font-source text-sm text-navy/70 leading-relaxed px-2">
+                {founder.bio}
+              </p>
             </div>
           ))}
         </div>
