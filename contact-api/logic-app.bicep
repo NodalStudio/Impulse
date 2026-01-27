@@ -10,6 +10,9 @@ param gmailConnectionName string
 @description('Allowed CORS origin (your frontend domain)')
 param allowedOrigin string = 'https://impulsecommunaute.com'
 
+@description('Email address that receives contact form submissions')
+param recipientEmail string
+
 // Gmail API connection (OAuth2 — requires one-time manual authorization in Azure Portal)
 resource gmailConnection 'Microsoft.Web/connections@2016-06-01' = {
   name: gmailConnectionName
@@ -103,7 +106,7 @@ resource logicApp 'Microsoft.Logic/workflows@2019-05-01' = {
                 method: 'post'
                 path: '/v2/Mail'
                 body: {
-                  To: 'marina@marinaserr.com'
+                  To: recipientEmail
                   Subject: 'Nouvelle demande Impulse - @{body(\'Parse_JSON\')?[\'name\']}'
                   Body: '<h2>Nouvelle demande de contact</h2><p><b>Nom :</b> @{body(\'Parse_JSON\')?[\'name\']}</p><p><b>Email :</b> @{body(\'Parse_JSON\')?[\'email\']}</p><p><b>Profession :</b> @{body(\'Parse_JSON\')?[\'profession\']}</p><p><b>&Acirc;ge :</b> @{body(\'Parse_JSON\')?[\'age\']}</p><p><b>Localisation :</b> @{body(\'Parse_JSON\')?[\'location\']}</p><hr><p><b>Message :</b></p><p>@{coalesce(body(\'Parse_JSON\')?[\'message\'], \'(aucun message)\')}</p>'
                 }

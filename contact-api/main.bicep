@@ -12,6 +12,9 @@ param gmailConnectionName string = 'gmail-connection'
 @description('Allowed CORS origin (your frontend domain)')
 param allowedOrigin string = 'https://impulsecommunaute.com'
 
+@description('Email address that receives contact form submissions')
+param recipientEmail string = 'marina@marinaserr.com'
+
 module logicApp 'logic-app.bicep' = {
   name: 'deploy-logic-app'
   params: {
@@ -19,6 +22,7 @@ module logicApp 'logic-app.bicep' = {
     logicAppName: logicAppName
     gmailConnectionName: gmailConnectionName
     allowedOrigin: allowedOrigin
+    recipientEmail: recipientEmail
   }
 }
 
