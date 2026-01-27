@@ -321,7 +321,7 @@ export default function Contact() {
           {/* Right - Form (Desktop) */}
           <div className="bg-white rounded-2xl p-5 shadow-xl animate-fade-in-up delay-100">
             {formState === 'success' ? (
-              <div className="text-center py-6">
+              <div className="text-center flex flex-col justify-center py-10">
                 <div className="w-14 h-14 mx-auto mb-4 bg-green-100 rounded-full flex items-center justify-center">
                   <svg className="w-7 h-7 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
