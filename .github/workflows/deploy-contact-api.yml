@@ -1,0 +1,35 @@
+name: Deploy Contact API (Logic App)
+
+on:
+  push:
+    branches: ["main"]
+    paths: ["contact-api/**"]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Azure Login
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.IMPULSE_AZURE_CREDENTIALS }}
+
+      - name: Deploy Bicep
+        uses: azure/arm-deploy@v2
+        id: deploy
+        with:
+          resourceGroupName: impulse-rg
+          template: contact-api/main.bicep
+          parameters: >
+            logicAppName=impulse-contact
+            gmailConnectionName=gmail-connection
+            allowedOrigin=https://impulsecommunaute.com
+
+      - name: Show trigger URL
+        env:
+          TRIGGER_URL: ${{ steps.deploy.outputs.triggerUrl }}
+        run: echo "Logic App trigger URL → $TRIGGER_URL"
