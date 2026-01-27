@@ -2,6 +2,8 @@
 
 import { useState, FormEvent } from 'react';
 
+const CONTACT_API = process.env.NEXT_PUBLIC_IMPULSE_CONTACT_API || '';
+
 export default function Contact() {
   const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [formData, setFormData] = useState({
@@ -19,7 +21,7 @@ export default function Contact() {
     setFormState('submitting');
 
     try {
-      const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+      const response = await fetch(CONTACT_API, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
