@@ -25,6 +25,3 @@ module logicApp 'logic-app.bicep' = {
     recipientEmail: recipientEmail
   }
 }
-
-@description('The callback URL for the Logic App HTTP trigger')
-output triggerUrl string = logicApp.outputs.triggerUrl

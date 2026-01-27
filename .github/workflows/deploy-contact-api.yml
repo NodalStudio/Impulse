@@ -20,7 +20,6 @@ jobs:
 
       - name: Deploy Bicep
         uses: azure/arm-deploy@v2
-        id: deploy
         with:
           resourceGroupName: impulse-rg
           template: contact-api/main.bicep
@@ -29,8 +28,3 @@ jobs:
             gmailConnectionName=gmail-connection
             allowedOrigin=https://impulsecommunaute.com
             recipientEmail=${{ vars.IMPULSE_RECIPIENT_EMAIL }}
-
-      - name: Show trigger URL
-        env:
-          TRIGGER_URL: ${{ steps.deploy.outputs.triggerUrl }}
-        run: echo "Logic App trigger URL → $TRIGGER_URL"
