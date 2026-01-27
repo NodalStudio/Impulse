@@ -194,4 +194,5 @@ resource logicApp 'Microsoft.Logic/workflows@2019-05-01' = {
 }
 
 @description('The callback URL for the Logic App HTTP trigger (contains SAS token)')
+#disable-next-line outputs-should-not-contain-secrets
 output triggerUrl string = listCallbackUrl(resourceId('Microsoft.Logic/workflows/triggers', logicAppName, 'manual'), '2019-05-01').value
