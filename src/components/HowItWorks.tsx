@@ -40,13 +40,13 @@ export default function HowItWorks() {
 
         {/* Main headline */}
         <div className="max-w-4xl mb-10 lg:mb-14 animate-fade-in-up delay-100">
-          <h2 className="font-cormorant text-2xl md:text-3xl lg:text-4xl text-navy leading-relaxed">
-            <span className="font-montserrat uppercase tracking-[0.2em] font-semibold">Impulse</span>{' '}
+          <h2 className="font-cormorant text-2xl md:text-3xl lg:text-4xl text-navy">
+            <span className="font-montserrat uppercase tracking-[0.2em] font-semibold leading-loose">Impulse</span>{' '}
             offre un cadre pour{' '}
             <span className="font-greatvibes text-3xl md:text-4xl lg:text-5xl text-gold">
               apprendre, échanger et agir
             </span>
-            :
+            {' '}:
           </h2>
         </div>
 

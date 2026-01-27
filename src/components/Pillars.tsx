@@ -38,7 +38,7 @@ export default function Pillars() {
                 <span className="w-[5vh] h-[5vh] rounded-full border-2 border-gold flex items-center justify-center font-source text-[2vh] text-gold">
                   1
                 </span>
-                <span className="font-greatvibes text-[6vh] text-navy">
+                <span className="font-greatvibes text-[6vh] text-navy leading-loose">
                   {pillars[0].title}
                 </span>
               </div>
@@ -78,7 +78,7 @@ export default function Pillars() {
                   <span className="w-[5vh] h-[5vh] rounded-full border-2 border-gold flex items-center justify-center font-source text-[2vh] text-gold">
                     2
                   </span>
-                  <span className="font-greatvibes text-[6vh] text-navy">
+                  <span className="font-greatvibes text-[6vh] text-navy leading-loose">
                     {pillars[1].title}
                   </span>
                 </div>
@@ -93,7 +93,7 @@ export default function Pillars() {
                   <span className="w-[5vh] h-[5vh] rounded-full border-2 border-gold flex items-center justify-center font-source text-[2vh] text-gold">
                     3
                   </span>
-                  <span className="font-greatvibes text-[6vh] text-navy">
+                  <span className="font-greatvibes text-[6vh] text-navy leading-loose">
                     {pillars[2].title}
                   </span>
                 </div>

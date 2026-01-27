@@ -110,14 +110,14 @@ export default function Calendar() {
               </h3>
 
               {/* Month - aligned across all cards */}
-              <p className={`font-greatvibes text-lg mb-3 ${
+              <p className={`font-greatvibes text-lg mb-3 leading-loose ${
                 event.isSpecial ? 'text-gold' : 'text-gold'
               }`}>
                 {event.month}
               </p>
 
               {/* Description - flex-grow to fill remaining space */}
-              <p className={`font-source text-xs leading-relaxed flex-grow ${
+              <p className={`font-source text-xs lg:text-sm leading-relaxed flex-grow ${
                 event.isSpecial ? 'text-white/80' : 'text-navy/70'
               }`}>
                 {event.description}
