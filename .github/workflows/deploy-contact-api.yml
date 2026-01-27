@@ -28,6 +28,7 @@ jobs:
             logicAppName=impulse-contact
             gmailConnectionName=gmail-connection
             allowedOrigin=https://impulsecommunaute.com
+            recipientEmail=${{ vars.IMPULSE_RECIPIENT_EMAIL }}
 
       - name: Show trigger URL
         env:

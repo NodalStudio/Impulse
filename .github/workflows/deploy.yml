@@ -57,6 +57,8 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build with Next.js
+        env:
+          NEXT_PUBLIC_IMPULSE_CONTACT_API: ${{ vars.NEXT_PUBLIC_IMPULSE_CONTACT_API }}
         run: pnpm build
 
       - name: Upload artifact
