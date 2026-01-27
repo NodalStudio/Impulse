@@ -64,7 +64,7 @@ export default function Team() {
                 </div>
                 {/* Name + Role + Bio - more compact */}
                 <div className="flex-1 min-w-0">
-                  <p className="font-greatvibes text-[2.4vh] text-navy leading-normal">{founder.name}</p>
+                  <p className="font-greatvibes text-[2.4vh] mb-2 text-navy leading-normal">{founder.name}</p>
                   <p className="font-montserrat uppercase tracking-wider text-[1.1vh] text-gold">
                     {founder.role}
                   </p>
@@ -103,7 +103,7 @@ export default function Team() {
               </div>
 
               {/* Nom en Great Vibes */}
-              <p className="font-greatvibes text-3xl xl:text-4xl text-navy mb-2">
+              <p className="font-greatvibes text-3xl xl:text-4xl text-navy mb-6">
                 {founder.name}
               </p>
 
