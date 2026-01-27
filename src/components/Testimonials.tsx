@@ -151,7 +151,7 @@ export default function Testimonials() {
         </div>
 
         {/* Mobile/Tablet layout - fills full viewport height */}
-        <div className="lg:hidden flex-1 flex flex-col justify-center gap-[4vh] min-h-0">
+        <div className="lg:hidden flex-1 flex flex-col justify-evenly min-h-0">
           {/* Section header - Mobile */}
           <div className="animate-fade-in-up">
             <p className="font-montserrat uppercase tracking-[0.3em] text-navy text-sm mb-1">
@@ -162,12 +162,12 @@ export default function Testimonials() {
 
           {/* Highlights - compact inline */}
           <div className="bg-white rounded-lg p-[1.5vh] border border-gold/30 flex-shrink-0">
-            <p className="font-greatvibes text-[2.5vh] text-navy text-center mb-[0.8vh]">
+            <p className="font-greatvibes text-lg text-navy text-center mb-[0.8vh]">
               Les points forts du groupe
             </p>
             <div className="flex flex-wrap justify-center gap-x-3 gap-y-1">
               {highlights.slice(0, 3).map((highlight, index) => (
-                <span key={index} className="font-cormorant text-[2vh] text-navy flex items-center gap-1">
+                <span key={index} className="font-cormorant text-lg text-navy flex items-center gap-1">
                   <span className="text-gold">·</span>
                   {highlight}
                 </span>
@@ -183,11 +183,11 @@ export default function Testimonials() {
                 className="bg-beige/50 rounded-lg p-[1.5vh] animate-fade-in-up flex flex-col"
                 style={{ animationDelay: `${index * 50}ms` }}
               >
-                <span className="text-gold text-[2vh] leading-none">&ldquo;</span>
-                <p className="font-cormorant text-[2.2vh] text-navy leading-snug flex-1">
+                <span className="text-gold text-lg leading-none">&ldquo;</span>
+                <p className="font-cormorant text-lg text-navy leading-snug flex-1">
                   {testimonial.quote}
                 </p>
-                <p className="font-greatvibes text-[2vh] text-navy text-right mt-[0.5vh]">
+                <p className="font-greatvibes text-lg text-navy text-right mt-[0.5vh]">
                   {testimonial.author}
                 </p>
               </div>
@@ -197,12 +197,12 @@ export default function Testimonials() {
           {/* Featured testimonial at bottom */}
           <div className="bg-beige/50 rounded-lg p-[1.5vh] flex-shrink-0">
             <div className="flex items-start gap-2">
-              <span className="text-gold text-[2vh] leading-none">&ldquo;</span>
+              <span className="text-gold text-lg leading-none">&ldquo;</span>
               <div className="flex-1">
-                <p className="font-cormorant text-[2vh] text-navy leading-snug">
+                <p className="font-cormorant text-lg text-navy leading-snug">
                   {testimonials[3].quote}
                 </p>
-                <p className="font-greatvibes text-[2vh] text-navy text-right mt-[0.5vh]">
+                <p className="font-greatvibes text-lg text-navy text-right mt-[0.5vh]">
                   {testimonials[3].author}
                 </p>
               </div>

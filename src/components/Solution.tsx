@@ -1,7 +1,7 @@
 export default function Solution() {
   return (
     <section className="snap-section section-alt">
-      <div className="container-impulse px-4 h-full flex flex-col justify-center">
+      <div className="container-impulse px-4 h-full flex flex-col justify-evenly">
         {/* Mobile layout - compact vertical stack */}
         <div className="lg:hidden flex-1 flex flex-col justify-evenly gap-[4vh]">
           {/* Intention - compact */}
@@ -13,12 +13,12 @@ export default function Solution() {
               <div className="w-16 h-[2px] bg-gradient-to-r from-gold to-transparent"></div>
             </div>
 
-            <p className="font-cormorant text-[3vh] text-navy leading-snug">
+            <p className="font-cormorant text-xl text-navy leading-snug">
               Offrir aux femmes{' '}
               <span className="text-gold font-semibold">entrepreneuses et dirigeantes</span>
               {' '}un espace structurant, où transformer leur manière de penser et d&apos;agir
             </p>
-            <p className="font-greatvibes text-[3vh] text-navy">
+            <p className="font-greatvibes text-xl text-navy">
               et grandir professionnellement.
             </p>
           </div>
@@ -32,13 +32,13 @@ export default function Solution() {
               <div className="w-16 h-[2px] bg-gradient-to-r from-gold to-transparent"></div>
             </div>
 
-            <p className="font-cormorant text-[3vh] text-white leading-snug">
+            <p className="font-cormorant text-xl text-white leading-snug">
               Faire d&apos;<span className="font-montserrat uppercase tracking-[0.15em] font-semibold text-[2vh]">Impulse</span>
             </p>
-            <p className="font-greatvibes text-[3vh] text-white mt-[0.5vh]">
+            <p className="font-greatvibes text-xl text-white mt-[0.5vh]">
               le rendez-vous business incontournable
             </p>
-            <p className="font-cormorant text-[3vh] text-white leading-snug mt-[0.5vh]">
+            <p className="font-cormorant text-xl text-white leading-snug mt-[0.5vh]">
               des <span className="text-gold font-semibold">entrepreneuses et dirigeantes francophones</span> à Barcelone.
             </p>
           </div>

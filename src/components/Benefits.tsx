@@ -24,9 +24,9 @@ const benefits = [
 export default function Benefits() {
   return (
     <section className="snap-section section bg-cream">
-      <div className="container-impulse px-4 h-full flex flex-col justify-center py-4 lg:py-0">
+      <div className="container-impulse px-4 h-full flex flex-col justify-evenly">
         {/* Section header */}
-        <div className="mb-4 lg:mb-16 animate-fade-in-up flex-shrink-0">
+        <div className="animate-fade-in-up flex-shrink-0">
           <p className="font-montserrat uppercase tracking-[0.3em] text-navy text-sm lg:text-xl mb-2">
             Bénéfices
           </p>
@@ -34,27 +34,25 @@ export default function Benefits() {
         </div>
 
         {/* Benefits list - compact on mobile */}
-        <div className="space-y-4 lg:space-y-10 max-w-4xl">
-          {benefits.map((benefit, index) => (
-            <div
-              key={index}
-              className="animate-fade-in-up"
-              style={{ animationDelay: `${(index + 1) * 100}ms` }}
-            >
-              <div className="flex items-start gap-3 lg:gap-4">
-                <span className="text-gold text-lg lg:text-xl mt-1 flex-shrink-0">&gt;</span>
-                <div>
-                  <p className="font-greatvibes text-xl lg:text-3xl text-navy mb-1 lg:mb-2">
-                    {benefit.title}
-                  </p>
-                  <p className="font-cormorant text-sm lg:text-xl text-navy/70">
-                    {benefit.description}
-                  </p>
-                </div>
+        {benefits.map((benefit, index) => (
+          <div
+            key={index}
+            className="animate-fade-in-up"
+            style={{ animationDelay: `${(index + 1) * 100}ms` }}
+          >
+            <div className="flex items-start gap-3 lg:gap-4">
+              <span className="text-gold text-lg lg:text-xl mt-1 flex-shrink-0">&gt;</span>
+              <div>
+                <p className="font-greatvibes text-lg lg:text-2xl text-navy mb-1 lg:mb-2">
+                  {benefit.title}
+                </p>
+                <p className="font-cormorant text-sm lg:text-xl text-navy/70">
+                  {benefit.description}
+                </p>
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </section>
   );
