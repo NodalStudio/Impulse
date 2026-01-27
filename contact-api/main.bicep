@@ -25,3 +25,6 @@ module logicApp 'logic-app.bicep' = {
     recipientEmail: recipientEmail
   }
 }
+
+#disable-next-line outputs-should-not-contain-secrets
+output triggerUrl string = logicApp.outputs.triggerUrl

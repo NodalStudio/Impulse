@@ -6,6 +6,9 @@ on:
     paths: ["contact-api/**"]
   workflow_dispatch:
 
+permissions:
+  actions: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -20,6 +23,7 @@ jobs:
 
       - name: Deploy Bicep
         uses: azure/arm-deploy@v2
+        id: deploy
         with:
           resourceGroupName: impulse-rg
           template: contact-api/main.bicep
@@ -28,3 +32,18 @@ jobs:
             gmailConnectionName=gmail-connection
             allowedOrigin=https://impulsecommunaute.com
             recipientEmail=${{ vars.IMPULSE_RECIPIENT_EMAIL }}
+
+      - name: Sync trigger URL to GitHub variable
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TRIGGER_URL: ${{ steps.deploy.outputs.triggerUrl }}
+          CURRENT_URL: ${{ vars.NEXT_PUBLIC_IMPULSE_CONTACT_API }}
+        run: |
+          echo "::add-mask::$TRIGGER_URL"
+          if [ "$TRIGGER_URL" != "$CURRENT_URL" ]; then
+            gh variable set NEXT_PUBLIC_IMPULSE_CONTACT_API --body "$TRIGGER_URL"
+            echo "Variable updated — triggering Pages rebuild"
+            gh workflow run deploy.yml
+          else
+            echo "URL unchanged — no rebuild needed"
+          fi
