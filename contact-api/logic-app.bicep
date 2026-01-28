@@ -136,6 +136,7 @@ resource logicApp 'Microsoft.Logic/workflows@2019-05-01' = {
                   status: 'ok'
                 }
               }
+              operationOptions: 'Asynchronous'
               runAfter: {
                 Send_Email: ['Succeeded']
               }
@@ -156,6 +157,7 @@ resource logicApp 'Microsoft.Logic/workflows@2019-05-01' = {
                   message: 'Failed to send email'
                 }
               }
+              operationOptions: 'Asynchronous'
               runAfter: {
                 Send_Email: ['Failed', 'TimedOut']
               }
@@ -177,6 +179,7 @@ resource logicApp 'Microsoft.Logic/workflows@2019-05-01' = {
                   }
                   body: {}
                 }
+                operationOptions: 'Asynchronous'
                 runAfter: {}
               }
             }
