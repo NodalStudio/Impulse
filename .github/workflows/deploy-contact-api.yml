@@ -25,12 +25,12 @@ jobs:
         uses: azure/arm-deploy@v2
         id: deploy
         with:
-          resourceGroupName: impulse-rg
+          resourceGroupName: ${{ vars.AZURE_RESOURCE_GROUP }}
           template: contact-api/main.bicep
           parameters: >
-            logicAppName=impulse-contact
-            gmailConnectionName=gmail-connection
-            allowedOrigin=https://impulsecommunaute.com
+            logicAppName=${{ vars.AZURE_LOGIC_APP_NAME }}
+            gmailConnectionName=${{ vars.AZURE_GMAIL_CONNECTION_NAME }}
+            allowedOrigin=${{ vars.ALLOWED_ORIGIN }}
             recipientEmail=${{ vars.IMPULSE_RECIPIENT_EMAIL }}
 
       - name: Sync trigger URL to GitHub variable

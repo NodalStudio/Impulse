@@ -11,29 +11,27 @@ Serverless endpoint that receives contact form submissions and sends an email vi
                     1. Parse JSON
                     2. Send Email (Gmail connector)
                     3. Respond HTTP 200
-                        ↓
-                  impulse.rdv@gmail.com → marina@marinaserr.com
 ```
 
 ## Prerequisites
 
 - [Azure CLI](https://learn.microsoft.com/cli/azure/install-azure-cli)
 - Azure subscription (free tier works)
-- Gmail account (`impulse.rdv@gmail.com`)
+- Gmail account for sending emails
 
 ## First-time deployment
 
 ### 1. Create the resource group
 
 ```bash
-az group create -n impulse-rg -l westeurope
+az group create -n <RESOURCE_GROUP_NAME> -l westeurope
 ```
 
 ### 2. Deploy the Bicep template
 
 ```bash
 az deployment group create \
-  -g impulse-rg \
+  -g <RESOURCE_GROUP_NAME> \
   -f contact-api/main.bicep \
   --query "properties.outputs.triggerUrl.value" -o tsv
 ```
@@ -45,9 +43,9 @@ Save the output URL — this is the Logic App trigger URL (contains a SAS token 
 The Gmail connector requires a one-time OAuth2 authorization:
 
 1. Go to the [Azure Portal](https://portal.azure.com)
-2. Navigate to **Resource Group** → `impulse-rg` → `gmail-connection`
+2. Navigate to **Resource Group** → `<RESOURCE_GROUP_NAME>` → `<GMAIL_CONNECTION_NAME>`
 3. Click **Edit API connection**
-4. Click **Authorize** and sign in with `impulse.rdv@gmail.com`
+4. Click **Authorize** and sign in with your Gmail account
 5. Click **Save**
 
 ### 4. Set the trigger URL in GitHub
@@ -88,19 +86,24 @@ Expected response: `{"status":"ok"}`
 
 The workflow `.github/workflows/deploy-contact-api.yml` automatically deploys on push to `main` when files in `contact-api/` change.
 
-### Required GitHub secret
+### Required GitHub secrets and variables
 
-| Secret | Description |
-|--------|-------------|
-| `IMPULSE_AZURE_CREDENTIALS` | Service Principal JSON for `az login` |
+| Type | Name | Description |
+|------|------|-------------|
+| Secret | `IMPULSE_AZURE_CREDENTIALS` | Service Principal JSON for `az login` |
+| Variable | `AZURE_RESOURCE_GROUP` | Azure resource group name |
+| Variable | `AZURE_LOGIC_APP_NAME` | Logic App name |
+| Variable | `AZURE_GMAIL_CONNECTION_NAME` | Gmail API connection name |
+| Variable | `ALLOWED_ORIGIN` | Frontend domain for CORS |
+| Variable | `IMPULSE_RECIPIENT_EMAIL` | Email address to receive submissions |
 
 Create the service principal:
 
 ```bash
 az ad sp create-for-rbac \
-  --name "impulse-github-actions" \
+  --name "<SERVICE_PRINCIPAL_NAME>" \
   --role contributor \
-  --scopes /subscriptions/<subscription-id>/resourceGroups/impulse-rg \
+  --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP_NAME> \
   --json-auth
 ```
 
@@ -111,16 +114,16 @@ Copy the JSON output and add it as the `IMPULSE_AZURE_CREDENTIALS` secret in the
 ### Gmail connection expired
 
 Gmail OAuth tokens can expire. Re-authorize in the Azure Portal:
-**Resource Group** → `impulse-rg` → `gmail-connection` → **Edit API connection** → **Authorize**
+**Resource Group** → `<RESOURCE_GROUP_NAME>` → `<GMAIL_CONNECTION_NAME>` → **Edit API connection** → **Authorize**
 
 ### Logic App not triggering
 
 Check the run history in Azure Portal:
-**Resource Group** → `impulse-rg` → `impulse-contact` → **Run history**
+**Resource Group** → `<RESOURCE_GROUP_NAME>` → `<LOGIC_APP_NAME>` → **Run history**
 
 ### CORS errors
 
-The Logic App includes CORS headers for `https://impulsecommunaute.com`. If your domain changes, update the `allowedOrigin` parameter in `main.bicep`.
+The Logic App includes CORS headers for your frontend domain. If your domain changes, update the `allowedOrigin` parameter in `main.bicep`.
 
 ## Cost
 
