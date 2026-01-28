@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <div className="snap-container">
+      <main className="snap-container">
         <Hero />
         <Mission />
         <Problem />
@@ -29,7 +29,7 @@ export default function Home() {
         <Team />
         <Testimonials />
         <Contact />
-      </div>
+      </main>
     </>
   );
 }

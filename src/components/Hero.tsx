@@ -88,6 +88,7 @@ export default function Hero() {
                       alt="Événement Impulse"
                       width={280}
                       height={220}
+                      priority
                       className="w-full h-full object-cover transition-all duration-500 ease-out group-hover:scale-105 group-hover:brightness-110"
                     />
                   </div>
@@ -99,6 +100,7 @@ export default function Hero() {
                       alt="Networking"
                       width={280}
                       height={250}
+                      priority
                       className="w-full h-full object-cover transition-all duration-500 ease-out group-hover:scale-105 group-hover:brightness-110"
                     />
                   </div>
@@ -113,6 +115,7 @@ export default function Hero() {
                       alt="Communauté"
                       width={280}
                       height={250}
+                      priority
                       className="w-full h-full object-cover transition-all duration-500 ease-out group-hover:scale-105 group-hover:brightness-110"
                     />
                   </div>
@@ -123,7 +126,8 @@ export default function Hero() {
                       src="/images/community-workshop.jpg"
                       alt="Atelier"
                       width={280}
-                      height={220}
+                      height={250}
+                      priority
                       className="w-full h-full object-cover transition-all duration-500 ease-out group-hover:scale-105 group-hover:brightness-110"
                     />
                   </div>
