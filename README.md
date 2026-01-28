@@ -1,16 +1,16 @@
 # Impulse
 
-Le rendez-vous business mensuel des femmes d'impact à Barcelone.
+The monthly Barcelona business meetup for women of impact.
 
-Site web : [communaute-impulse.com](https://communaute-impulse.com)
+Website: [communaute-impulse.com](https://communaute-impulse.com)
 
 ## Tech Stack
 
-- **Framework**: Next.js 16 (App Router) avec export statique
-- **Styling**: Tailwind CSS avec design system personnalisé
+- **Framework**: Next.js 16 (App Router) with static export
+- **Styling**: Tailwind CSS with custom design system
 - **Package Manager**: pnpm
 - **Hosting**: GitHub Pages
-- **Contact API**: Azure Logic Apps (déployé séparément)
+- **Contact API**: Azure Logic Apps (deployed separately)
 - **Performance**: Turbopack + React Compiler
 
 ## Installation
@@ -19,15 +19,15 @@ Site web : [communaute-impulse.com](https://communaute-impulse.com)
 pnpm install
 ```
 
-## Développement
+## Development
 
 ```bash
 pnpm dev
 ```
 
-Ouvrir [http://localhost:3000](http://localhost:3000)
+Open [http://localhost:3000](http://localhost:3000)
 
-> Le serveur de dev utilise Turbopack par défaut (5-10x plus rapide que Webpack)
+> The dev server uses Turbopack by default (5-10x faster than Webpack)
 
 ## Build
 
@@ -35,95 +35,95 @@ Ouvrir [http://localhost:3000](http://localhost:3000)
 pnpm build
 ```
 
-Les fichiers statiques sont générés dans le dossier `out/`.
+Static files are generated in the `out/` folder.
 
-## Déploiement GitHub Pages
+## GitHub Pages Deployment
 
-1. Push sur la branche `main`
-2. Le workflow GitHub Actions se déclenche automatiquement
-3. Le site est déployé sur GitHub Pages
+1. Push to the `main` branch
+2. The GitHub Actions workflow triggers automatically
+3. The site is deployed to GitHub Pages
 
-### Configuration requise
+### Required Configuration
 
-Dans les paramètres du repo GitHub :
+In the GitHub repo settings:
 
 - Settings > Pages > Source: "GitHub Actions"
 
-## Structure du projet
+## Project Structure
 
 ```text
 src/
 ├── app/
-│   ├── layout.tsx      # Layout avec SEO et métadonnées
-│   ├── page.tsx        # Page principale
-│   └── globals.css     # Styles globaux + fonts
+│   ├── layout.tsx      # Layout with SEO and metadata
+│   ├── page.tsx        # Main page
+│   └── globals.css     # Global styles + fonts
 └── components/
-    ├── Header.tsx      # Navigation sticky
-    ├── Hero.tsx        # Section hero avec photos
-    ├── Mission.tsx     # Manifeste et valeurs
-    ├── Problem.tsx     # Problématique
-    ├── Solution.tsx    # Intention et ambition
-    ├── Pillars.tsx     # Les 3 piliers (triangle)
-    ├── Audience.tsx    # Public cible
-    ├── HowItWorks.tsx  # Format mensuel
-    ├── Calendar.tsx    # Calendrier 2026
-    ├── Benefits.tsx    # Bénéfices
-    ├── Team.tsx        # Équipe fondatrice
-    ├── Testimonials.tsx # Témoignages
-    ├── Contact.tsx     # Formulaire de contact
-    └── Footer.tsx      # Pied de page
+    ├── Header.tsx      # Sticky navigation
+    ├── Hero.tsx        # Hero section with photos
+    ├── Mission.tsx     # Manifesto and values
+    ├── Problem.tsx     # Problem statement
+    ├── Solution.tsx    # Intention and ambition
+    ├── Pillars.tsx     # The 3 pillars (triangle)
+    ├── Audience.tsx    # Target audience
+    ├── HowItWorks.tsx  # Monthly format
+    ├── Calendar.tsx    # 2026 Calendar
+    ├── Benefits.tsx    # Benefits
+    ├── Team.tsx        # Founding team
+    ├── Testimonials.tsx # Testimonials
+    ├── Contact.tsx     # Contact form
+    └── Footer.tsx      # Footer
 ```
 
 ## Design System
 
-### Couleurs
+### Colors
 
-| Nom   | Hex       | Usage                    |
+| Name  | Hex       | Usage                    |
 |-------|-----------|--------------------------|
-| Navy  | `#1e3a5f` | Titres, logo             |
+| Navy  | `#1e3a5f` | Headings, logo           |
 | Gold  | `#c9a227` | Accents, CTA             |
-| Cream | `#faf7f2` | Fond clair               |
-| Rose  | `#f5e6e0` | Dégradés                 |
-| Beige | `#efe8e1` | Dégradés                 |
+| Cream | `#faf7f2` | Light background         |
+| Rose  | `#f5e6e0` | Gradients                |
+| Beige | `#efe8e1` | Gradients                |
 
-### Typographie
+### Typography
 
-- **Titres**: Cormorant Garamond (serif élégant)
-- **Scripts**: Great Vibes (cursive pour accents)
-- **Corps**: Source Sans 3 (sans-serif lisible)
+- **Headings**: Cormorant Garamond (elegant serif)
+- **Scripts**: Great Vibes (cursive for accents)
+- **Body**: Source Sans 3 (readable sans-serif)
 - **Logo**: Montserrat uppercase
-- **Accent**: Above The Beyond (font locale)
+- **Accent**: Above The Beyond (local font)
 
-## Configuration Contact API
+## Contact API Configuration
 
-Le formulaire de contact utilise une API Azure Logic Apps. Définir la variable d'environnement :
+The contact form uses an Azure Logic Apps API. Set the environment variable:
 
 ```bash
 NEXT_PUBLIC_IMPULSE_CONTACT_API=https://your-logic-app-url
 ```
 
-Le formulaire inclut :
-- Protection anti-spam (honeypot)
-- Rate limiting côté client
-- Cooldown de 5 minutes entre les soumissions
+The form includes:
+- Anti-spam protection (honeypot)
+- Client-side rate limiting
+- 5-minute cooldown between submissions
 
 ## SEO
 
-Le site inclut :
+The site includes:
 
-- Métadonnées complètes (title, description, keywords)
-- Open Graph pour le partage social
+- Complete metadata (title, description, keywords)
+- Open Graph for social sharing
 - Twitter Cards
 - JSON-LD Schema.org (Organization)
 - PWA Manifest
-- Preconnect et preload pour les fonts
+- Preconnect for Google Fonts
 
-## Fonctionnalités Next.js 16
+## Next.js 16 Features
 
-- **React Compiler**: Mémoisation automatique des composants
-- **Turbopack**: Bundler ultra-rapide par défaut
-- **React 19**: Dernières fonctionnalités React
+- **React Compiler**: Automatic component memoization
+- **Turbopack**: Ultra-fast bundler by default
+- **React 19**: Latest React features
 
-## Licence
+## License
 
-Tous droits réservés © 2026 Impulse
+All rights reserved © 2026 Impulse
