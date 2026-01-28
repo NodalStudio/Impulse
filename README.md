@@ -1,14 +1,16 @@
-# Impulse - Landing Page
+# Impulse
 
-The monthly Barcelona business meetup for women of impact.
+Le rendez-vous business mensuel des femmes d'impact à Barcelone.
+
+Site web : [communaute-impulse.com](https://communaute-impulse.com)
 
 ## Tech Stack
 
-- **Framework**: Next.js 16 (App Router) with static export
-- **Styling**: Tailwind CSS with custom design system
+- **Framework**: Next.js 16 (App Router) avec export statique
+- **Styling**: Tailwind CSS avec design system personnalisé
 - **Package Manager**: pnpm
 - **Hosting**: GitHub Pages
-- **Form**: Formspree (to configure)
+- **Contact API**: Azure Logic Apps (déployé séparément)
 - **Performance**: Turbopack + React Compiler
 
 ## Installation
@@ -17,15 +19,15 @@ The monthly Barcelona business meetup for women of impact.
 pnpm install
 ```
 
-## Development
+## Développement
 
 ```bash
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000)
+Ouvrir [http://localhost:3000](http://localhost:3000)
 
-> The dev server uses Turbopack by default (5-10x faster than Webpack)
+> Le serveur de dev utilise Turbopack par défaut (5-10x plus rapide que Webpack)
 
 ## Build
 
@@ -33,101 +35,95 @@ Open [http://localhost:3000](http://localhost:3000)
 pnpm build
 ```
 
-Static files are generated in the `out/` folder.
+Les fichiers statiques sont générés dans le dossier `out/`.
 
-## GitHub Pages Deployment
+## Déploiement GitHub Pages
 
-1. Push to the `main` branch
-2. The GitHub Actions workflow triggers automatically
-3. The site is deployed to GitHub Pages
+1. Push sur la branche `main`
+2. Le workflow GitHub Actions se déclenche automatiquement
+3. Le site est déployé sur GitHub Pages
 
-### Required Configuration
+### Configuration requise
 
-In the GitHub repo settings:
+Dans les paramètres du repo GitHub :
 
 - Settings > Pages > Source: "GitHub Actions"
 
-If the repo is not `username.github.io`, uncomment and configure `basePath` in `next.config.ts`.
-
-## Project Structure
+## Structure du projet
 
 ```text
 src/
 ├── app/
-│   ├── layout.tsx      # Layout with SEO and metadata
-│   ├── page.tsx        # Main page
-│   └── globals.css     # Global styles + fonts
+│   ├── layout.tsx      # Layout avec SEO et métadonnées
+│   ├── page.tsx        # Page principale
+│   └── globals.css     # Styles globaux + fonts
 └── components/
-    ├── Header.tsx      # Sticky navigation
-    ├── Hero.tsx        # Hero section with photos
-    ├── Mission.tsx     # Manifesto and values
-    ├── Problem.tsx     # Problem statement
-    ├── Solution.tsx    # Intention and ambition
-    ├── Pillars.tsx     # The 3 pillars (triangle)
-    ├── Audience.tsx    # Target audience
-    ├── HowItWorks.tsx  # Monthly format
-    ├── Calendar.tsx    # 2026 Calendar
-    ├── Pricing.tsx     # 2 pricing tiers
-    ├── Benefits.tsx    # Benefits
-    ├── Team.tsx        # Founding team
-    ├── Testimonials.tsx # Testimonials
-    └── Contact.tsx     # Contact form + footer
+    ├── Header.tsx      # Navigation sticky
+    ├── Hero.tsx        # Section hero avec photos
+    ├── Mission.tsx     # Manifeste et valeurs
+    ├── Problem.tsx     # Problématique
+    ├── Solution.tsx    # Intention et ambition
+    ├── Pillars.tsx     # Les 3 piliers (triangle)
+    ├── Audience.tsx    # Public cible
+    ├── HowItWorks.tsx  # Format mensuel
+    ├── Calendar.tsx    # Calendrier 2026
+    ├── Benefits.tsx    # Bénéfices
+    ├── Team.tsx        # Équipe fondatrice
+    ├── Testimonials.tsx # Témoignages
+    ├── Contact.tsx     # Formulaire de contact
+    └── Footer.tsx      # Pied de page
 ```
 
 ## Design System
 
-### Colors
+### Couleurs
 
-- Navy: `#1e3a5f` (headings, logo)
-- Gold: `#c9a227` (accents, CTA)
-- Cream: `#faf7f2` (light background)
-- Rose: `#f5e6e0` (gradient)
-- Beige: `#efe8e1` (gradient)
+| Nom   | Hex       | Usage                    |
+|-------|-----------|--------------------------|
+| Navy  | `#1e3a5f` | Titres, logo             |
+| Gold  | `#c9a227` | Accents, CTA             |
+| Cream | `#faf7f2` | Fond clair               |
+| Rose  | `#f5e6e0` | Dégradés                 |
+| Beige | `#efe8e1` | Dégradés                 |
 
-### Typography
+### Typographie
 
-- **Headings**: Cormorant Garamond (elegant serif)
-- **Scripts**: Great Vibes (cursive for accents)
-- **Body**: Source Sans Pro (readable sans-serif)
+- **Titres**: Cormorant Garamond (serif élégant)
+- **Scripts**: Great Vibes (cursive pour accents)
+- **Corps**: Source Sans 3 (sans-serif lisible)
 - **Logo**: Montserrat uppercase
+- **Accent**: Above The Beyond (font locale)
 
-## Formspree Configuration
+## Configuration Contact API
 
-1. Create an account on [Formspree](https://formspree.io)
-2. Create a new form
-3. Replace `YOUR_FORM_ID` in `src/components/Contact.tsx` with your ID
+Le formulaire de contact utilise une API Azure Logic Apps. Définir la variable d'environnement :
+
+```bash
+NEXT_PUBLIC_IMPULSE_CONTACT_API=https://your-logic-app-url
+```
+
+Le formulaire inclut :
+- Protection anti-spam (honeypot)
+- Rate limiting côté client
+- Cooldown de 5 minutes entre les soumissions
 
 ## SEO
 
-The site includes:
+Le site inclut :
 
-- Complete metadata (title, description, keywords)
-- Open Graph for social sharing
+- Métadonnées complètes (title, description, keywords)
+- Open Graph pour le partage social
 - Twitter Cards
 - JSON-LD Schema.org (Organization)
-- robots.txt and sitemap.xml
 - PWA Manifest
+- Preconnect et preload pour les fonts
 
-## Next.js 16 Features
+## Fonctionnalités Next.js 16
 
-- **React Compiler**: Automatic component memoization
-- **Turbopack**: Ultra-fast bundler by default
-- **React 19.2**: Latest React features
+- **React Compiler**: Mémoisation automatique des composants
+- **Turbopack**: Bundler ultra-rapide par défaut
+- **React 19**: Dernières fonctionnalités React
 
-## Customization
+## Licence
 
-### Images
-
-Replace placeholders in `public/images/`:
-
-- `og-image.jpg` (1200x630) - Open Graph image
-- `placeholder-team.svg` - Team photos
-- `placeholder-photo.svg` - Event photos
-
-### Content
-
-Content is directly in the React components. Edit files in `src/components/` to customize.
-
-## License
-
-All rights reserved © 2026 Impulse
+Tous droits réservés © 2026 Impulse
