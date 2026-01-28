@@ -59,6 +59,12 @@ resource logicApp 'Microsoft.Logic/workflows@2019-05-01' = {
               required: ['name', 'email', 'profession', 'age', 'location']
             }
           }
+          runtimeConfiguration: {
+            concurrency: {
+              runs: 5
+              maximumWaitingRuns: 10
+            }
+          }
         }
       }
       actions: {
