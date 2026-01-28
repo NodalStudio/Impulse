@@ -1,44 +1,90 @@
 'use client';
 
-import { useState, FormEvent } from 'react';
+import { useState, useEffect, useRef, FormEvent } from 'react';
 
 const CONTACT_API = process.env.NEXT_PUBLIC_IMPULSE_CONTACT_API || '';
+const COOLDOWN_KEY = 'impulse_contact_cooldown';
+const COOLDOWN_MS = 5 * 60 * 1000;
+const MIN_INTERACTION_MS = 3000;
 
 export default function Contact() {
-  const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error' | 'rate_limited'>('idle');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     profession: '',
     age: '',
     location: '',
-    message: ''
+    message: '',
+    website: ''
   });
+  const [cooldown, setCooldown] = useState(false);
+  const firstInteractionRef = useRef<number | null>(null);
   const currentYear = new Date().getFullYear();
+
+  useEffect(() => {
+    const lastSent = localStorage.getItem(COOLDOWN_KEY);
+    if (lastSent && Date.now() - Number(lastSent) < COOLDOWN_MS) {
+      setCooldown(true);
+      const remaining = COOLDOWN_MS - (Date.now() - Number(lastSent));
+      const timer = setTimeout(() => setCooldown(false), remaining);
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
+  const handleInteraction = () => {
+    if (!firstInteractionRef.current) {
+      firstInteractionRef.current = Date.now();
+    }
+  };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+
+    // Honeypot: if filled, simulate success without calling API
+    if (formData.website) {
+      setFormState('success');
+      return;
+    }
+
+    // Minimum time: if submitted < 3s after first interaction, simulate success
+    if (!firstInteractionRef.current || Date.now() - firstInteractionRef.current < MIN_INTERACTION_MS) {
+      setFormState('success');
+      return;
+    }
+
+    if (cooldown) {
+      return;
+    }
+
     setFormState('submitting');
 
     try {
+      const { website: _, ...payload } = formData;
       const response = await fetch(CONTACT_API, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(payload)
       });
 
       if (response.ok) {
         setFormState('success');
+        localStorage.setItem(COOLDOWN_KEY, String(Date.now()));
+        setCooldown(true);
+        setTimeout(() => setCooldown(false), COOLDOWN_MS);
         setFormData({
           name: '',
           email: '',
           profession: '',
           age: '',
           location: '',
-          message: ''
+          message: '',
+          website: ''
         });
+      } else if (response.status === 429) {
+        setFormState('rate_limited');
       } else {
         setFormState('error');
       }
@@ -106,7 +152,20 @@ export default function Contact() {
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="flex flex-col gap-[1vh]">
+              <form onSubmit={handleSubmit} onFocusCapture={handleInteraction} className="flex flex-col gap-[1vh]">
+                {/* Honeypot */}
+                <div style={{ position: 'absolute', left: '-9999px' }} aria-hidden="true">
+                  <label htmlFor="website">Website</label>
+                  <input
+                    type="text"
+                    id="website"
+                    name="website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={formData.website}
+                    onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+                  />
+                </div>
                 <div className="flex flex-col gap-[1vh]">
                   <div className="grid grid-cols-2 gap-[1vh]">
                     <div>
@@ -221,18 +280,20 @@ export default function Contact() {
                   </div>
                 </div>
 
-                {formState === 'error' && (
+                {(formState === 'error' || formState === 'rate_limited') && (
                   <div className="bg-red-50 text-red-600 px-[1.2vh] py-[0.8vh] rounded-lg font-source text-[1.2vh] mt-[0.5vh]">
-                    Une erreur est survenue.
+                    {formState === 'rate_limited'
+                      ? 'Trop de demandes, réessayez dans quelques minutes.'
+                      : 'Une erreur est survenue.'}
                   </div>
                 )}
 
                 <button
                   type="submit"
-                  disabled={formState === 'submitting'}
+                  disabled={formState === 'submitting' || cooldown}
                   className="w-full bg-navy text-white py-[1.2vh] px-6 rounded-full font-source font-semibold text-[1.5vh] hover:bg-navy/90 transition-all disabled:opacity-50 mt-[1vh]"
                 >
-                  {formState === 'submitting' ? 'Envoi...' : 'Envoyer ma demande'}
+                  {formState === 'submitting' ? 'Envoi...' : cooldown ? 'Veuillez patienter...' : 'Envoyer ma demande'}
                 </button>
               </form>
             )}
@@ -333,7 +394,20 @@ export default function Contact() {
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-3">
+              <form onSubmit={handleSubmit} onFocusCapture={handleInteraction} className="space-y-3">
+                {/* Honeypot */}
+                <div style={{ position: 'absolute', left: '-9999px' }} aria-hidden="true">
+                  <label htmlFor="website-desktop">Website</label>
+                  <input
+                    type="text"
+                    id="website-desktop"
+                    name="website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={formData.website}
+                    onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+                  />
+                </div>
                 <div className="grid md:grid-cols-2 gap-2.5">
                   <div>
                     <label htmlFor="name-desktop" className="block font-source text-xs font-medium text-navy mb-1">
@@ -446,18 +520,20 @@ export default function Contact() {
                   ></textarea>
                 </div>
 
-                {formState === 'error' && (
+                {(formState === 'error' || formState === 'rate_limited') && (
                   <div className="bg-red-50 text-red-600 px-3 py-2 rounded-lg font-source text-xs">
-                    Une erreur est survenue. Veuillez réessayer.
+                    {formState === 'rate_limited'
+                      ? 'Trop de demandes, réessayez dans quelques minutes.'
+                      : 'Une erreur est survenue. Veuillez réessayer.'}
                   </div>
                 )}
 
                 <button
                   type="submit"
-                  disabled={formState === 'submitting'}
+                  disabled={formState === 'submitting' || cooldown}
                   className="w-full bg-navy text-white py-2.5 px-6 rounded-full font-source font-semibold text-sm hover:bg-navy/90 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {formState === 'submitting' ? 'Envoi...' : 'Envoyer ma demande'}
+                  {formState === 'submitting' ? 'Envoi...' : cooldown ? 'Veuillez patienter...' : 'Envoyer ma demande'}
                 </button>
               </form>
             )}
