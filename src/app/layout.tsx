@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://impulse-women.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://communaute-impulse.com";
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -118,7 +118,7 @@ const jsonLd = {
   "url": siteUrl,
   "logo": `${siteUrl}/images/logo.png`,
   "sameAs": [
-    "https://www.linkedin.com/company/impulse-women",
+    "https://www.linkedin.com/company/impulse-barcelone/",
     "https://www.instagram.com/impulse_women"
   ],
   "contactPoint": {
@@ -142,6 +142,90 @@ const jsonLd = {
   }
 };
 
+const localBusinessJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Impulse - Communauté business femmes entrepreneures",
+  "description": "Événements mensuels de networking, ateliers et masterclass pour femmes entrepreneures et dirigeantes à Barcelone.",
+  "url": siteUrl,
+  "logo": `${siteUrl}/images/logo.png`,
+  "image": `${siteUrl}/images/og-image.jpg`,
+  "email": "impulse.rdv@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Barcelone",
+    "addressRegion": "Catalogne",
+    "addressCountry": "ES"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 41.3874,
+    "longitude": 2.1686
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Barcelone" },
+    { "@type": "AdministrativeArea", "name": "Catalogne" }
+  ],
+  "priceRange": "$$",
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    "opens": "09:00",
+    "closes": "18:00"
+  },
+  "sameAs": [
+    "https://www.linkedin.com/company/impulse-barcelone/",
+    "https://www.instagram.com/impulse_women"
+  ]
+};
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "À qui s'adresse Impulse ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Impulse s'adresse aux femmes qui entreprennent ou dirigent, sont engagées dans leur développement business, veulent s'entourer intelligemment, et recherchent autant la stimulation intellectuelle que la qualité des relations humaines."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Comment fonctionne Impulse ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Impulse propose 1 rendez-vous mensuel avec un format clair et structuré (accueil, intervention, échanges), des intervenantes internes et externes, des livrables concrets et actionnables, ainsi qu'un suivi et des ressources entre les sessions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Où ont lieu les événements Impulse ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Les événements Impulse ont lieu à Barcelone, en Catalogne (Espagne). Chaque rendez-vous mensuel se déroule dans un lieu soigneusement sélectionné pour favoriser les échanges professionnels."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quels sont les bénéfices de rejoindre Impulse ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Rejoindre Impulse permet d'élargir sa manière de penser, renforcer sa posture professionnelle, apprendre autrement par le partage d'expériences et l'intelligence collective, ne plus porter seule ses questionnements, et grandir dans un cadre exigeant et sécurisant."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Comment rejoindre la communauté Impulse ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pour rejoindre Impulse, remplissez le formulaire de contact sur notre site en indiquant votre nom, email, profession, et localisation. Notre équipe vous recontactera rapidement pour discuter de votre intégration dans la communauté."
+      }
+    }
+  ]
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -157,6 +241,16 @@ export default function RootLayout({
           type="application/ld+json"
           /* eslint-disable-next-line react/no-danger -- Static JSON-LD is safe */
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          /* eslint-disable-next-line react/no-danger -- Static JSON-LD is safe */
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          /* eslint-disable-next-line react/no-danger -- Static JSON-LD is safe */
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
         />
       </head>
       <body className="antialiased">

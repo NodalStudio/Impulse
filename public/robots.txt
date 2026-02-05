@@ -1,11 +1,11 @@
 # robots.txt for Impulse
-# https://impulse-women.com
+# https://communaute-impulse.com
 
 User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://impulse-women.com/sitemap.xml
+Sitemap: https://communaute-impulse.com/sitemap.xml
 
 # Disallow admin/private paths (if any in future)
 # Disallow: /admin/

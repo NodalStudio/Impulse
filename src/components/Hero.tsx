@@ -53,14 +53,14 @@ export default function Hero() {
               </div>
             </div>
 
-            <h1 className="font-cormorant text-[clamp(2rem,5vh,3.5rem)] font-semibold text-navy leading-[1.15] mb-[3vh] xl:mb-8 animate-fade-in-up delay-100">
+            <p className="font-cormorant text-[clamp(2rem,5vh,3.5rem)] font-semibold text-navy leading-[1.15] mb-[3vh] xl:mb-8 animate-fade-in-up delay-100" role="heading" aria-level={1}>
               Le rendez-vous business<br />
               des <span className="text-gold relative inline-block group">
                 femmes d&apos;impact
                 <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-gold/30 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></span>
               </span><br />
               à Barcelone
-            </h1>
+            </p>
 
             <div className="flex flex-row gap-3 justify-start animate-fade-in-up delay-200">
               <a href="#contact" className="btn-primary group text-sm xl:text-base">
@@ -85,7 +85,7 @@ export default function Hero() {
                   <div className="relative w-full h-full">
                     <Image
                       src="/images/community-event.jpg"
-                      alt="Événement Impulse"
+                      alt="Événement business mensuel Impulse pour femmes entrepreneures à Barcelone"
                       width={280}
                       height={220}
                       priority
@@ -97,7 +97,7 @@ export default function Hero() {
                   <div className="relative w-full h-full">
                     <Image
                       src="/images/community-networking.jpg"
-                      alt="Networking"
+                      alt="Networking entre femmes d'affaires lors d'un atelier Impulse"
                       width={280}
                       height={250}
                       priority
@@ -112,7 +112,7 @@ export default function Hero() {
                   <div className="relative w-full h-full">
                     <Image
                       src="/images/community-garden.jpg"
-                      alt="Communauté"
+                      alt="Communauté de femmes entrepreneures Impulse en extérieur à Barcelone"
                       width={280}
                       height={250}
                       priority
@@ -124,7 +124,7 @@ export default function Hero() {
                   <div className="relative w-full h-full">
                     <Image
                       src="/images/community-workshop.jpg"
-                      alt="Atelier"
+                      alt="Atelier pratique de formation entrepreneuriat féminin Impulse"
                       width={280}
                       height={250}
                       priority
