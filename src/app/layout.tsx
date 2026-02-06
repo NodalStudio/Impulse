@@ -82,8 +82,6 @@ export const metadata: Metadata = {
     title: "Impulse | Le rendez-vous business mensuel des femmes d'impact",
     description: "Rejoignez la communauté Impulse : des événements mensuels pour les femmes entrepreneures.",
     images: [`${siteUrl}/images/og-image.jpg`],
-    creator: "@impulse_women",
-    site: "@impulse_women",
   },
 
   // Alternates
@@ -91,13 +89,7 @@ export const metadata: Metadata = {
     canonical: siteUrl,
   },
 
-  // Verification (update with actual IDs when available)
-  verification: {
-    // google: 'your-google-verification-id',
-    // yandex: 'your-yandex-verification-id',
-  },
-
-  // Category
+// Category
   category: "business",
 
   // Other meta
@@ -119,17 +111,17 @@ const jsonLd = {
   "logo": `${siteUrl}/images/logo.png`,
   "sameAs": [
     "https://www.linkedin.com/company/impulse-barcelone/",
-    "https://www.instagram.com/impulse_women"
+    "https://www.instagram.com/impulse_communaute"
   ],
   "contactPoint": {
     "@type": "ContactPoint",
-    "email": "contact@impulse-women.com",
+    "email": "impulse.rdv@gmail.com",
     "contactType": "customer service"
   },
   "founder": [
-    { "@type": "Person", "name": "Sophie Martin" },
-    { "@type": "Person", "name": "Marie Dubois" },
-    { "@type": "Person", "name": "Julie Bernard" }
+    { "@type": "Person", "name": "Anaïs Derenne" },
+    { "@type": "Person", "name": "Marina Serr" },
+    { "@type": "Person", "name": "Sophie Bernicke" }
   ],
   "event": {
     "@type": "EventSeries",
@@ -175,7 +167,7 @@ const localBusinessJsonLd = {
   },
   "sameAs": [
     "https://www.linkedin.com/company/impulse-barcelone/",
-    "https://www.instagram.com/impulse_women"
+    "https://www.instagram.com/impulse_communaute"
   ]
 };
 

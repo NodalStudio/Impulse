@@ -71,7 +71,7 @@ export default function Footer() {
                   </svg>
                 </a>
                 <a
-                  href="https://instagram.com/impulse_lerdv"
+                  href="https://instagram.com/impulse_communaute"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white/70 hover:text-gold transition-colors"
