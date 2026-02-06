@@ -26,8 +26,6 @@
 /* Snap Scroll Container */
 /* Prevent iOS overscroll rubber-band effect */
 html {
-  scroll-behavior: smooth;
-  overscroll-behavior: none;
   overflow: hidden;
   height: 100%;
 }
@@ -36,9 +34,29 @@ body {
   font-family: 'Source Sans 3', 'Segoe UI', system-ui, -apple-system, Roboto, 'Liberation Sans', 'DejaVu Sans', 'Noto Sans', Ubuntu, 'Helvetica Neue', Arial, sans-serif;
   color: var(--navy);
   background-color: var(--cream);
-  overscroll-behavior: none;
   overflow: hidden;
   height: 100%;
+}
+
+@supports (scroll-behavior: smooth) {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .snap-container {
+    scroll-behavior: smooth;
+  }
+}
+
+@supports (overscroll-behavior: none) {
+  html,
+  body {
+    overscroll-behavior: none;
+  }
+
+  .snap-container {
+    overscroll-behavior: contain; /* Prevent scroll chaining */
+  }
 }
 
 /* Main scroll container for snap */
@@ -47,9 +65,7 @@ body {
   height: 100dvh; /* Dynamic viewport height for iOS */
   overflow-y: auto;
   scroll-snap-type: y proximity;
-  scroll-behavior: smooth;
-  overscroll-behavior: contain; /* Prevent scroll chaining */
-  -webkit-overflow-scrolling: touch; /* Smooth momentum scrolling on iOS */
+  -ms-overflow-style: none;
 }
 
 /* Each section snaps */
@@ -86,9 +102,10 @@ body {
   display: none;
 }
 
-.snap-container {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+@supports (scrollbar-width: none) {
+  .snap-container {
+    scrollbar-width: none;
+  }
 }
 
 /* Section progress dots (optional navigation) */
@@ -121,7 +138,6 @@ body {
 }
 
 /* Typography utilities */
-@layer components {
   .heading-xl {
     @apply font-cormorant text-4xl md:text-5xl lg:text-6xl font-semibold text-navy;
   }
@@ -232,10 +248,8 @@ body {
   .container-impulse {
     @apply max-w-7xl mx-auto w-full;
   }
-}
 
 /* Micro-interaction animations */
-@layer utilities {
   /* Fade in up animation */
   .animate-fade-in-up {
     animation: fadeInUp 0.8s ease both;
@@ -311,8 +325,11 @@ body {
   }
 
   /* Stagger delays */
+  .delay-50 { animation-delay: 50ms; }
   .delay-100 { animation-delay: 100ms; }
+  .delay-150 { animation-delay: 150ms; }
   .delay-200 { animation-delay: 200ms; }
+  .delay-250 { animation-delay: 250ms; }
   .delay-300 { animation-delay: 300ms; }
   .delay-400 { animation-delay: 400ms; }
   .delay-500 { animation-delay: 500ms; }
@@ -406,6 +423,11 @@ body {
   .line-draw:hover::after {
     width: 100%;
   }
+
+/* Team photo clip helper */
+.photo-clip-container {
+  top: -10%;
+  clip-path: url(#photo-clip);
 }
 
 /* Intersection Observer animation triggers */
@@ -464,8 +486,8 @@ body {
 /* Glass morphism effect */
 .glass {
   background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
