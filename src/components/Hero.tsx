@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
+import Image from "next/image";
 
 export default function Hero() {
   return (
@@ -11,28 +11,50 @@ export default function Hero() {
           {/* 3 Piliers - vertical stack with editorial styling */}
           <div className="animate-fade-in-up">
             <div className="inline-flex flex-col items-start text-left border-l-2 border-gold/40 pl-5 py-1">
-              <span className="font-cormorant text-[3vh] text-navy/70 italic tracking-wide">Apprendre</span>
-              <span className="font-cormorant text-[3vh] text-navy/70 italic tracking-wide">S&apos;entraider</span>
               <span className="font-cormorant text-[3vh] text-navy/70 italic tracking-wide">
-                Réussir<span className="text-gold font-bold">.</span>
+                Apprendre
+              </span>
+              <span className="font-cormorant text-[3vh] text-navy/70 italic tracking-wide">
+                S&apos;entraider
+              </span>
+              <span className="font-cormorant text-[3vh] text-navy/70 italic tracking-wide">
+                {'Réussir'}
+                <span className="text-gold font-bold">.</span>
               </span>
             </div>
           </div>
 
           <h1 className="font-cormorant text-[5vh] font-semibold text-navy leading-[1.15] animate-fade-in-up delay-100 text-center">
-            Le rendez-vous business<br />
-            des <span className="text-gold">femmes d&apos;impact</span><br />
-            à Barcelone
+            Le rendez-vous business
+            <br />
+            {'des '}<span className="text-gold">femmes d&apos;impact</span>
+            <br />à Barcelone
           </h1>
 
           <div className="flex flex-col gap-[2vh] w-full max-w-xs animate-fade-in-up delay-200">
-            <a href="#contact" className="btn-primary group text-center py-[2vh] text-[1.8vh]">
+            <a
+              href="#contact"
+              className="btn-primary group text-center py-[2vh] text-[1.8vh]"
+            >
               <span className="relative z-10">Rejoindre la communauté</span>
             </a>
-            <a href="#calendrier" className="btn-secondary group text-center py-[2vh] text-[1.8vh]">
+            <a
+              href="#calendrier"
+              className="btn-secondary group text-center py-[2vh] text-[1.8vh]"
+            >
               Voir le calendrier
-              <svg className="w-[2vh] h-[2vh] ml-2 inline-block transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              <svg
+                className="w-[2vh] h-[2vh] ml-2 inline-block transform group-hover:translate-x-1 transition-transform duration-300"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
               </svg>
             </a>
           </div>
@@ -45,31 +67,56 @@ export default function Hero() {
             {/* 3 Piliers - vertical stack with editorial styling */}
             <div className="mb-[2vh] xl:mb-6 animate-fade-in-up">
               <div className="inline-flex flex-col items-start text-left border-l-2 border-gold/40 pl-4 py-0.5">
-                <span className="font-cormorant text-base xl:text-lg text-navy/70 italic tracking-wide">Apprendre</span>
-                <span className="font-cormorant text-base xl:text-lg text-navy/70 italic tracking-wide">S&apos;entraider</span>
                 <span className="font-cormorant text-base xl:text-lg text-navy/70 italic tracking-wide">
-                  Réussir<span className="text-gold font-bold">.</span>
+                  Apprendre
+                </span>
+                <span className="font-cormorant text-base xl:text-lg text-navy/70 italic tracking-wide">
+                  S&apos;entraider
+                </span>
+                <span className="font-cormorant text-base xl:text-lg text-navy/70 italic tracking-wide">
+                  {'Réussir'}
+                  <span className="text-gold font-bold">.</span>
                 </span>
               </div>
             </div>
 
-            <p className="font-cormorant text-[clamp(2rem,5vh,3.5rem)] font-semibold text-navy leading-[1.15] mb-[3vh] xl:mb-8 animate-fade-in-up delay-100" role="heading" aria-level={1}>
-              Le rendez-vous business<br />
-              des <span className="text-gold relative inline-block group">
-                femmes d&apos;impact
-                <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-gold/30 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></span>
-              </span><br />
-              à Barcelone
-            </p>
+            <h1 className="font-cormorant text-[clamp(2rem,5vh,3.5rem)] font-semibold text-navy leading-[1.15] mb-[3vh] xl:mb-8 animate-fade-in-up delay-100">
+              Le rendez-vous business
+              <br />
+              {'des '}<span className="text-gold relative inline-block group">
+                {'femmes d\'impact'}
+                <span
+                  aria-hidden="true"
+                  className="absolute -bottom-1 left-0 w-full h-[2px] bg-gold/30 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"
+                />
+              </span>
+              <br />à Barcelone
+            </h1>
 
             <div className="flex flex-row gap-3 justify-start animate-fade-in-up delay-200">
-              <a href="#contact" className="btn-primary group text-sm xl:text-base">
+              <a
+                href="#contact"
+                className="btn-primary group text-sm xl:text-base"
+              >
                 <span className="relative z-10">Rejoindre la communauté</span>
               </a>
-              <a href="#calendrier" className="btn-secondary group text-sm xl:text-base">
+              <a
+                href="#calendrier"
+                className="btn-secondary group text-sm xl:text-base"
+              >
                 Voir le calendrier
-                <svg className="w-4 h-4 ml-2 inline-block transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                <svg
+                  className="w-4 h-4 ml-2 inline-block transform group-hover:translate-x-1 transition-transform duration-300"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
                 </svg>
               </a>
             </div>
@@ -158,7 +205,12 @@ export default function Hero() {
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.5}
+                d="M19 14l-7 7m0 0l-7-7m7 7V3"
+              />
             </svg>
           </div>
         </a>
