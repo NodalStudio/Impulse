@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import "./globals.css";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://communaute-impulse.com";
@@ -67,11 +68,11 @@ export const metadata: Metadata = {
     description: "Rejoignez la communauté Impulse : des événements mensuels pour les femmes entrepreneures qui veulent apprendre, s'entraider et réussir ensemble.",
     images: [
       {
-        url: `${siteUrl}/images/og-image.jpg`,
+        url: `${siteUrl}/images/og-image.png`,
         width: 1200,
         height: 630,
-        alt: "Impulse - Communauté de femmes entrepreneures",
-        type: "image/jpeg",
+        alt: "Impulse - Communauté de femmes entrepreneures à Barcelone, networking et ateliers pour femmes d'impact",
+        type: "image/png",
       },
     ],
   },
@@ -81,12 +82,16 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Impulse | Le rendez-vous business mensuel des femmes d'impact",
     description: "Rejoignez la communauté Impulse : des événements mensuels pour les femmes entrepreneures.",
-    images: [`${siteUrl}/images/og-image.jpg`],
+    images: [`${siteUrl}/images/og-image.png`],
   },
 
-  // Alternates
+  // Alternates & hreflang
   alternates: {
     canonical: siteUrl,
+    languages: {
+      'fr-ES': siteUrl,
+      'fr': siteUrl,
+    },
   },
 
 // Category
@@ -141,7 +146,7 @@ const localBusinessJsonLd = {
   "description": "Événements mensuels de networking, ateliers et masterclass pour femmes entrepreneures et dirigeantes à Barcelone.",
   "url": siteUrl,
   "logo": `${siteUrl}/images/logo.png`,
-  "image": `${siteUrl}/images/og-image.jpg`,
+  "image": `${siteUrl}/images/og-image.png`,
   "email": "impulse.rdv@gmail.com",
   "address": {
     "@type": "PostalAddress",
@@ -218,6 +223,133 @@ const faqJsonLd = {
   ]
 };
 
+// Breadcrumb structured data for navigation
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Accueil",
+      "item": siteUrl
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Notre Mission",
+      "item": `${siteUrl}/#mission`
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Les 3 Piliers",
+      "item": `${siteUrl}/#piliers`
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Calendrier",
+      "item": `${siteUrl}/#calendrier`
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "name": "Équipe",
+      "item": `${siteUrl}/#equipe`
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "name": "Contact",
+      "item": `${siteUrl}/#contact`
+    }
+  ]
+};
+
+// Reviews and aggregate rating for testimonials
+const reviewsJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": `${siteUrl}/#organization`,
+  "name": "Impulse",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "bestRating": "5",
+    "worstRating": "1",
+    "ratingCount": "5",
+    "reviewCount": "5"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Maud"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "Je chéris ces rdv qui ne sont pas networking mais concrets, axés vers la productivité et le développement personnel."
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Laure"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "J'aime particulièrement l'efficacité des ateliers de codéveloppement et l'utilisation de l'intelligence collective. Une révélation!"
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Isabelle"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "Un cercle intime de femmes bienveillantes et inspirantes, dédié au partage d'outils précieux pour faire grandir son business!"
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Laurita"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "Ce groupe de femmes entrepreneuses est vraiment différent de tout ce que j'avais pu expérimenter avant. Bravo d'avoir apporté la touche du collectif (le vrai) !"
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Maud"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "Je suis particulièrement enthousiaste à cette idée de pouvoir contribuer en proposant mon sujet."
+    }
+  ]
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -226,6 +358,20 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <head>
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-KQTG5KY0YZ"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-KQTG5KY0YZ');
+          `}
+        </Script>
+
         {/* Preconnect to Google Fonts for faster loading */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -243,6 +389,16 @@ export default function RootLayout({
           type="application/ld+json"
           /* eslint-disable-next-line react/no-danger -- Static JSON-LD is safe */
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          /* eslint-disable-next-line react/no-danger -- Static JSON-LD is safe, hardcoded breadcrumb data */
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          /* eslint-disable-next-line react/no-danger -- Static JSON-LD is safe, hardcoded review data */
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewsJsonLd) }}
         />
       </head>
       <body className="antialiased">
