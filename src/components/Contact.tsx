@@ -7,17 +7,55 @@ const COOLDOWN_KEY = 'impulse_contact_cooldown';
 const COOLDOWN_MS = 5 * 60 * 1000;
 const MIN_INTERACTION_MS = 3000;
 
+const INITIAL_FORM_DATA = {
+  name: '',
+  email: '',
+  profession: '',
+  age: '',
+  location: '',
+  message: '',
+  website: ''
+};
+
+const getSubmitLabel = (formState: 'idle' | 'submitting' | 'success' | 'error' | 'rate_limited', isCooldown: boolean) => {
+  if (formState === 'submitting') {
+    return 'Envoi...';
+  }
+
+  if (isCooldown) {
+    return 'Veuillez patienter...';
+  }
+
+  return 'Envoyer ma demande';
+};
+
+const isBotSubmission = (website: string, firstInteraction: number | null) => {
+  if (website) {
+    return true;
+  }
+
+  if (!firstInteraction) {
+    return true;
+  }
+
+  return Date.now() - firstInteraction < MIN_INTERACTION_MS;
+};
+
+const getResponseState = (response: Response) => {
+  if (response.ok) {
+    return 'success' as const;
+  }
+
+  if (response.status === 429) {
+    return 'rate_limited' as const;
+  }
+
+  return 'error' as const;
+};
+
 export default function Contact() {
   const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error' | 'rate_limited'>('idle');
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    profession: '',
-    age: '',
-    location: '',
-    message: '',
-    website: ''
-  });
+  const [formData, setFormData] = useState(INITIAL_FORM_DATA);
   const [cooldown, setCooldown] = useState(false);
   const firstInteractionRef = useRef<number | null>(null);
   const currentYear = new Date().getFullYear();
@@ -41,14 +79,8 @@ export default function Contact() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
-    // Honeypot: if filled, simulate success without calling API
-    if (formData.website) {
-      setFormState('success');
-      return;
-    }
-
-    // Minimum time: if submitted < 3s after first interaction, simulate success
-    if (!firstInteractionRef.current || Date.now() - firstInteractionRef.current < MIN_INTERACTION_MS) {
+    // Honeypot or suspiciously fast submissions
+    if (isBotSubmission(formData.website, firstInteractionRef.current)) {
       setFormState('success');
       return;
     }
@@ -69,29 +101,21 @@ export default function Contact() {
         body: JSON.stringify(payload)
       });
 
-      if (response.ok) {
-        setFormState('success');
+      const nextState = getResponseState(response);
+      setFormState(nextState);
+
+      if (nextState === 'success') {
         localStorage.setItem(COOLDOWN_KEY, String(Date.now()));
         setCooldown(true);
         setTimeout(() => setCooldown(false), COOLDOWN_MS);
-        setFormData({
-          name: '',
-          email: '',
-          profession: '',
-          age: '',
-          location: '',
-          message: '',
-          website: ''
-        });
-      } else if (response.status === 429) {
-        setFormState('rate_limited');
-      } else {
-        setFormState('error');
+        setFormData(INITIAL_FORM_DATA);
       }
     } catch {
       setFormState('error');
     }
   };
+
+  const submitLabel = getSubmitLabel(formState, cooldown);
 
   return (
     <section id="contact" className="snap-section bg-gradient-to-br from-cream via-beige/30 to-rose/20">
@@ -154,7 +178,7 @@ export default function Contact() {
             ) : (
               <form onSubmit={handleSubmit} onFocusCapture={handleInteraction} className="flex flex-col gap-[1vh]">
                 {/* Honeypot */}
-                <div style={{ position: 'absolute', left: '-9999px' }} aria-hidden="true">
+                <div className="absolute left-[-9999px]" aria-hidden="true">
                   <label htmlFor="website">Website</label>
                   <input
                     type="text"
@@ -293,7 +317,7 @@ export default function Contact() {
                   disabled={formState === 'submitting' || cooldown}
                   className="w-full bg-navy text-white py-[1.2vh] px-6 rounded-full font-source font-semibold text-[1.5vh] hover:bg-navy/90 transition-all disabled:opacity-50 mt-[1vh]"
                 >
-                  {formState === 'submitting' ? 'Envoi...' : cooldown ? 'Veuillez patienter...' : 'Envoyer ma demande'}
+                  {submitLabel}
                 </button>
               </form>
             )}
@@ -396,7 +420,7 @@ export default function Contact() {
             ) : (
               <form onSubmit={handleSubmit} onFocusCapture={handleInteraction} className="space-y-3">
                 {/* Honeypot */}
-                <div style={{ position: 'absolute', left: '-9999px' }} aria-hidden="true">
+                <div className="absolute left-[-9999px]" aria-hidden="true">
                   <label htmlFor="website-desktop">Website</label>
                   <input
                     type="text"
@@ -533,7 +557,7 @@ export default function Contact() {
                   disabled={formState === 'submitting' || cooldown}
                   className="w-full bg-navy text-white py-2.5 px-6 rounded-full font-source font-semibold text-sm hover:bg-navy/90 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {formState === 'submitting' ? 'Envoi...' : cooldown ? 'Veuillez patienter...' : 'Envoyer ma demande'}
+                  {submitLabel}
                 </button>
               </form>
             )}
