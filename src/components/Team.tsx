@@ -1,25 +1,31 @@
-import Image from 'next/image';
+import Image from "next/image";
 
 const founders = [
   {
     name: "Anaïs Derenne",
     role: "Expérience membre & facilitation",
     image: "/images/team-anais.png",
-    bio: "Facilitatrice en talents et fondatrice de BeauBOULOT, Anaïs accompagne depuis plus de 10 ans les décideurs et les équipes sur les enjeux de recrutement, d'évaluation et de sens au travail. Elle rejoint l'équipe d'IMPULSE en 2025, avec l'envie de fédérer un collectif de femmes ambitieuses, inspirantes et engagées dans leur développement professionnel. Elle est garante de l'expérience membre et de la facilitation des ateliers."
+    alt: "Anaïs Derenne, co-fondatrice d'Impulse Barcelone, facilitatrice en talents et fondatrice de BeauBOULOT",
+    bio: "Facilitatrice en talents et fondatrice de BeauBOULOT, Anaïs accompagne depuis plus de 10 ans les décideurs et les équipes sur les enjeux de recrutement, d'évaluation et de sens au travail. Elle rejoint l'équipe d'IMPULSE en 2025, avec l'envie de fédérer un collectif de femmes ambitieuses, inspirantes et engagées dans leur développement professionnel. Elle est garante de l'expérience membre et de la facilitation des ateliers.",
   },
   {
     name: "Marina Serr",
     role: "Fondatrice & vision Impulse",
     image: "/images/team-marina.png",
-    bio: "Business coach certifiée, Marina guide entrepreneurs, dirigeants et cadres dans des phases clés de structuration, de transition et de montée en posture. Elle a déjà accompagné plus de 100 leaders. Fondatrice du RDV des entrepreneuses en 2022, devenu IMPULSE en 2026, elle croit en la force d'un collectif exigeant et humain comme levier de réussite pour les femmes. Elle est garante de la vision, du cadre, de la dynamique collective et de la cohérence globale d'IMPULSE."
+    alt: "Marina Serr, fondatrice d'Impulse Barcelone, business coach certifiée accompagnant entrepreneurs et dirigeants",
+    bio: "Business coach certifiée, Marina guide entrepreneurs, dirigeants et cadres dans des phases clés de structuration, de transition et de montée en posture. Elle a déjà accompagné plus de 100 leaders. Fondatrice du RDV des entrepreneuses en 2022, devenu IMPULSE en 2026, elle croit en la force d'un collectif exigeant et humain comme levier de réussite pour les femmes. Elle est garante de la vision, du cadre, de la dynamique collective et de la cohérence globale d'IMPULSE.",
   },
   {
     name: "Sophie Bernicke",
     role: "Structure & cohésion du collectif",
     image: "/images/team-sophie.png",
-    bio: "Naturopathe spécialisée dans le mieux vieillir, Sophie accompagne les femmes à retrouver énergie et vitalité durablement grâce une approche globale, bienveillante et pragmatique. Engagée au sein d'IMPULSE depuis 2025, elle porte la conviction que la puissance du collectif nourrit l'énergie humaine et soutient une transformation professionnelle durable. Elle est garante de la structure et de la facilitation globale du collectif."
-  }
+    alt: "Sophie Bernicke, co-fondatrice d'Impulse Barcelone, naturopathe spécialisée dans le mieux vieillir",
+    bio: "Naturopathe spécialisée dans le mieux vieillir, Sophie accompagne les femmes à retrouver énergie et vitalité durablement grâce une approche globale, bienveillante et pragmatique. Engagée au sein d'IMPULSE depuis 2025, elle porte la conviction que la puissance du collectif nourrit l'énergie humaine et soutient une transformation professionnelle durable. Elle est garante de la structure et de la facilitation globale du collectif.",
+  },
 ];
+
+const mobileDelayClasses = ['', 'delay-100', 'delay-200'];
+const desktopDelayClasses = ['', 'delay-150', 'delay-300'];
 
 export default function Team() {
   return (
@@ -45,9 +51,8 @@ export default function Team() {
 
           {founders.map((founder, index) => (
             <div
-              key={index}
-              className="animate-fade-in-up"
-              style={{ animationDelay: `${index * 100}ms` }}
+              key={founder.name}
+              className={`animate-fade-in-up ${mobileDelayClasses[index] ?? ''}`}
             >
               {/* Photo + Name + Bio in horizontal layout */}
               <div className="flex items-start gap-3">
@@ -57,7 +62,7 @@ export default function Team() {
                     <div className="w-full h-full rounded-full overflow-hidden bg-gold">
                       <Image
                         src={founder.image}
-                        alt={founder.name}
+                        alt={founder.alt}
                         width={80}
                         height={100}
                         className="w-full h-full object-cover object-top"
@@ -67,7 +72,9 @@ export default function Team() {
                 </div>
                 {/* Name + Role + Bio - more compact */}
                 <div className="flex-1 min-w-0">
-                  <p className="font-greatvibes text-xs mb-2 text-navy leading-normal">{founder.name}</p>
+                  <p className="font-greatvibes text-xs mb-2 text-navy leading-normal">
+                    {founder.name}
+                  </p>
                   <p className="font-montserrat uppercase tracking-wider text-[1.1vh] text-gold">
                     {founder.role}
                   </p>
@@ -93,9 +100,8 @@ export default function Team() {
         <div className="hidden lg:grid lg:grid-cols-3 gap-8 xl:gap-12 max-w-5xl mx-auto">
           {founders.map((founder, index) => (
             <div
-              key={index}
-              className="group animate-fade-in-up text-center"
-              style={{ animationDelay: `${index * 150}ms` }}
+              key={founder.name}
+              className={`group animate-fade-in-up text-center ${desktopDelayClasses[index] ?? ''}`}
             >
               {/* Photo — gold circle, white ring, navy accent, head overflow */}
               <div className="relative mx-auto mb-6 w-28 h-28 xl:w-40 xl:h-40 transition-all duration-500 group-hover:drop-shadow-[0_0_18px_rgba(201,162,39,0.3)]">
@@ -106,13 +112,10 @@ export default function Team() {
                 {/* Gold circle fill */}
                 <div className="absolute inset-[4px] rounded-full bg-gold" />
                 {/* Photo — SVG clip: flat top (head overflows freely), semicircular bottom */}
-                <div
-                  className="absolute left-[4px] right-[4px] bottom-[4px]"
-                  style={{ top: '-10%', clipPath: 'url(#photo-clip)' }}
-                >
+                <div className="absolute left-[4px] right-[4px] bottom-[4px] photo-clip-container">
                   <Image
                     src={founder.image}
-                    alt={founder.name}
+                    alt={founder.alt}
                     width={400}
                     height={400}
                     className="w-full h-full object-top object-cover grayscale-[15%]"

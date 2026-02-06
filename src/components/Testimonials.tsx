@@ -49,7 +49,7 @@ export default function Testimonials() {
             <div className="flex items-center gap-4 flex-wrap justify-center">
               {highlights.map((highlight, index) => (
                 <span
-                  key={index}
+                  key={highlight}
                   className="font-cormorant text-base text-navy/80 flex items-center gap-3"
                 >
                   {highlight}
@@ -73,8 +73,7 @@ export default function Testimonials() {
             <div className="grid grid-cols-12 gap-6">
               {/* Featured large testimonial - spans 5 cols, offset from top */}
               <div
-                className="col-span-5 row-span-2 bg-white rounded-2xl p-8 shadow-lg border-l-4 border-gold animate-fade-in-up relative"
-                style={{ marginTop: '2rem' }}
+                className="col-span-5 row-span-2 bg-white rounded-2xl p-8 shadow-lg border-l-4 border-gold animate-fade-in-up relative mt-8"
               >
                 <p className="font-cormorant text-xl text-navy leading-relaxed mb-6 italic">
                   &ldquo;{testimonials[4].quote}&rdquo;
@@ -88,8 +87,7 @@ export default function Testimonials() {
 
               {/* Top right - medium card */}
               <div
-                className="col-span-4 bg-beige/60 rounded-2xl p-6 animate-fade-in-up"
-                style={{ animationDelay: '100ms' }}
+                className="col-span-4 bg-beige/60 rounded-2xl p-6 animate-fade-in-up delay-100"
               >
                 <span className="text-gold text-3xl leading-none font-serif">&ldquo;</span>
                 <p className="font-cormorant text-base text-navy leading-relaxed mt-2 mb-4">
@@ -102,8 +100,7 @@ export default function Testimonials() {
 
               {/* Far right - small accent card */}
               <div
-                className="col-span-3 bg-navy rounded-2xl p-5 text-white animate-fade-in-up flex flex-col justify-between"
-                style={{ animationDelay: '150ms' }}
+                className="col-span-3 bg-navy rounded-2xl p-5 text-white animate-fade-in-up delay-150 flex flex-col justify-between"
               >
                 <span className="text-gold/80 text-2xl leading-none font-serif">&ldquo;</span>
                 <p className="font-cormorant text-sm text-white/90 leading-relaxed mt-2">
@@ -116,8 +113,7 @@ export default function Testimonials() {
 
               {/* Bottom middle-left */}
               <div
-                className="col-span-4 col-start-6 bg-white rounded-2xl p-6 shadow-md animate-fade-in-up"
-                style={{ animationDelay: '200ms', marginTop: '-1rem' }}
+                className="col-span-4 col-start-6 bg-white rounded-2xl p-6 shadow-md animate-fade-in-up delay-200 -mt-4"
               >
                 <span className="text-gold text-2xl leading-none font-serif">&ldquo;</span>
                 <p className="font-cormorant text-base text-navy leading-relaxed mt-2 mb-4">
@@ -130,8 +126,7 @@ export default function Testimonials() {
 
               {/* Bottom right */}
               <div
-                className="col-span-3 bg-gradient-to-br from-rose/40 to-beige/60 rounded-2xl p-5 animate-fade-in-up"
-                style={{ animationDelay: '250ms' }}
+                className="col-span-3 bg-gradient-to-br from-rose/40 to-beige/60 rounded-2xl p-5 animate-fade-in-up delay-250"
               >
                 <span className="text-gold text-2xl leading-none font-serif">&ldquo;</span>
                 <p className="font-cormorant text-sm text-navy leading-relaxed mt-2 mb-3">
@@ -166,8 +161,8 @@ export default function Testimonials() {
               Les points forts du groupe
             </p>
             <div className="flex flex-wrap justify-center gap-x-3 gap-y-1">
-              {highlights.slice(0, 3).map((highlight, index) => (
-                <span key={index} className="font-cormorant text-lg text-navy flex items-center gap-1">
+              {highlights.slice(0, 3).map((highlight) => (
+                <span key={highlight} className="font-cormorant text-lg text-navy flex items-center gap-1">
                   <span className="text-gold">·</span>
                   {highlight}
                 </span>
@@ -179,9 +174,8 @@ export default function Testimonials() {
           <div className="grid grid-cols-2 gap-[1.5vh]">
             {testimonials.slice(0, 2).map((testimonial, index) => (
               <div
-                key={index}
-                className="bg-beige/50 rounded-lg p-[1.5vh] animate-fade-in-up flex flex-col"
-                style={{ animationDelay: `${index * 50}ms` }}
+                key={testimonial.quote}
+                className={`bg-beige/50 rounded-lg p-[1.5vh] animate-fade-in-up flex flex-col${index === 1 ? ' delay-50' : ''}`}
               >
                 <span className="text-gold text-lg leading-none">&ldquo;</span>
                 <p className="font-cormorant text-lg text-navy leading-snug flex-1">
