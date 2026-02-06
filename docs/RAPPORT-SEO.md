@@ -24,15 +24,15 @@ Depuis **septembre 2009**, Google a officiellement annoncé qu'il n'utilise plus
 
 Bien que la balise meta keywords soit ignorée, les mots-clés restent essentiels pour le SEO à travers d'autres éléments :
 
-| Élément | Impact SEO | Présence sur Impulse |
-| ------- | ---------- | ------------------- |
-| Balise `<title>` | Très fort | "Impulse - Le rendez-vous business mensuel des femmes d'impact" |
-| Meta description | Modéré (CTR) | Description complète avec mots-clés naturels |
-| Balises H1-H6 | Fort | H1 optimisé "Le rendez-vous business des femmes d'impact" |
-| Contenu textuel | Très fort | Texte riche avec vocabulaire thématique |
-| Attributs alt des images | Modéré | Descriptions détaillées et contextuelles |
-| URLs | Modéré | URL propre communaute-impulse.com |
-| Données structurées | Fort | JSON-LD complet (Organization, FAQ, Reviews) |
+| Élément                  | Impact SEO   | Présence sur Impulse                                            |
+| ------------------------ | ------------ | --------------------------------------------------------------- |
+| Balise `<title>`         | Très fort    | "Impulse - Le rendez-vous business mensuel des femmes d'impact" |
+| Meta description         | Modéré (CTR) | Description complète avec mots-clés naturels                    |
+| Balises H1-H6            | Fort         | H1 optimisé "Le rendez-vous business des femmes d'impact"       |
+| Contenu textuel          | Très fort    | Texte riche avec vocabulaire thématique                         |
+| Attributs alt des images | Modéré       | Descriptions détaillées et contextuelles                        |
+| URLs                     | Modéré       | URL propre communaute-impulse.com                               |
+| Données structurées      | Fort         | JSON-LD complet (Organization, FAQ, Reviews)                    |
 
 ### Mots-clés actuels bien intégrés
 
@@ -52,8 +52,8 @@ keywords: [
   "masterclass business",
   "femmes d'impact",
   "entraide entrepreneures",
-  "formation entrepreneuriat"
-]
+  "formation entrepreneuriat",
+];
 ```
 
 Ces mots-clés sont repris naturellement dans :
@@ -147,7 +147,7 @@ Le site implémente 6 schémas JSON-LD :
 
 Avant :
 
-```typescript
+````typescript
 alt={founder.name}  // "Marina Serr"
 ```text
 
@@ -182,7 +182,7 @@ alternates: {
     'fr': siteUrl,
   },
 },
-```
+````
 
 ---
 
@@ -245,33 +245,33 @@ Selon HubSpot, les entreprises qui bloguent reçoivent **55% plus de visiteurs**
 
 ### 5.1 Outils essentiels (gratuits)
 
-| Outil | Utilité | Lien |
-| ------- | --------- | ------ |
-| **Google Search Console** | Performances de recherche, indexation, erreurs | [search.google.com/search-console](https://search.google.com/search-console) |
-| **Google Analytics 4** | Trafic, comportement utilisateurs, conversions | [analytics.google.com](https://analytics.google.com) |
-| **PageSpeed Insights** | Performance, Core Web Vitals | [pagespeed.web.dev](https://pagespeed.web.dev) |
-| **Rich Results Test** | Validation des données structurées | [search.google.com/test/rich-results](https://search.google.com/test/rich-results) |
+| Outil                     | Utilité                                        | Lien                                                                               |
+| ------------------------- | ---------------------------------------------- | ---------------------------------------------------------------------------------- |
+| **Google Search Console** | Performances de recherche, indexation, erreurs | [search.google.com/search-console](https://search.google.com/search-console)       |
+| **Google Analytics 4**    | Trafic, comportement utilisateurs, conversions | [analytics.google.com](https://analytics.google.com)                               |
+| **PageSpeed Insights**    | Performance, Core Web Vitals                   | [pagespeed.web.dev](https://pagespeed.web.dev)                                     |
+| **Rich Results Test**     | Validation des données structurées             | [search.google.com/test/rich-results](https://search.google.com/test/rich-results) |
 
 ### 5.2 Métriques clés à suivre
 
 #### Dans Google Search Console
 
-| Métrique | Description | Objectif Impulse |
-| ---------- | ------------- | ------------------ |
-| **Impressions** | Nombre de fois où le site apparaît dans les résultats | Croissance mensuelle |
-| **Clics** | Nombre de clics depuis les résultats de recherche | Croissance mensuelle |
-| **CTR** | Taux de clic (Clics/Impressions) | > 3-5% |
-| **Position moyenne** | Classement moyen dans les résultats | < 20 pour les mots-clés cibles |
-| **Pages indexées** | Nombre de pages dans l'index Google | Toutes les pages importantes |
+| Métrique             | Description                                           | Objectif Impulse               |
+| -------------------- | ----------------------------------------------------- | ------------------------------ |
+| **Impressions**      | Nombre de fois où le site apparaît dans les résultats | Croissance mensuelle           |
+| **Clics**            | Nombre de clics depuis les résultats de recherche     | Croissance mensuelle           |
+| **CTR**              | Taux de clic (Clics/Impressions)                      | > 3-5%                         |
+| **Position moyenne** | Classement moyen dans les résultats                   | < 20 pour les mots-clés cibles |
+| **Pages indexées**   | Nombre de pages dans l'index Google                   | Toutes les pages importantes   |
 
 #### Dans Google Analytics 4
 
-| Métrique | Description | Importance |
-| ---------- | ------------- | ------------ |
-| **Utilisateurs organiques** | Visiteurs venant de la recherche | Indicateur principal |
-| **Taux de rebond** | % qui quitte après 1 page | < 70% idéalement |
-| **Durée de session** | Temps passé sur le site | > 2 min pour un site vitrine |
-| **Conversions** | Formulaires de contact soumis | Objectif business |
+| Métrique                    | Description                      | Importance                   |
+| --------------------------- | -------------------------------- | ---------------------------- |
+| **Utilisateurs organiques** | Visiteurs venant de la recherche | Indicateur principal         |
+| **Taux de rebond**          | % qui quitte après 1 page        | < 70% idéalement             |
+| **Durée de session**        | Temps passé sur le site          | > 2 min pour un site vitrine |
+| **Conversions**             | Formulaires de contact soumis    | Objectif business            |
 
 ### 5.3 Actions immédiates pour Impulse
 
@@ -295,10 +295,10 @@ Selon HubSpot, les entreprises qui bloguent reçoivent **55% plus de visiteurs**
 
 ### 5.4 Fréquence de suivi recommandée
 
-| Fréquence | Actions |
-| ----------- | --------- |
-| **Hebdomadaire** | Vérifier les erreurs dans Search Console |
-| **Mensuelle** | Analyser impressions, clics, positions moyennes |
+| Fréquence         | Actions                                           |
+| ----------------- | ------------------------------------------------- |
+| **Hebdomadaire**  | Vérifier les erreurs dans Search Console          |
+| **Mensuelle**     | Analyser impressions, clics, positions moyennes   |
 | **Trimestrielle** | Rapport complet avec tendances et recommandations |
 
 ### 5.5 KPIs de succès pour Impulse
