@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     default: "Impulse | Le rendez-vous business mensuel des femmes d'impact",
     template: "%s | Impulse"
   },
-  description: "Rejoignez la communauté Impulse : des événements mensuels pour les femmes entrepreneures qui veulent apprendre, s'entraider et réussir ensemble. Networking, ateliers pratiques et entraide bienveillante.",
+  description: "Rejoignez la communauté Impulse : des événements mensuels à Barcelone pour les femmes entrepreneures qui veulent apprendre, s'entraider et réussir ensemble. Networking, ateliers pratiques et entraide bienveillante.",
   keywords: [
     "entrepreneuriat féminin",
     "networking femmes",
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
     url: siteUrl,
     siteName: "Impulse",
     title: "Impulse | Le rendez-vous business mensuel des femmes d'impact",
-    description: "Rejoignez la communauté Impulse : des événements mensuels pour les femmes entrepreneures qui veulent apprendre, s'entraider et réussir ensemble.",
+    description: "Rejoignez la communauté Impulse : des événements mensuels à Barcelone pour les femmes entrepreneures qui veulent apprendre, s'entraider et réussir ensemble.",
     images: [
       {
         url: `${siteUrl}/images/og-image.png`,
@@ -85,7 +85,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Impulse | Le rendez-vous business mensuel des femmes d'impact",
-    description: "Rejoignez la communauté Impulse : des événements mensuels pour les femmes entrepreneures.",
+    description: "Rejoignez la communauté Impulse : des événements mensuels à Barcelone pour les femmes entrepreneures.",
     images: [`${siteUrl}/images/og-image.png`],
     creator: "@impulse_communaute",
     site: "@impulse_communaute",
