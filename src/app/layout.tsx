@@ -49,10 +49,14 @@ export const metadata: Metadata = {
     },
   },
 
-  // Icons
+  // Icons - SVG icons for modern browsers
   icons: {
-    icon: '/favicon.ico',
-    apple: '/apple-touch-icon.png',
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/icon.svg', type: 'image/svg+xml' },
+    ],
+    apple: '/icon.svg',
+    shortcut: '/favicon.svg',
   },
 
   // Manifest (PWA)
@@ -83,6 +87,8 @@ export const metadata: Metadata = {
     title: "Impulse | Le rendez-vous business mensuel des femmes d'impact",
     description: "Rejoignez la communauté Impulse : des événements mensuels pour les femmes entrepreneures.",
     images: [`${siteUrl}/images/og-image.png`],
+    creator: "@impulse_communaute",
+    site: "@impulse_communaute",
   },
 
   // Alternates & hreflang
@@ -113,7 +119,7 @@ const jsonLd = {
   "name": "Impulse",
   "description": "Le rendez-vous business mensuel des femmes d'impact",
   "url": siteUrl,
-  "logo": `${siteUrl}/images/logo.png`,
+  "logo": `${siteUrl}/icon.svg`,
   "sameAs": [
     "https://www.linkedin.com/company/impulse-barcelone/",
     "https://www.instagram.com/impulse_communaute"
