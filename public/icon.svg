@@ -1,20 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <defs>
-    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#d4af37"/>
-      <stop offset="100%" style="stop-color:#c9a227"/>
+    <linearGradient id="bg" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0a2d5c"/>
+      <stop offset="100%" stop-color="#031225"/>
     </linearGradient>
-    <linearGradient id="navyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#1e3a5f"/>
-      <stop offset="100%" style="stop-color:#2a4a73"/>
+    <linearGradient id="g" x1="10" y1="6" x2="22" y2="26" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#d4a456"/>
+      <stop offset="100%" stop-color="#bf8a3d"/>
     </linearGradient>
   </defs>
-  <!-- Navy background circle for visibility -->
-  <circle cx="16" cy="16" r="16" fill="url(#navyGradient)"/>
-  <!-- Gold accent ring -->
-  <circle cx="16" cy="16" r="14.5" fill="none" stroke="#c9a227" stroke-width="0.5" opacity="0.6"/>
-  <!-- Triangle pointing up - representing growth, ambition, the 3 pillars -->
-  <polygon points="16,6 26,24 6,24" fill="url(#goldGradient)"/>
-  <!-- Inner subtle highlight -->
-  <polygon points="16,10 22,21 10,21" fill="none" stroke="#fff" stroke-width="0.5" stroke-opacity="0.3"/>
+  <!-- Navy rounded-square background -->
+  <rect width="32" height="32" rx="7" fill="url(#bg)"/>
+  <!-- Subtle gold border -->
+  <rect x="1.5" y="1.5" width="29" height="29" rx="5.5" fill="none" stroke="#bf8a3d" stroke-width="0.5" opacity="0.25"/>
+  <!-- Triangle inner glow -->
+  <polygon points="16,6.5 27,25.5 5,25.5" fill="#bf8a3d" opacity="0.1"/>
+  <!-- Triangle outline — gold gradient stroke -->
+  <polygon points="16,6.5 27,25.5 5,25.5" fill="none" stroke="url(#g)" stroke-width="1.5" stroke-linejoin="round"/>
 </svg>

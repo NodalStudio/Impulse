@@ -9,65 +9,39 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Impulse brand colors
+        // Impulse brand colors — from Visual Identity guide
         navy: {
-          DEFAULT: '#1e3a5f',
-          light: '#2a4a73',
-          dark: '#152a45',
+          DEFAULT: '#051c3c',
+          light: '#0a2d5c',
+          dark: '#031225',
         },
         gold: {
-          DEFAULT: '#c9a227',
-          light: '#ddb73a',
-          dark: '#a88820',
+          DEFAULT: '#bf8a3d',
+          light: '#d4a456',
+          dark: '#a07232',
         },
-        cream: {
-          DEFAULT: '#faf7f2',
-          dark: '#f5f0e8',
+        blush: {
+          DEFAULT: '#f3e9e5',
+          dark: '#ebe0db',
         },
         rose: {
-          DEFAULT: '#f5e6e0',
-          dark: '#edd5cc',
+          DEFAULT: '#c4a6a2',
+          dark: '#b39490',
+          light: '#d4bbb8',
         },
-        beige: {
-          DEFAULT: '#efe8e1',
-          dark: '#e5dbd2',
+        burgundy: {
+          DEFAULT: '#8a181a',
+          light: '#a52225',
+          dark: '#6e1315',
         },
       },
       fontFamily: {
-        cormorant: [
-          'Cormorant Garamond',
+        tenor: [
+          'Tenor Sans',
           'Georgia',
           'Cambria',
           '"Times New Roman"',
-          '"Liberation Serif"',     // Linux
-          '"DejaVu Serif"',         // Linux
-          '"Noto Serif"',           // Linux/Android
-          'Times',
           'serif',
-        ],
-        greatvibes: [
-          'Above The Beyond',       // Custom script font
-          'Great Vibes',            // First fallback (Google Fonts)
-          '"Snell Roundhand"',      // macOS
-          '"Segoe Script"',         // Windows
-          '"Lucida Handwriting"',   // Windows/macOS
-          '"Bradley Hand"',         // macOS
-          '"URW Chancery L"',       // Linux
-          'cursive',
-        ],
-        source: [
-          'Source Sans 3',
-          '"Segoe UI"',             // Windows
-          'system-ui',
-          '-apple-system',          // macOS/iOS
-          'Roboto',                 // Android/Chrome OS
-          '"Liberation Sans"',     // Linux
-          '"DejaVu Sans"',         // Linux
-          '"Noto Sans"',           // Linux/Android
-          'Ubuntu',                // Ubuntu Linux
-          '"Helvetica Neue"',
-          'Arial',
-          'sans-serif',
         ],
         montserrat: [
           'Montserrat',
@@ -75,18 +49,22 @@ const config: Config = {
           'system-ui',
           '-apple-system',
           'Roboto',
-          '"Liberation Sans"',     // Linux
-          '"DejaVu Sans"',         // Linux
-          '"Noto Sans"',           // Linux/Android
-          'Ubuntu',                // Ubuntu Linux
           '"Helvetica Neue"',
           'Arial',
           'sans-serif',
         ],
+        script: [
+          'Brittany Signature',
+          'Great Vibes',
+          '"Snell Roundhand"',
+          '"Segoe Script"',
+          '"Lucida Handwriting"',
+          'cursive',
+        ],
       },
       backgroundImage: {
-        'gradient-impulse': 'linear-gradient(135deg, #faf7f2 0%, #f5e6e0 50%, #efe8e1 100%)',
-        'gradient-hero': 'linear-gradient(180deg, #faf7f2 0%, #f5e6e0 100%)',
+        'gradient-impulse': 'linear-gradient(135deg, #f3e9e5 0%, #c4a6a2 100%)',
+        'gradient-hero': 'linear-gradient(170deg, #f3e9e5 0%, #ebe0db 60%, #d4bbb8 100%)',
       },
       animation: {
         'fade-in': 'fadeIn 0.6s ease-out forwards',
