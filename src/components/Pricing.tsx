@@ -19,7 +19,7 @@ const experienceFeatures = [
 
 export default function Pricing() {
   return (
-    <section id="offres" className="snap-section section bg-gradient-to-br from-cream via-white to-rose/20">
+    <section id="offres" className="section bg-gradient-to-br from-blush via-white to-rose/20">
       <div className="container-impulse px-4 h-full flex flex-col justify-center">
         {/* Section header - Desktop only */}
         <div className="hidden lg:block mb-[1.5vh] animate-fade-in-up flex-shrink-0">
@@ -39,12 +39,12 @@ export default function Pricing() {
             <div className="w-24 h-[2px] bg-gradient-to-r from-gold to-transparent"></div>
           </div>
           {/* Essentielle - Fills space */}
-          <div className="bg-white/80 backdrop-blur-sm rounded-xl p-[2vh] border border-beige/50 animate-fade-in-up">
+          <div className="bg-white/80 backdrop-blur-sm rounded-xl p-[2vh] border border-rose/50 animate-fade-in-up">
             <div className="flex items-center justify-between mb-[1vh]">
-              <p className="font-greatvibes text-[3vh] text-navy">
+              <p className="font-script text-[3vh] text-navy">
                 Essentielle
               </p>
-              <p className="font-greatvibes text-[2.5vh] text-gold">
+              <p className="font-script text-[2.5vh] text-gold">
                 Offert
               </p>
             </div>
@@ -60,7 +60,7 @@ export default function Pricing() {
               {essentiellFeatures.map((feature, index) => (
                 <li key={index} className="flex items-start gap-1">
                   <span className="text-gold text-[1.3vh]">•</span>
-                  <span className="font-source text-[1.3vh] text-navy/80 leading-tight">
+                  <span className="font-montserrat text-[1.3vh] text-navy/80 leading-tight">
                     {feature}
                   </span>
                 </li>
@@ -71,7 +71,7 @@ export default function Pricing() {
           {/* Expérience - Fills space */}
           <div className="bg-white rounded-xl p-[2vh] shadow-lg border-2 border-gold/30 animate-fade-in-up delay-100">
             <div className="flex items-center justify-between mb-[1vh]">
-              <p className="font-greatvibes text-[3vh] text-navy">
+              <p className="font-script text-[3vh] text-navy">
                 Expérience
               </p>
             </div>
@@ -83,7 +83,7 @@ export default function Pricing() {
               </p>
             </div>
 
-            <p className="font-cormorant text-[1.5vh] text-navy mb-[1vh] italic">
+            <p className="font-tenor text-[1.5vh] text-navy mb-[1vh] italic">
               + Accès à toute l&apos;offre essentielle
             </p>
 
@@ -91,7 +91,7 @@ export default function Pricing() {
               {experienceFeatures.map((feature, index) => (
                 <div key={index} className="flex items-start gap-1">
                   <span className="text-gold text-[1.2vh] mt-0.5">+</span>
-                  <span className="font-source text-[1.3vh] text-navy font-medium leading-tight">
+                  <span className="font-montserrat text-[1.3vh] text-navy font-medium leading-tight">
                     {feature.title}
                   </span>
                 </div>
@@ -99,14 +99,14 @@ export default function Pricing() {
             </div>
 
             {/* Pricing callout */}
-            <div className="bg-gradient-to-r from-cream to-rose/30 rounded-lg p-[1.5vh] text-center">
-              <p className="font-greatvibes text-[2vh] text-gold">
+            <div className="bg-gradient-to-r from-blush to-rose/30 rounded-lg p-[1.5vh] text-center">
+              <p className="font-script text-[2vh] text-gold">
                 Offre de lancement
               </p>
-              <p className="font-cormorant text-[2.2vh] text-navy font-semibold">
+              <p className="font-tenor text-[2.2vh] text-navy font-semibold">
                 79€HT pour 6 mois*
               </p>
-              <p className="font-source text-[1.2vh] text-navy/70">
+              <p className="font-montserrat text-[1.2vh] text-navy/70">
                 + ~25€HT / event • *jan-juin 2026
               </p>
             </div>
@@ -116,8 +116,8 @@ export default function Pricing() {
         {/* Desktop: Full layout - dynamic sizing */}
         <div className="hidden lg:grid lg:grid-cols-2 gap-4 xl:gap-6 max-w-5xl">
           {/* Essentielle */}
-          <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 xl:p-6 border border-beige/50 animate-fade-in-up">
-            <p className="font-greatvibes text-[clamp(1.75rem,4vh,2.5rem)] text-navy mb-[1vh]">
+          <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 xl:p-6 border border-rose/50 animate-fade-in-up">
+            <p className="font-script text-[clamp(1.75rem,4vh,2.5rem)] text-navy mb-[1vh]">
               Essentielle
             </p>
 
@@ -132,15 +132,15 @@ export default function Pricing() {
               {essentiellFeatures.map((feature, index) => (
                 <li key={index} className="flex items-start gap-2">
                   <span className="text-gold mt-0.5 text-sm">•</span>
-                  <span className="font-source text-[clamp(0.7rem,1.5vh,0.875rem)] text-navy/80 leading-snug">
+                  <span className="font-montserrat text-[clamp(0.7rem,1.5vh,0.875rem)] text-navy/80 leading-snug">
                     {feature}
                   </span>
                 </li>
               ))}
             </ul>
 
-            <div className="pt-[1vh] border-t border-beige/50">
-              <p className="font-greatvibes text-[clamp(1.25rem,3vh,1.5rem)] text-gold text-center">
+            <div className="pt-[1vh] border-t border-rose/50">
+              <p className="font-script text-[clamp(1.25rem,3vh,1.5rem)] text-gold text-center">
                 Offert
               </p>
             </div>
@@ -148,7 +148,7 @@ export default function Pricing() {
 
           {/* Expérience */}
           <div className="bg-white rounded-xl p-4 xl:p-6 shadow-xl border-2 border-gold/30 animate-fade-in-up delay-100">
-            <p className="font-greatvibes text-[clamp(1.75rem,4vh,2.5rem)] text-navy mb-[1vh]">
+            <p className="font-script text-[clamp(1.75rem,4vh,2.5rem)] text-navy mb-[1vh]">
               Expérience
             </p>
 
@@ -159,7 +159,7 @@ export default function Pricing() {
               </p>
             </div>
 
-            <p className="font-cormorant text-[clamp(0.75rem,1.5vh,0.875rem)] text-navy mb-[1.5vh] italic">
+            <p className="font-tenor text-[clamp(0.75rem,1.5vh,0.875rem)] text-navy mb-[1.5vh] italic">
               Accès à toute l&apos;offre essentielle
             </p>
 
@@ -168,7 +168,7 @@ export default function Pricing() {
                 <div key={index} className="flex items-start gap-1.5">
                   <span className="text-gold text-xs mt-0.5">+</span>
                   <div>
-                    <span className="font-source text-[clamp(0.7rem,1.5vh,0.875rem)] text-navy font-medium">
+                    <span className="font-montserrat text-[clamp(0.7rem,1.5vh,0.875rem)] text-navy font-medium">
                       {feature.title}
                     </span>
                     {feature.items && (
@@ -186,14 +186,14 @@ export default function Pricing() {
             </div>
 
             {/* Pricing callout */}
-            <div className="bg-gradient-to-r from-cream to-rose/30 rounded-lg p-[1.5vh] xl:p-4 text-center">
-              <p className="font-greatvibes text-[clamp(0.875rem,2vh,1.125rem)] text-gold">
+            <div className="bg-gradient-to-r from-blush to-rose/30 rounded-lg p-[1.5vh] xl:p-4 text-center">
+              <p className="font-script text-[clamp(0.875rem,2vh,1.125rem)] text-gold">
                 Offre de lancement
               </p>
-              <p className="font-cormorant text-[clamp(1rem,2.5vh,1.25rem)] text-navy font-semibold">
+              <p className="font-tenor text-[clamp(1rem,2.5vh,1.25rem)] text-navy font-semibold">
                 seulement 79€HT pour 6 mois*
               </p>
-              <p className="font-source text-[10px] text-navy/70 mt-0.5">
+              <p className="font-montserrat text-[10px] text-navy/70 mt-0.5">
                 + ~25€HT / event en earlybird • *jan-juin 2026
               </p>
             </div>

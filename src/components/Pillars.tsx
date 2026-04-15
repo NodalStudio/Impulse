@@ -1,141 +1,267 @@
+'use client';
+
+import { useEffect, useRef } from 'react';
+
 export default function Pillars() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.classList.add('in-view');
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 },
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   const pillars = [
     {
-      number: "1",
+      number: "01",
       title: "apprendre",
-      description: "des contenus et échanges actionnables"
+      description:
+        "Des contenus et échanges actionnables pour nourrir votre réflexion et affûter vos compétences.",
     },
     {
-      number: "2",
+      number: "02",
       title: "s'entraider",
-      description: "intelligence collective et soutien réel"
+      description:
+        "Intelligence collective et soutien réel entre femmes qui comprennent vos enjeux.",
     },
     {
-      number: "3",
-      title: "réussir",
-      description: "posture, visibilité, décisions alignées"
-    }
+      number: "03",
+      title: "agir",
+      description:
+        "Posture, visibilité et décisions alignées pour passer à l'action concrètement.",
+    },
   ];
 
   return (
-    <section id="piliers" className="snap-section section bg-cream">
-      <div className="container-impulse px-4 h-full flex flex-col lg:py-0">
-        {/* Triangle visual with pillars - Desktop - scaled for smaller viewports */}
-        <div className="hidden lg:flex mb-10 flex-1 items-center justify-center">
-          <div className="relative flex flex-col items-center scale-[0.85] xl:scale-100 origin-center">
+    <section
+      ref={sectionRef}
+      id="piliers"
+      className="relative py-20 md:py-32 overflow-hidden hero-bg noise-overlay"
+    >
+      {/* Top edge */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/15 to-transparent" />
 
-            {/* Section header - inside centered container */}
-            <div className="mb-8 animate-fade-in-up text-left self-start">
-              <p className="font-montserrat uppercase tracking-[0.3em] text-navy text-sm lg:text-xl mb-1">
-                3 Piliers
-              </p>
-              <div className="w-24 h-[2px] bg-gradient-to-r from-gold to-transparent"></div>
-            </div>
+      {/* Subtle decorative ring — background atmosphere */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <svg
+          className="absolute -left-32 top-1/2 -translate-y-1/2 w-[500px] h-[500px] md:w-[600px] md:h-[600px]"
+          viewBox="0 0 600 600"
+          fill="none"
+          aria-hidden="true"
+        >
+          <circle cx="300" cy="300" r="295" stroke="#bf8a3d" strokeWidth="0.5" opacity="0.08" />
+          <circle cx="300" cy="300" r="220" stroke="#bf8a3d" strokeWidth="0.5" opacity="0.04" />
+        </svg>
+      </div>
 
-            {/* Pillar 1 - apprendre - centered at top */}
-            <div className="text-center mb-[1vh] animate-fade-in-up">
-              <div className="flex items-center justify-center gap-3 mb-1">
-                <span className="w-[5vh] h-[5vh] rounded-full border-2 border-gold flex items-center justify-center font-source text-[2vh] text-gold">
-                  1
-                </span>
-                <span className="font-greatvibes text-[6vh] text-navy leading-loose">
-                  {pillars[0].title}
-                </span>
-              </div>
-              <p className="font-cormorant text-[2vh] text-navy/70">
+      <div className="container-impulse px-6 md:px-8 relative z-10">
+        {/* Section header */}
+        <div className="text-center mb-14 md:mb-20 pillar-animate">
+          <p className="font-montserrat uppercase tracking-[0.3em] text-blush/40 text-xs lg:text-sm mb-4">
+            Nos 3 Piliers
+          </p>
+          <div className="flex items-center justify-center">
+            <div className="h-px w-12 bg-gradient-to-r from-transparent to-gold/30" />
+            <div className="w-1.5 h-1.5 rotate-45 bg-gold/40 mx-4" />
+            <div className="h-px w-12 bg-gradient-to-l from-transparent to-gold/30" />
+          </div>
+        </div>
+
+        {/* ─── Desktop: triangular arrangement ─── */}
+        <div className="hidden md:block max-w-4xl mx-auto">
+          {/* Top vertex — Apprendre (above the triangle) */}
+          <div
+            className="flex justify-center mb-6 pillar-animate"
+            style={{ animationDelay: "150ms" }}
+          >
+            <div className="text-center max-w-xs">
+              <span className="font-montserrat text-[11px] text-gold/40 tracking-[0.35em] uppercase font-medium">
+                01
+              </span>
+              <h3 className="font-tenor text-2xl lg:text-3xl text-blush mt-2 mb-3 capitalize tracking-wide">
+                {pillars[0].title}
+              </h3>
+              <p className="font-montserrat text-sm text-blush/50 leading-relaxed">
                 {pillars[0].description}
               </p>
             </div>
+          </div>
 
-            {/* Triangle SVG - dynamic height */}
-            <div className="relative">
-              <svg
-                viewBox="0 0 400 280"
-                className="w-[50vh] max-w-[420px] h-auto"
-                style={{ filter: 'drop-shadow(0 4px 20px rgba(30, 58, 95, 0.1))' }}
-              >
-                <defs>
-                  <linearGradient id="triangleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#f5e6e0" />
-                    <stop offset="100%" stopColor="#efe8e1" />
-                  </linearGradient>
-                </defs>
-                <path
-                  d="M200 20 L380 260 L20 260 Z"
-                  fill="url(#triangleGradient)"
-                  stroke="#1e3a5f"
-                  strokeWidth="1"
-                  strokeOpacity="0.2"
-                />
-              </svg>
+          {/* Triangle — geometric connector between the three pillars */}
+          <div className="flex justify-center">
+            <svg
+              className="w-[58%] h-auto"
+              viewBox="0 0 500 433"
+              fill="none"
+              aria-hidden="true"
+            >
+              <defs>
+                <linearGradient
+                  id="pillar-tri-stroke"
+                  x1="0"
+                  y1="0"
+                  x2="500"
+                  y2="433"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop offset="0%" stopColor="#d4a456" stopOpacity="0.4" />
+                  <stop offset="50%" stopColor="#bf8a3d" stopOpacity="0.22" />
+                  <stop offset="100%" stopColor="#d4a456" stopOpacity="0.4" />
+                </linearGradient>
+                <radialGradient id="pillar-tri-glow" cx="50%" cy="60%" r="40%">
+                  <stop offset="0%" stopColor="#bf8a3d" stopOpacity="0.05" />
+                  <stop offset="100%" stopColor="#bf8a3d" stopOpacity="0" />
+                </radialGradient>
+              </defs>
+
+              {/* Soft inner glow */}
+              <polygon
+                points="250,15 485,420 15,420"
+                fill="url(#pillar-tri-glow)"
+              />
+
+              {/* Main triangle — draws itself in */}
+              <polygon
+                points="250,15 485,420 15,420"
+                stroke="url(#pillar-tri-stroke)"
+                strokeWidth="1"
+                strokeLinejoin="round"
+                fill="none"
+                className="pillar-triangle-draw"
+              />
+
+              {/* Inner echo triangle for depth */}
+              <polygon
+                points="250,65 458,398 42,398"
+                stroke="#bf8a3d"
+                strokeWidth="0.5"
+                fill="none"
+                opacity="0.06"
+              />
+
+              {/* Vertex diamonds */}
+              <g transform="translate(250,15) rotate(45)">
+                <rect x="-5" y="-5" width="10" height="10" rx="1" fill="#bf8a3d" opacity="0.5" />
+              </g>
+              <g transform="translate(15,420) rotate(45)">
+                <rect x="-5" y="-5" width="10" height="10" rx="1" fill="#bf8a3d" opacity="0.5" />
+              </g>
+              <g transform="translate(485,420) rotate(45)">
+                <rect x="-5" y="-5" width="10" height="10" rx="1" fill="#bf8a3d" opacity="0.5" />
+              </g>
+
+              {/* Edge midpoint accents */}
+              <circle cx="132" cy="218" r="1.5" fill="#bf8a3d" opacity="0.2" />
+              <circle cx="250" cy="420" r="1.5" fill="#bf8a3d" opacity="0.2" />
+              <circle cx="368" cy="218" r="1.5" fill="#bf8a3d" opacity="0.2" />
+            </svg>
+          </div>
+
+          {/* Bottom vertices — centered on bottom triangle points
+               SVG is 58% wide, centered → each bottom vertex sits at
+               (100%-58%)/2 + (15/500)*58% = 22.74% from the edge.
+               calc(22.74% - 120px) centres a 240px block on that point. */}
+          <div className="flex items-start mt-6">
+            <div
+              className="text-center w-[240px] shrink-0 pillar-animate"
+              style={{ marginLeft: 'calc(22.74% - 120px)', animationDelay: '300ms' }}
+            >
+              <span className="font-montserrat text-[11px] text-gold/40 tracking-[0.35em] uppercase font-medium">
+                02
+              </span>
+              <h3 className="font-tenor text-2xl lg:text-3xl text-blush mt-2 mb-3 capitalize tracking-wide">
+                {pillars[1].title}
+              </h3>
+              <p className="font-montserrat text-sm text-blush/50 leading-relaxed">
+                {pillars[1].description}
+              </p>
             </div>
 
-            {/* Bottom pillars row */}
-            <div className="flex justify-center gap-[15vh] mt-[1vh]">
-              {/* Pillar 2 - s'entraider */}
-              <div className="text-center animate-fade-in-up delay-100">
-                <div className="flex items-center justify-center gap-3 mb-1">
-                  <span className="w-[5vh] h-[5vh] rounded-full border-2 border-gold flex items-center justify-center font-source text-[2vh] text-gold">
-                    2
-                  </span>
-                  <span className="font-greatvibes text-[6vh] text-navy leading-loose">
-                    {pillars[1].title}
-                  </span>
-                </div>
-                <p className="font-cormorant text-[2vh] text-navy/70">
-                  {pillars[1].description}
-                </p>
-              </div>
+            <div className="flex-1" />
 
-              {/* Pillar 3 - réussir */}
-              <div className="text-center animate-fade-in-up delay-200">
-                <div className="flex items-center justify-center gap-3 mb-1">
-                  <span className="w-[5vh] h-[5vh] rounded-full border-2 border-gold flex items-center justify-center font-source text-[2vh] text-gold">
-                    3
-                  </span>
-                  <span className="font-greatvibes text-[6vh] text-navy leading-loose">
-                    {pillars[2].title}
-                  </span>
-                </div>
-                <p className="font-cormorant text-[2vh] text-navy/70">
-                  {pillars[2].description}
-                </p>
-              </div>
+            <div
+              className="text-center w-[240px] shrink-0 pillar-animate"
+              style={{ marginRight: 'calc(22.74% - 120px)', animationDelay: '450ms' }}
+            >
+              <span className="font-montserrat text-[11px] text-gold/40 tracking-[0.35em] uppercase font-medium">
+                03
+              </span>
+              <h3 className="font-tenor text-2xl lg:text-3xl text-blush mt-2 mb-3 capitalize tracking-wide">
+                {pillars[2].title}
+              </h3>
+              <p className="font-montserrat text-sm text-blush/50 leading-relaxed">
+                {pillars[2].description}
+              </p>
             </div>
           </div>
         </div>
 
-        {/* Mobile - Pillars fill viewport */}
-        <div className="lg:hidden flex-1 flex flex-col justify-center gap-[4vh]">
-          {/* Section header - Mobile */}
-          <div className="animate-fade-in-up">
-            <p className="font-montserrat uppercase tracking-[0.3em] text-navy text-sm mb-1">
-              3 Piliers
-            </p>
-            <div className="w-24 h-[2px] bg-gradient-to-r from-gold to-transparent"></div>
+        {/* ─── Mobile: vertical stack with decorative triangle ─── */}
+        <div className="md:hidden">
+          {/* Small decorative triangle echoing the desktop layout */}
+          <div className="flex justify-center mb-10">
+            <svg
+              width="36"
+              height="32"
+              viewBox="0 0 36 32"
+              fill="none"
+              aria-hidden="true"
+            >
+              <polygon
+                points="18,2 34,30 2,30"
+                stroke="#bf8a3d"
+                strokeWidth="0.75"
+                fill="none"
+                opacity="0.3"
+              />
+              <g transform="translate(18,2) rotate(45)">
+                <rect x="-2" y="-2" width="4" height="4" fill="#bf8a3d" opacity="0.4" />
+              </g>
+            </svg>
           </div>
 
-          {pillars.map((pillar, index) => (
-            <div
-              key={index}
-              className="flex items-start gap-4 animate-fade-in-up"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <span className="w-[6vh] h-[6vh] rounded-full border-2 border-gold flex items-center justify-center font-source text-[2.2vh] text-gold flex-shrink-0">
-                {pillar.number}
-              </span>
-              <div>
-                <p className="font-greatvibes text-[4.5vh] text-navy mb-[0.3vh]">
+          <div className="space-y-8">
+            {pillars.map((pillar, index) => (
+              <div
+                key={index}
+                className="text-center pillar-animate"
+                style={{ animationDelay: `${(index + 1) * 150}ms` }}
+              >
+                <span className="font-montserrat text-[11px] text-gold/40 tracking-[0.35em] uppercase font-medium">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <h3 className="font-tenor text-2xl text-blush mt-2 mb-3 capitalize tracking-wide">
                   {pillar.title}
-                </p>
-                <p className="font-cormorant text-[2.2vh] text-navy/70">
+                </h3>
+                <p className="font-montserrat text-sm text-blush/50 leading-relaxed max-w-xs mx-auto">
                   {pillar.description}
                 </p>
+                {/* Gold connector between items */}
+                {index < pillars.length - 1 && (
+                  <div className="flex justify-center mt-6">
+                    <div className="w-px h-6 bg-gradient-to-b from-gold/20 to-transparent" />
+                  </div>
+                )}
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
+
+      {/* Bottom edge */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
     </section>
   );
 }

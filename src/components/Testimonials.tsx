@@ -31,138 +31,112 @@ const highlights = [
 
 export default function Testimonials() {
   return (
-    <section id="temoignages" className="snap-section section bg-cream">
-      <div className="container-impulse px-4 h-full flex flex-col lg:py-0 lg:justify-center">
-        {/* Section header - Desktop only */}
-        <div className="hidden lg:block mb-[1.5vh] animate-fade-in-up flex-shrink-0">
-          <p className="font-montserrat uppercase tracking-[0.3em] text-navy text-sm lg:text-xl mb-1">
+    <section id="temoignages" className="py-20 md:py-28 bg-blush">
+      <div className="container-impulse px-6 md:px-8">
+        {/* Section header */}
+        <div className="mb-10 animate-fade-in-up">
+          <p className="font-montserrat uppercase tracking-[0.3em] text-navy/50 text-xs lg:text-sm mb-3">
             Témoignages
           </p>
-          <div className="w-32 h-[2px] bg-gradient-to-r from-gold to-transparent"></div>
+          <div className="w-16 h-px bg-gradient-to-r from-gold to-transparent" />
         </div>
 
-        {/* Desktop layout - Creative asymmetric masonry */}
+        {/* Desktop layout — asymmetric masonry */}
         <div className="hidden lg:block">
-          {/* Highlights as horizontal flowing banner */}
-          <div className="flex items-center justify-center gap-6 mb-10 animate-fade-in-up">
-            <div className="h-[1px] w-16 bg-gradient-to-r from-transparent to-gold/50"></div>
+          {/* Highlights banner */}
+          <div className="flex items-center justify-center gap-6 mb-12 animate-fade-in-up">
+            <div className="h-px w-12 bg-gradient-to-r from-transparent to-gold/30" />
             <div className="flex items-center gap-4 flex-wrap justify-center">
               {highlights.map((highlight, index) => (
                 <span
                   key={highlight}
-                  className="font-cormorant text-base text-navy/80 flex items-center gap-3"
+                  className="font-tenor text-sm text-navy/70 flex items-center gap-3"
                 >
                   {highlight}
                   {index < highlights.length - 1 && (
-                    <span className="text-gold text-lg">·</span>
+                    <span className="text-gold text-sm">·</span>
                   )}
                 </span>
               ))}
             </div>
-            <div className="h-[1px] w-16 bg-gradient-to-l from-transparent to-gold/50"></div>
+            <div className="h-px w-12 bg-gradient-to-l from-transparent to-gold/30" />
           </div>
 
-          {/* Testimonials in creative staggered layout */}
+          {/* Testimonials grid */}
           <div className="relative max-w-6xl mx-auto">
             {/* Large decorative quote */}
-            <span className="absolute -top-4 left-0 text-[120px] leading-none text-gold/10 font-serif select-none">
+            <span className="absolute -top-4 left-0 text-[120px] leading-none text-gold/8 font-serif select-none pointer-events-none">
               &ldquo;
             </span>
 
-            {/* Grid with varied positions */}
-            <div className="grid grid-cols-12 gap-6">
-              {/* Featured large testimonial - spans 5 cols, offset from top */}
-              <div
-                className="col-span-5 row-span-2 bg-white rounded-2xl p-8 shadow-lg border-l-4 border-gold animate-fade-in-up relative mt-8"
-              >
-                <p className="font-cormorant text-xl text-navy leading-relaxed mb-6 italic">
+            <div className="grid grid-cols-12 gap-5">
+              {/* Featured large testimonial */}
+              <div className="col-span-5 row-span-2 bg-white rounded-sm p-8 shadow-sm border-l-2 border-gold animate-fade-in-up relative mt-8">
+                <p className="font-tenor text-xl text-navy leading-relaxed mb-6 italic">
                   &ldquo;{testimonials[4].quote}&rdquo;
                 </p>
-                <div className="flex items-center gap-3">
-                  <p className="font-greatvibes text-2xl text-navy">
-                    {testimonials[4].author}
-                  </p>
-                </div>
+                <p className="font-script text-2xl text-navy">
+                  {testimonials[4].author}
+                </p>
               </div>
 
-              {/* Top right - medium card */}
-              <div
-                className="col-span-4 bg-beige/60 rounded-2xl p-6 animate-fade-in-up delay-100"
-              >
-                <span className="text-gold text-3xl leading-none font-serif">&ldquo;</span>
-                <p className="font-cormorant text-base text-navy leading-relaxed mt-2 mb-4">
+              {/* Top right — medium card */}
+              <div className="col-span-4 bg-rose/40 rounded-sm p-6 animate-fade-in-up delay-100">
+                <span className="text-gold text-2xl leading-none font-serif">&ldquo;</span>
+                <p className="font-tenor text-base text-navy leading-relaxed mt-2 mb-4">
                   {testimonials[0].quote}
                 </p>
-                <p className="font-greatvibes text-xl text-navy text-right">
+                <p className="font-script text-lg text-navy text-right">
                   {testimonials[0].author}
                 </p>
               </div>
 
-              {/* Far right - small accent card */}
-              <div
-                className="col-span-3 bg-navy rounded-2xl p-5 text-white animate-fade-in-up delay-150 flex flex-col justify-between"
-              >
-                <span className="text-gold/80 text-2xl leading-none font-serif">&ldquo;</span>
-                <p className="font-cormorant text-sm text-white/90 leading-relaxed mt-2">
+              {/* Far right — navy accent card */}
+              <div className="col-span-3 bg-navy rounded-sm p-5 text-white animate-fade-in-up delay-150 flex flex-col justify-between">
+                <span className="text-gold/60 text-2xl leading-none font-serif">&ldquo;</span>
+                <p className="font-tenor text-sm text-blush/80 leading-relaxed mt-2">
                   {testimonials[2].quote}
                 </p>
-                <p className="font-greatvibes text-lg text-gold mt-3 text-right">
+                <p className="font-script text-lg text-gold mt-3 text-right">
                   {testimonials[2].author}
                 </p>
               </div>
 
               {/* Bottom middle-left */}
-              <div
-                className="col-span-4 col-start-6 bg-white rounded-2xl p-6 shadow-md animate-fade-in-up delay-200 -mt-4"
-              >
+              <div className="col-span-4 col-start-6 bg-white rounded-sm p-6 shadow-sm animate-fade-in-up delay-200 -mt-4">
                 <span className="text-gold text-2xl leading-none font-serif">&ldquo;</span>
-                <p className="font-cormorant text-base text-navy leading-relaxed mt-2 mb-4">
+                <p className="font-tenor text-base text-navy leading-relaxed mt-2 mb-4">
                   {testimonials[1].quote}
                 </p>
-                <p className="font-greatvibes text-xl text-navy text-right">
+                <p className="font-script text-lg text-navy text-right">
                   {testimonials[1].author}
                 </p>
               </div>
 
               {/* Bottom right */}
-              <div
-                className="col-span-3 bg-gradient-to-br from-rose/40 to-beige/60 rounded-2xl p-5 animate-fade-in-up delay-250"
-              >
+              <div className="col-span-3 bg-rose/30 rounded-sm p-5 animate-fade-in-up delay-250">
                 <span className="text-gold text-2xl leading-none font-serif">&ldquo;</span>
-                <p className="font-cormorant text-sm text-navy leading-relaxed mt-2 mb-3">
+                <p className="font-tenor text-sm text-navy leading-relaxed mt-2 mb-3">
                   {testimonials[3].quote}
                 </p>
-                <p className="font-greatvibes text-lg text-navy text-right">
+                <p className="font-script text-lg text-navy text-right">
                   {testimonials[3].author}
                 </p>
               </div>
             </div>
-
-            {/* Closing decorative quote */}
-            <span className="absolute -bottom-8 right-0 text-[120px] leading-none text-gold/10 font-serif select-none rotate-180">
-              &ldquo;
-            </span>
           </div>
         </div>
 
-        {/* Mobile/Tablet layout - fills full viewport height */}
-        <div className="lg:hidden flex-1 flex flex-col justify-evenly min-h-0">
-          {/* Section header - Mobile */}
-          <div className="animate-fade-in-up">
-            <p className="font-montserrat uppercase tracking-[0.3em] text-navy text-sm mb-1">
-              Témoignages
-            </p>
-            <div className="w-24 h-[2px] bg-gradient-to-r from-gold to-transparent"></div>
-          </div>
-
-          {/* Highlights - compact inline */}
-          <div className="bg-white rounded-lg p-[1.5vh] border border-gold/30 flex-shrink-0">
-            <p className="font-greatvibes text-lg text-navy text-center mb-[0.8vh]">
+        {/* Mobile layout */}
+        <div className="lg:hidden space-y-4">
+          {/* Highlights */}
+          <div className="bg-white rounded-sm p-4 border border-gold/15">
+            <p className="font-script text-base text-navy text-center mb-2">
               Les points forts du groupe
             </p>
             <div className="flex flex-wrap justify-center gap-x-3 gap-y-1">
               {highlights.slice(0, 3).map((highlight) => (
-                <span key={highlight} className="font-cormorant text-lg text-navy flex items-center gap-1">
+                <span key={highlight} className="font-tenor text-xs text-navy/70 flex items-center gap-1">
                   <span className="text-gold">·</span>
                   {highlight}
                 </span>
@@ -170,38 +144,24 @@ export default function Testimonials() {
             </div>
           </div>
 
-          {/* 2 testimonials side by side */}
-          <div className="grid grid-cols-2 gap-[1.5vh]">
-            {testimonials.slice(0, 2).map((testimonial, index) => (
-              <div
-                key={testimonial.quote}
-                className={`bg-beige/50 rounded-lg p-[1.5vh] animate-fade-in-up flex flex-col${index === 1 ? ' delay-50' : ''}`}
-              >
-                <span className="text-gold text-lg leading-none">&ldquo;</span>
-                <p className="font-cormorant text-lg text-navy leading-snug flex-1">
-                  {testimonial.quote}
-                </p>
-                <p className="font-greatvibes text-lg text-navy text-right mt-[0.5vh]">
-                  {testimonial.author}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          {/* Featured testimonial at bottom */}
-          <div className="bg-beige/50 rounded-lg p-[1.5vh] flex-shrink-0">
-            <div className="flex items-start gap-2">
-              <span className="text-gold text-lg leading-none">&ldquo;</span>
-              <div className="flex-1">
-                <p className="font-cormorant text-lg text-navy leading-snug">
-                  {testimonials[3].quote}
-                </p>
-                <p className="font-greatvibes text-lg text-navy text-right mt-[0.5vh]">
-                  {testimonials[3].author}
-                </p>
-              </div>
+          {/* Testimonials cards */}
+          {testimonials.slice(0, 4).map((testimonial, index) => (
+            <div
+              key={testimonial.quote}
+              className={`rounded-sm p-4 animate-fade-in-up ${
+                index === 0 ? 'bg-white shadow-sm border-l-2 border-gold' : 'bg-rose/30'
+              }`}
+              style={{ animationDelay: `${index * 50}ms` }}
+            >
+              <span className="text-gold text-lg leading-none font-serif">&ldquo;</span>
+              <p className="font-tenor text-sm text-navy leading-relaxed mt-1 mb-2">
+                {testimonial.quote}
+              </p>
+              <p className="font-script text-base text-navy text-right">
+                {testimonial.author}
+              </p>
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

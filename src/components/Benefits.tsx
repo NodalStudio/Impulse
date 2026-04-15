@@ -23,36 +23,38 @@ const benefits = [
 
 export default function Benefits() {
   return (
-    <section className="snap-section section bg-cream">
-      <div className="container-impulse px-4 h-full flex flex-col justify-evenly">
+    <section className="py-20 md:py-28 bg-blush">
+      <div className="container-impulse px-6 md:px-8">
         {/* Section header */}
-        <div className="animate-fade-in-up flex-shrink-0">
-          <p className="font-montserrat uppercase tracking-[0.3em] text-navy text-sm lg:text-xl mb-2">
+        <div className="mb-10 md:mb-14 animate-fade-in-up">
+          <p className="font-montserrat uppercase tracking-[0.3em] text-navy/50 text-xs lg:text-sm mb-3">
             Bénéfices
           </p>
-          <div className="w-24 h-[2px] bg-gradient-to-r from-gold to-transparent"></div>
+          <div className="w-16 h-px bg-gradient-to-r from-gold to-transparent" />
         </div>
 
-        {/* Benefits list - compact on mobile */}
-        {benefits.map((benefit, index) => (
-          <div
-            key={index}
-            className="animate-fade-in-up"
-            style={{ animationDelay: `${(index + 1) * 100}ms` }}
-          >
-            <div className="flex items-start gap-3 lg:gap-4">
-              <span className="text-gold text-lg lg:text-xl mt-1 flex-shrink-0">&gt;</span>
-              <div>
-                <p className="font-greatvibes text-lg lg:text-2xl text-navy mb-1 lg:mb-2">
-                  {benefit.title}
-                </p>
-                <p className="font-cormorant text-sm lg:text-xl text-navy/70">
-                  {benefit.description}
-                </p>
+        {/* Benefits grid — two columns on desktop for visual interest */}
+        <div className="grid md:grid-cols-2 gap-x-12 gap-y-8 md:gap-y-10 max-w-4xl">
+          {benefits.map((benefit, index) => (
+            <div
+              key={index}
+              className="animate-fade-in-up"
+              style={{ animationDelay: `${(index + 1) * 100}ms` }}
+            >
+              <div className="flex items-start gap-3 lg:gap-4">
+                <span className="w-1.5 h-1.5 rounded-full bg-gold flex-shrink-0 mt-2.5" />
+                <div>
+                  <p className="font-tenor text-lg lg:text-xl text-navy mb-1.5">
+                    {benefit.title}
+                  </p>
+                  <p className="font-montserrat text-sm lg:text-base text-navy/60 leading-relaxed">
+                    {benefit.description}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );

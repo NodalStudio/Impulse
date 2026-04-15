@@ -24,41 +24,30 @@ const founders = [
   },
 ];
 
-const mobileDelayClasses = ['', 'delay-100', 'delay-200'];
-const desktopDelayClasses = ['', 'delay-150', 'delay-300'];
-
 export default function Team() {
   return (
-    <section id="equipe" className="snap-section section-alt">
-      <div className="container-impulse px-4 h-full flex flex-col justify-center lg:py-4">
-        {/* Section header - Desktop only */}
-        <div className="hidden lg:block mb-14 animate-fade-in-up flex-shrink-0 lg:text-left">
-          <p className="font-montserrat uppercase tracking-[0.3em] text-navy text-sm lg:text-xl mb-1">
+    <section id="equipe" className="py-20 md:py-28 bg-white">
+      <div className="container-impulse px-6 md:px-8">
+        {/* Section header */}
+        <div className="mb-10 lg:mb-14 animate-fade-in-up">
+          <p className="font-montserrat uppercase tracking-[0.3em] text-navy/50 text-xs lg:text-sm mb-3">
             Équipe
           </p>
-          <div className="w-24 h-[2px] bg-gradient-to-r from-gold to-transparent lg:mx-0"></div>
+          <div className="w-16 h-px bg-gradient-to-r from-gold to-transparent" />
         </div>
 
-        {/* Mobile layout - Cards centered */}
-        <div className="lg:hidden flex-1 flex flex-col justify-evenly">
-          {/* Section header - Mobile */}
-          <div className="animate-fade-in-up">
-            <p className="font-montserrat uppercase tracking-[0.3em] text-navy text-sm mb-1">
-              Équipe
-            </p>
-            <div className="w-24 h-[2px] bg-gradient-to-r from-gold to-transparent"></div>
-          </div>
-
+        {/* Mobile layout */}
+        <div className="lg:hidden space-y-8">
           {founders.map((founder, index) => (
             <div
               key={founder.name}
-              className={`animate-fade-in-up ${mobileDelayClasses[index] ?? ''}`}
+              className="animate-fade-in-up"
+              style={{ animationDelay: `${index * 100}ms` }}
             >
-              {/* Photo + Name + Bio in horizontal layout */}
-              <div className="flex items-start gap-3">
-                {/* Circular photo — white ring, gold fill */}
+              <div className="flex items-start gap-4">
+                {/* Circular photo */}
                 <div className="relative flex-shrink-0">
-                  <div className="w-[8vh] h-[8vh] rounded-full p-[2px] bg-white shadow-sm">
+                  <div className="w-16 h-16 rounded-full p-[2px] bg-white shadow-sm">
                     <div className="w-full h-full rounded-full overflow-hidden bg-gold">
                       <Image
                         src={founder.image}
@@ -70,15 +59,14 @@ export default function Team() {
                     </div>
                   </div>
                 </div>
-                {/* Name + Role + Bio - more compact */}
                 <div className="flex-1 min-w-0">
-                  <p className="font-greatvibes text-xs mb-2 text-navy leading-normal">
+                  <p className="font-script text-lg text-navy mb-1">
                     {founder.name}
                   </p>
-                  <p className="font-montserrat uppercase tracking-wider text-[1.1vh] text-gold">
+                  <p className="font-montserrat uppercase tracking-wider text-[10px] text-gold font-medium mb-2">
                     {founder.role}
                   </p>
-                  <p className="font-source text-xs text-navy/70 leading-snug mt-[0.3vh]">
+                  <p className="font-montserrat text-xs text-navy/60 leading-relaxed">
                     {founder.bio}
                   </p>
                 </div>
@@ -87,7 +75,7 @@ export default function Team() {
           ))}
         </div>
 
-        {/* Clip path: flat top (head overflows), semicircular bottom matching gold circle */}
+        {/* Clip path for desktop photos */}
         <svg className="absolute w-0 h-0" aria-hidden="true">
           <defs>
             <clipPath id="photo-clip" clipPathUnits="objectBoundingBox">
@@ -96,22 +84,19 @@ export default function Team() {
           </defs>
         </svg>
 
-        {/* Desktop layout - 3 column grid */}
+        {/* Desktop layout */}
         <div className="hidden lg:grid lg:grid-cols-3 gap-8 xl:gap-12 max-w-5xl mx-auto">
           {founders.map((founder, index) => (
             <div
               key={founder.name}
-              className={`group animate-fade-in-up text-center ${desktopDelayClasses[index] ?? ''}`}
+              className="group animate-fade-in-up text-center"
+              style={{ animationDelay: `${index * 150}ms` }}
             >
-              {/* Photo — gold circle, white ring, navy accent, head overflow */}
-              <div className="relative mx-auto mb-6 w-28 h-28 xl:w-40 xl:h-40 transition-all duration-500 group-hover:drop-shadow-[0_0_18px_rgba(201,162,39,0.3)]">
-                {/* Thin decorative navy ring */}
-                <div className="absolute -inset-[10px] rounded-full border border-navy/[0.12]" />
-                {/* White ring with shadow */}
+              {/* Photo */}
+              <div className="relative mx-auto mb-6 w-28 h-28 xl:w-40 xl:h-40 transition-all duration-500 group-hover:drop-shadow-[0_0_18px_rgba(201,162,39,0.25)]">
+                <div className="absolute -inset-[10px] rounded-full border border-navy/[0.08]" />
                 <div className="absolute inset-0 rounded-full bg-white shadow-md" />
-                {/* Gold circle fill */}
                 <div className="absolute inset-[4px] rounded-full bg-gold" />
-                {/* Photo — SVG clip: flat top (head overflows freely), semicircular bottom */}
                 <div className="absolute left-[4px] right-[4px] bottom-[4px] photo-clip-container">
                   <Image
                     src={founder.image}
@@ -123,18 +108,15 @@ export default function Team() {
                 </div>
               </div>
 
-              {/* Nom en Great Vibes */}
-              <p className="font-greatvibes text-3xl xl:text-4xl text-navy mb-6">
+              <p className="font-script text-3xl xl:text-4xl text-navy mb-6">
                 {founder.name}
               </p>
 
-              {/* Rôle en gold */}
               <p className="font-montserrat uppercase tracking-wider text-[10px] xl:text-xs text-gold font-medium mb-4">
                 {founder.role}
               </p>
 
-              {/* Bio */}
-              <p className="font-source text-sm text-navy/70 leading-relaxed px-2">
+              <p className="font-montserrat text-sm text-navy/60 leading-relaxed px-2">
                 {founder.bio}
               </p>
             </div>
