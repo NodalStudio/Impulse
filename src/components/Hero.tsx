@@ -1,109 +1,69 @@
 "use client";
 
-import Image from "next/image";
-
 export default function Hero() {
   return (
-    <section id="hero" className="snap-section bg-gradient-hero">
-      <div className="container-impulse px-4 h-full flex items-center">
-        {/* Mobile: fills viewport with distributed content */}
-        <div className="lg:hidden w-full h-full flex flex-col justify-around items-center py-[2vh]">
-          {/* 3 Piliers - vertical stack with editorial styling */}
-          <div className="animate-fade-in-up">
-            <div className="inline-flex flex-col items-start text-left border-l-2 border-gold/40 pl-5 py-1">
-              <span className="font-cormorant text-[3vh] text-navy/70 italic tracking-wide">
-                Apprendre
-              </span>
-              <span className="font-cormorant text-[3vh] text-navy/70 italic tracking-wide">
-                S&apos;entraider
-              </span>
-              <span className="font-cormorant text-[3vh] text-navy/70 italic tracking-wide">
-                {'Réussir'}
-                <span className="text-gold font-bold">.</span>
-              </span>
-            </div>
-          </div>
+    <section
+      id="hero"
+      className="relative min-h-screen flex flex-col overflow-hidden hero-bg noise-overlay"
+    >
+      {/* Decorative background elements */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {/* Concentric gold rings — offset right, symbolising community & radiating energy */}
+        <svg
+          className="absolute -right-24 sm:-right-16 lg:-right-8 top-1/2 -translate-y-1/2 w-[400px] h-[400px] sm:w-[520px] sm:h-[520px] md:w-[640px] md:h-[640px] lg:w-[750px] lg:h-[750px]"
+          viewBox="0 0 750 750"
+          fill="none"
+          aria-hidden="true"
+        >
+          <circle cx="375" cy="375" r="370" stroke="#bf8a3d" strokeWidth="0.5" opacity="0.12" />
+          <circle cx="375" cy="375" r="280" stroke="#bf8a3d" strokeWidth="0.5" opacity="0.07" />
+          <circle cx="375" cy="375" r="190" stroke="#bf8a3d" strokeWidth="0.5" opacity="0.04" />
+        </svg>
 
-          <h1 className="font-cormorant text-[5vh] font-semibold text-navy leading-[1.15] animate-fade-in-up delay-100 text-center">
-            Le rendez-vous business
-            <br />
-            {'des '}<span className="text-gold">femmes d&apos;impact</span>
-            <br />à Barcelone
-          </h1>
+        {/* Ambient colour glows for depth */}
+        <div className="absolute top-1/4 right-1/3 w-[500px] h-[500px] bg-gold/[0.03] rounded-full blur-[120px]" />
+        <div className="absolute bottom-1/3 left-1/4 w-[350px] h-[350px] bg-burgundy/[0.02] rounded-full blur-[100px]" />
+      </div>
 
-          <div className="flex flex-col gap-[2vh] w-full max-w-xs animate-fade-in-up delay-200">
-            <a
-              href="#contact"
-              className="btn-primary group text-center py-[2vh] text-[1.8vh]"
-            >
-              <span className="relative z-10">Rejoindre la communauté</span>
-            </a>
-            <a
-              href="#calendrier"
-              className="btn-secondary group text-center py-[2vh] text-[1.8vh]"
-            >
-              Voir le calendrier
-              <svg
-                className="w-[2vh] h-[2vh] ml-2 inline-block transform group-hover:translate-x-1 transition-transform duration-300"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"
-                />
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        {/* Desktop layout - dynamic sizing based on viewport */}
-        <div className="hidden lg:grid lg:grid-cols-2 gap-6 xl:gap-12 items-center w-full max-w-5xl mx-auto">
-          {/* Left content */}
-          <div className="text-left">
-            {/* 3 Piliers - vertical stack with editorial styling */}
-            <div className="mb-[2vh] xl:mb-6 animate-fade-in-up">
-              <div className="inline-flex flex-col items-start text-left border-l-2 border-gold/40 pl-4 py-0.5">
-                <span className="font-cormorant text-base xl:text-lg text-navy/70 italic tracking-wide">
-                  Apprendre
-                </span>
-                <span className="font-cormorant text-base xl:text-lg text-navy/70 italic tracking-wide">
-                  S&apos;entraider
-                </span>
-                <span className="font-cormorant text-base xl:text-lg text-navy/70 italic tracking-wide">
-                  {'Réussir'}
-                  <span className="text-gold font-bold">.</span>
-                </span>
-              </div>
+      {/* Main content — vertically centred */}
+      <div className="flex-1 flex items-center relative z-10 pt-24">
+        <div className="container-impulse px-6 md:px-8 w-full">
+          <div className="max-w-3xl mx-auto text-center">
+            {/* Decorative diamond separator */}
+            <div className="flex items-center justify-center mb-10 md:mb-14 animate-fade-in delay-100">
+              <div className="h-px w-12 md:w-20 bg-gradient-to-r from-transparent to-gold/30" />
+              <div className="w-1.5 h-1.5 rotate-45 bg-gold/50 mx-4 md:mx-6" />
+              <div className="h-px w-12 md:w-20 bg-gradient-to-l from-transparent to-gold/30" />
             </div>
 
-            <h1 className="font-cormorant text-[clamp(2rem,5vh,3.5rem)] font-semibold text-navy leading-[1.15] mb-[3vh] xl:mb-8 animate-fade-in-up delay-100">
-              Le rendez-vous business
-              <br />
-              {'des '}<span className="text-gold relative inline-block group">
-                {'femmes d\'impact'}
-                <span
-                  aria-hidden="true"
-                  className="absolute -bottom-1 left-0 w-full h-[2px] bg-gold/30 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"
-                />
+            {/* Main headline */}
+            <h1 className="mb-7 md:mb-9">
+              <span className="block font-tenor text-[1.75rem] sm:text-[2rem] md:text-[2.75rem] lg:text-[3.5rem] text-blush leading-[1.2] tracking-[0.02em] animate-fade-in-up delay-200">
+                Le rendez-vous business
               </span>
-              <br />à Barcelone
+              <span className="block font-tenor text-[1.75rem] sm:text-[2rem] md:text-[2.75rem] lg:text-[3.5rem] leading-[1.2] tracking-[0.02em] mt-1 animate-fade-in-up delay-300">
+                <span className="text-blush">des </span>
+                <span className="text-gold">femmes d&apos;impact</span>
+              </span>
             </h1>
 
-            <div className="flex flex-row gap-3 justify-start animate-fade-in-up delay-200">
-              <a
-                href="#contact"
-                className="btn-primary group text-sm xl:text-base"
-              >
+            {/* Gold dot */}
+            <div className="flex justify-center mb-7 md:mb-9 animate-fade-in delay-400">
+              <div className="w-1.5 h-1.5 rounded-full bg-gold/50" />
+            </div>
+
+            {/* Subtitle */}
+            <p className="font-montserrat text-sm md:text-base text-blush/45 max-w-md mx-auto mb-10 md:mb-14 leading-relaxed font-light animate-fade-in-up delay-500">
+              Des événements mensuels à Barcelone pour les femmes entrepreneures
+              qui veulent apprendre, s&apos;entraider et agir ensemble.
+            </p>
+
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up delay-600">
+              <a href="#contact" className="hero-btn-primary group text-center">
                 <span className="relative z-10">Rejoindre la communauté</span>
               </a>
-              <a
-                href="#calendrier"
-                className="btn-secondary group text-sm xl:text-base"
-              >
+              <a href="#calendrier" className="hero-btn-secondary group text-center">
                 Voir le calendrier
                 <svg
                   className="w-4 h-4 ml-2 inline-block transform group-hover:translate-x-1 transition-transform duration-300"
@@ -114,93 +74,44 @@ export default function Hero() {
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    strokeWidth={2}
+                    strokeWidth={1.5}
                     d="M17 8l4 4m0 0l-4 4m4-4H3"
                   />
                 </svg>
               </a>
             </div>
           </div>
-
-          {/* Right - Photo Grid with dynamic sizing */}
-          <div className="relative animate-fade-in delay-300 justify-self-end">
-            {/* Constrained photo grid - 4 images in elegant arrangement */}
-            <div className="grid grid-cols-2 gap-3 max-w-md xl:max-w-lg">
-              {/* Left column */}
-              <div className="space-y-3">
-                <div className="h-[18vh] xl:h-[20vh] rounded-xl overflow-hidden shadow-lg group transition-all duration-500 hover:shadow-2xl hover:shadow-gold/40 hover:-translate-y-1 border-2 border-gold/30 hover:border-gold">
-                  <div className="relative w-full h-full">
-                    <Image
-                      src="/images/community-event.jpg"
-                      alt="Événement business mensuel Impulse pour femmes entrepreneures à Barcelone"
-                      width={280}
-                      height={220}
-                      priority
-                      className="w-full h-full object-cover transition-all duration-500 ease-out group-hover:scale-105 group-hover:brightness-110"
-                    />
-                  </div>
-                </div>
-                <div className="h-[20vh] xl:h-[22vh] rounded-xl overflow-hidden shadow-lg group transition-all duration-500 hover:shadow-2xl hover:shadow-gold/40 hover:-translate-y-1 border-2 border-gold/30 hover:border-gold">
-                  <div className="relative w-full h-full">
-                    <Image
-                      src="/images/community-networking.jpg"
-                      alt="Networking entre femmes d'affaires lors d'un atelier Impulse"
-                      width={280}
-                      height={250}
-                      priority
-                      className="w-full h-full object-cover transition-all duration-500 ease-out group-hover:scale-105 group-hover:brightness-110"
-                    />
-                  </div>
-                </div>
-              </div>
-              {/* Right column - offset for asymmetry */}
-              <div className="pt-[4vh] space-y-3">
-                <div className="h-[20vh] xl:h-[22vh] rounded-xl overflow-hidden shadow-lg group transition-all duration-500 hover:shadow-2xl hover:shadow-gold/40 hover:-translate-y-1 border-2 border-gold/30 hover:border-gold">
-                  <div className="relative w-full h-full">
-                    <Image
-                      src="/images/community-garden.jpg"
-                      alt="Communauté de femmes entrepreneures Impulse en extérieur à Barcelone"
-                      width={280}
-                      height={250}
-                      priority
-                      className="w-full h-full object-cover transition-all duration-500 ease-out group-hover:scale-105 group-hover:brightness-110"
-                    />
-                  </div>
-                </div>
-                <div className="h-[18vh] xl:h-[20vh] rounded-xl overflow-hidden shadow-lg group transition-all duration-500 hover:shadow-2xl hover:shadow-gold/40 hover:-translate-y-1 border-2 border-gold/30 hover:border-gold">
-                  <div className="relative w-full h-full">
-                    <Image
-                      src="/images/community-workshop.jpg"
-                      alt="Atelier pratique de formation entrepreneuriat féminin Impulse"
-                      width={280}
-                      height={250}
-                      priority
-                      className="w-full h-full object-cover transition-all duration-500 ease-out group-hover:scale-105 group-hover:brightness-110"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Decorative elements - subtle luxury accents */}
-            <div className="absolute -bottom-4 -left-8 w-24 h-24 bg-gold/15 rounded-full blur-3xl pointer-events-none"></div>
-            <div className="absolute -top-4 -right-8 w-32 h-32 bg-rose/30 rounded-full blur-3xl pointer-events-none"></div>
-          </div>
         </div>
       </div>
 
-      {/* Scroll indicator - hidden on very small viewports */}
-      <div className="absolute bottom-4 xl:bottom-8 left-1/2 -translate-x-1/2 z-10 hidden lg:block">
-        <a
-          href="#mission"
-          className="flex flex-col items-center text-navy/40 hover:text-gold transition-all duration-500 group"
-        >
-          <span className="font-source text-xs uppercase tracking-[0.2em] mb-2 group-hover:tracking-[0.3em] transition-all duration-500">
-            Découvrir
+      {/* Bottom — pillars + scroll */}
+      <div className="relative z-10 pb-6 md:pb-8">
+        {/* Three pillars */}
+        <div className="flex items-center justify-center gap-4 sm:gap-6 md:gap-10 mb-8 md:mb-10 animate-fade-in-up delay-700">
+          <span className="font-montserrat text-[10px] sm:text-xs text-gold/40 uppercase tracking-[0.2em] sm:tracking-[0.25em] font-light">
+            Apprendre
           </span>
-          <div className="relative">
+          <span className="w-1 h-1 rounded-full bg-gold/25" />
+          <span className="font-montserrat text-[10px] sm:text-xs text-gold/40 uppercase tracking-[0.2em] sm:tracking-[0.25em] font-light">
+            S&apos;entraider
+          </span>
+          <span className="w-1 h-1 rounded-full bg-gold/25" />
+          <span className="font-montserrat text-[10px] sm:text-xs text-gold/40 uppercase tracking-[0.2em] sm:tracking-[0.25em] font-light">
+            Agir
+          </span>
+        </div>
+
+        {/* Scroll indicator */}
+        <div className="hidden md:flex flex-col items-center">
+          <a
+            href="#mission"
+            className="flex flex-col items-center text-blush/20 hover:text-gold/50 transition-all duration-500 group"
+          >
+            <span className="font-montserrat text-[10px] uppercase tracking-[0.3em] mb-2 group-hover:tracking-[0.4em] transition-all duration-500">
+              Découvrir
+            </span>
             <svg
-              className="w-5 h-5 animate-bounce"
+              className="w-4 h-4 animate-bounce"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -212,9 +123,12 @@ export default function Hero() {
                 d="M19 14l-7 7m0 0l-7-7m7 7V3"
               />
             </svg>
-          </div>
-        </a>
+          </a>
+        </div>
       </div>
+
+      {/* Bottom edge — gold gradient line for transition to blush section */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
     </section>
   );
 }
