@@ -2,8 +2,6 @@ import { notFound } from 'next/navigation';
 import { getAllEvents, getEventBySlug } from '@/lib/events';
 import { partitionEvents } from '@/lib/partition';
 import EventDetail from '@/components/events/EventDetail';
-import Header from '@/components/Header';
-import { getSettings, getHeaderContent } from '@/lib/content';
 
 export const dynamicParams = false;
 
@@ -22,15 +20,7 @@ export default async function EventPage({ params }: Props) {
   const { past } = partitionEvents([event], new Date());
   const isPast = past.length > 0;
 
-  const settings = getSettings();
-  const headerContent = getHeaderContent();
-
-  return (
-    <>
-      <Header content={headerContent} settings={settings} />
-      <EventDetail event={event} isPast={isPast} />
-    </>
-  );
+  return <EventDetail event={event} isPast={isPast} />;
 }
 
 export async function generateMetadata({ params }: Props) {
