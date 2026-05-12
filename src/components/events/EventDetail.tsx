@@ -2,6 +2,7 @@ import Image from 'next/image';
 import type { ImpulseEvent } from '@/lib/types';
 import { formatEventDate } from '@/lib/format';
 import EventGallery from './EventGallery';
+import EventJsonLd from './EventJsonLd';
 
 type Props = {
   event: ImpulseEvent;
@@ -18,6 +19,7 @@ export default function EventDetail({ event, isPast, related = [] }: Props) {
 
   return (
     <article className="min-h-screen bg-blush">
+      <EventJsonLd event={event} isPast={isPast} />
       <header className="relative overflow-hidden bg-gradient-to-br from-navy to-navy-dark text-blush">
         <svg className="absolute -right-32 top-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none" viewBox="0 0 600 600" fill="none" aria-hidden="true">
           <circle cx="300" cy="300" r="295" stroke="#bf8a3d" strokeWidth="0.5" opacity="0.12" />

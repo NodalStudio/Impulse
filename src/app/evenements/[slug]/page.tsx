@@ -53,5 +53,11 @@ export async function generateMetadata({ params }: Props) {
       type: 'article',
       images: event.coverPhoto ? [{ url: `${baseUrl}${event.coverPhoto}` }] : undefined,
     },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${event.title} — Impulse`,
+      description,
+      images: event.coverPhoto ? [`${baseUrl}${event.coverPhoto}`] : undefined,
+    },
   };
 }
