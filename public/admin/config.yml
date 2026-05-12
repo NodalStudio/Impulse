@@ -1,0 +1,19 @@
+backend:
+  name: git-gateway
+  branch: main
+  commit_messages:
+    create: 'content: create {{collection}} "{{slug}}"'
+    update: 'content: update {{collection}} "{{slug}}"'
+    delete: 'content: delete {{collection}} "{{slug}}"'
+    uploadMedia: 'content: upload "{{path}}"'
+    deleteMedia: 'content: delete "{{path}}"'
+
+media_folder: public/images/uploads
+public_folder: /images/uploads
+
+site_url: https://communaute-impulse.com
+display_url: https://communaute-impulse.com
+
+locale: 'fr'
+
+collections: []
