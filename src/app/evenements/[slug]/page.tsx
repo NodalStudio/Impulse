@@ -17,18 +17,41 @@ export default async function EventPage({ params }: Props) {
   const event = getEventBySlug(slug);
   if (!event) notFound();
 
+  const allEvents = getAllEvents();
   const { past } = partitionEvents([event], new Date());
   const isPast = past.length > 0;
 
-  return <EventDetail event={event} isPast={isPast} />;
+  // Internal linking: surface up to 3 other events.
+  // Prefer upcoming first, then most recent past, to give visitors something
+  // actionable to click next. Excludes the current event.
+  const { upcoming: otherUpcoming, past: otherPast } = partitionEvents(
+    allEvents.filter(e => e.slug !== event.slug),
+    new Date(),
+  );
+  const related = [...otherUpcoming, ...otherPast].slice(0, 3);
+
+  return <EventDetail event={event} isPast={isPast} related={related} />;
 }
 
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   const event = getEventBySlug(slug);
   if (!event) return {};
+  const baseUrl = 'https://communaute-impulse.com';
+  const url = `${baseUrl}/evenements/${event.slug}`;
+  const description =
+    event.description?.split(/\n\s*\n/)[0]?.trim() ??
+    `Événement Impulse à ${event.location}`;
   return {
     title: `${event.title} — Impulse`,
-    description: event.description ?? `Événement Impulse — ${event.location}`,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      title: `${event.title} — Impulse`,
+      description,
+      url,
+      type: 'article',
+      images: event.coverPhoto ? [{ url: `${baseUrl}${event.coverPhoto}` }] : undefined,
+    },
   };
 }

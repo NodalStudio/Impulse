@@ -15,6 +15,12 @@ export type EventGuest = {
   name: string;
   role?: string;
   photo?: string;
+  bio?: string;
+};
+
+export type ProgrammeItem = {
+  time: string;
+  label: string;
 };
 
 export type ImpulseEvent = {
@@ -29,6 +35,7 @@ export type ImpulseEvent = {
   coverPhoto?: string;
   description?: string;
   guest?: EventGuest;
+  programme?: ProgrammeItem[];
   gallery?: string[];
   summary?: string;
 };

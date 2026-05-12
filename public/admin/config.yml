@@ -46,6 +46,15 @@ collections:
           - { label: 'Nom', name: 'name', widget: 'string' }
           - { label: 'Rôle / titre', name: 'role', widget: 'string', required: false }
           - { label: 'Photo', name: 'photo', widget: 'image', required: false }
+          - { label: 'Bio / présentation', name: 'bio', widget: 'text', required: false }
+      - label: 'Au programme (déroulé de la soirée)'
+        name: 'programme'
+        widget: 'list'
+        required: false
+        collapsed: true
+        fields:
+          - { label: 'Heure', name: 'time', widget: 'string', hint: 'Ex. 19h' }
+          - { label: 'Étape', name: 'label', widget: 'string' }
       - label: 'Galerie photos (à remplir après la soirée)'
         name: 'gallery'
         widget: 'list'
