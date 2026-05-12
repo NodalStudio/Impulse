@@ -124,6 +124,37 @@ The site includes:
 - **Turbopack**: Ultra-fast bundler by default
 - **React 19**: Latest React features
 
+## Espace contenu (CMS)
+
+Le contenu du site (sections home, événements, paramètres) est éditable via Decap CMS à l'URL `/admin`.
+
+### Premier setup de l'authentification
+
+Decap a besoin d'un fournisseur d'authentification pour autoriser l'écriture sur le repo. Deux options :
+
+**Option 1 — DecapBridge (recommandé, zéro infra)**
+
+1. Créer un compte sur https://decapbridge.com
+2. Connecter le repo `communaute-impulse`
+3. Récupérer les `identity_url` et `gateway_url` fournis
+4. Les ajouter dans `public/admin/config.yml` sous la clé `backend:`
+5. Inviter Marina par email depuis DecapBridge
+
+**Option 2 — Netlify Identity**
+
+1. Créer un site Netlify pointant sur ce repo
+2. Activer Identity dans le dashboard Netlify
+3. Activer Git Gateway
+4. Ajouter dans `public/admin/index.html`, dans le `<head>` :
+   ```html
+   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+   ```
+5. Ajouter le même script dans `src/app/layout.tsx` pour la détection de redirection après login
+
+### Accès quotidien
+
+Une fois auth configuré, Marina ouvre `https://communaute-impulse.com/admin/`, se connecte, modifie le contenu. Chaque sauvegarde déclenche un commit Git → GitHub Actions rebuild → site mis à jour en ~2 minutes.
+
 ## License
 
 All rights reserved © 2026 Impulse
