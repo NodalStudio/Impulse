@@ -12,25 +12,19 @@ export default function SouvenirCard({ event }: Props) {
   return (
     <a
       href={`/evenements/${event.slug}`}
-      className="flex-none w-60 bg-white rounded-xl overflow-hidden shadow-lg hover:-translate-y-1 transition-transform snap-start"
+      className="flex-none w-64 md:w-72 bg-white overflow-hidden snap-start group transition-all hover:-translate-y-1 hover:shadow-xl"
     >
-      <div className="relative h-36 overflow-hidden">
+      <div className="relative h-44 overflow-hidden">
         {event.coverPhoto ? (
           <>
-            <Image
-              src={event.coverPhoto}
-              alt={event.title}
-              fill
-              className="object-cover"
-              sizes="240px"
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/55" />
+            <Image src={event.coverPhoto} alt={event.title} fill className="object-cover group-hover:scale-105 transition-transform duration-700" sizes="288px" />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-navy/70" />
             {photoCount > 0 && (
-              <div className="absolute top-2 right-2 bg-white/20 backdrop-blur text-white text-[10px] px-2 py-1 rounded-full">
-                📷 {photoCount} photos
+              <div className="absolute top-3 right-3 bg-navy/70 backdrop-blur text-blush text-[10px] font-montserrat uppercase tracking-[0.15em] px-2.5 py-1">
+                {photoCount} photos
               </div>
             )}
-            <div className="absolute bottom-2.5 left-2.5 font-montserrat uppercase tracking-[0.25em] text-[9.5px] text-white">
+            <div className="absolute bottom-3 left-3 font-montserrat uppercase tracking-[0.25em] text-[10px] text-blush">
               {day} {month} {event.date.slice(0, 4)}
             </div>
           </>
@@ -41,19 +35,20 @@ export default function SouvenirCard({ event }: Props) {
         )}
       </div>
 
-      <div className="p-3.5">
-        <div className="font-greatvibes text-gold text-base leading-none">retour sur</div>
-        <h4 className="font-cormorant font-semibold text-[15px] text-navy leading-tight mt-0.5">
+      <div className="p-5">
+        <div className="font-script text-gold text-lg leading-none mb-1">retour sur</div>
+        <h4 className="font-tenor text-lg text-navy leading-snug tracking-[0.01em]">
           {event.title}
         </h4>
         {event.summary ? (
-          <p className="text-[11.5px] text-navy/65 mt-1.5 leading-relaxed line-clamp-2">
+          <p className="font-montserrat text-xs text-navy/60 mt-2 leading-relaxed line-clamp-2">
             {event.summary}
           </p>
         ) : (
-          <p className="text-[11.5px] italic text-navy/50 mt-1.5 flex items-center gap-1.5 before:content-[''] before:inline-block before:w-4 before:h-px before:bg-gold">
-            Une édition Impulse Night
-          </p>
+          <div className="flex items-center gap-2 mt-3">
+            <span className="w-4 h-px bg-gold/40" />
+            <span className="font-montserrat text-[10px] uppercase tracking-[0.2em] text-navy/40">Édition Impulse</span>
+          </div>
         )}
       </div>
     </a>

@@ -11,54 +11,53 @@ export default function EventHero({ event }: Props) {
   return (
     <a
       href={`/evenements/${event.slug}`}
-      className="block relative overflow-hidden rounded-2xl bg-gradient-to-br from-navy to-navy-dark text-white shadow-xl group"
+      className="block relative overflow-hidden bg-gradient-to-br from-navy to-navy-dark text-blush shadow-2xl group"
     >
-      <div
-        className="pointer-events-none absolute -right-12 -bottom-12 w-56 h-56 rounded-full"
-        style={{ background: 'radial-gradient(circle, rgba(201,162,39,0.22), transparent 70%)' }}
-      />
+      {/* Concentric gold rings — echo of Hero section */}
+      <svg
+        className="absolute -right-24 top-1/2 -translate-y-1/2 w-[500px] h-[500px] pointer-events-none"
+        viewBox="0 0 500 500" fill="none" aria-hidden="true"
+      >
+        <circle cx="250" cy="250" r="245" stroke="#bf8a3d" strokeWidth="0.5" opacity="0.15" />
+        <circle cx="250" cy="250" r="180" stroke="#bf8a3d" strokeWidth="0.5" opacity="0.08" />
+        <circle cx="250" cy="250" r="120" stroke="#bf8a3d" strokeWidth="0.5" opacity="0.04" />
+      </svg>
 
-      <div className="relative grid md:grid-cols-[1.3fr_1fr] gap-6 p-6 md:p-8 items-center">
+      <div className="relative grid md:grid-cols-[1.3fr_1fr] gap-8 p-8 md:p-12 items-center">
         <div>
-          <span className="inline-block font-montserrat uppercase tracking-[0.3em] text-[10px] text-gold border border-gold/50 rounded-full px-3 py-1 mb-3">
+          <span className="inline-block font-montserrat uppercase tracking-[0.3em] text-[10px] text-gold/80 border border-gold/40 px-4 py-1.5 mb-5">
             Prochain événement
           </span>
           {event.tagline && (
-            <p className="font-greatvibes text-gold text-2xl leading-none mb-1">{event.tagline}</p>
+            <p className="font-script text-gold text-2xl md:text-3xl leading-none mb-2">{event.tagline}</p>
           )}
-          <h3 className="font-cormorant text-2xl md:text-3xl font-semibold leading-tight mb-3">
+          <h3 className="font-tenor text-2xl md:text-3xl lg:text-4xl leading-tight mb-4 tracking-[0.01em]">
             {event.title}
           </h3>
-          <div className="flex flex-wrap gap-3 text-xs opacity-85 mb-3">
+          <div className="flex flex-wrap gap-x-5 gap-y-2 text-xs md:text-sm text-blush/70 mb-5 font-montserrat">
             <span>
               {formatEventDate(event.date)}
               {event.time ? ` · ${event.time}` : ''}
             </span>
-            <span className="before:content-['•_'] before:text-gold">{event.location}</span>
+            <span className="before:content-['—_'] before:text-gold/50 before:mr-1">{event.location}</span>
             {event.price && (
-              <span className="before:content-['•_'] before:text-gold">{event.price}</span>
+              <span className="before:content-['—_'] before:text-gold/50 before:mr-1">{event.price}</span>
             )}
           </div>
           {event.description && (
-            <p className="text-sm opacity-85 leading-relaxed mb-4 line-clamp-3">
+            <p className="font-montserrat text-sm md:text-base text-blush/60 leading-relaxed mb-6 max-w-prose line-clamp-3">
               {event.description}
             </p>
           )}
-          <span className="inline-block bg-gold text-white px-5 py-2 rounded-md font-source text-xs uppercase tracking-widest">
+          <span className="inline-block bg-gold text-white px-7 py-3 font-montserrat text-xs uppercase tracking-[0.2em] transition-all group-hover:bg-gold/90">
             {event.reservationUrl ? 'Réserver ma place →' : 'En savoir plus →'}
           </span>
         </div>
 
         <div className="relative">
           {event.guest?.photo ? (
-            <div className="relative aspect-[4/5] rounded-xl overflow-hidden shadow-2xl">
-              <Image
-                src={event.guest.photo}
-                alt={event.guest.name}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 33vw"
-              />
+            <div className="relative aspect-[4/5] overflow-hidden shadow-2xl">
+              <Image src={event.guest.photo} alt={event.guest.name} fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
             </div>
           ) : (
             <EventOrnament variant="hero" />

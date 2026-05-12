@@ -7,35 +7,34 @@ export default function UpcomingStrip({ events }: Props) {
   if (events.length === 0) return null;
 
   return (
-    <div className="mt-6">
-      <div className="flex items-center justify-between border-b border-navy/10 pb-2 mb-4">
-        <h4 className="font-cormorant text-lg font-semibold text-navy">Et après…</h4>
-        <span className="font-montserrat uppercase tracking-[0.2em] text-[9px] text-gold">
-          Mis à jour automatiquement
-        </span>
+    <div className="mt-16 md:mt-20">
+      <div className="flex items-center justify-center mb-8">
+        <div className="h-px w-12 bg-gradient-to-r from-transparent to-gold/30" />
+        <h4 className="font-montserrat uppercase tracking-[0.3em] text-[11px] text-gold/70 mx-5">Et après…</h4>
+        <div className="h-px w-12 bg-gradient-to-l from-transparent to-gold/30" />
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {events.slice(0, 3).map(event => (
           <a
             key={event.slug}
             href={`/evenements/${event.slug}`}
-            className="bg-gradient-to-b from-cream to-rose/40 rounded-xl p-4 border-l-2 border-transparent hover:border-gold transition-all min-h-[120px] flex flex-col justify-between"
+            className="group bg-white p-6 border-t border-gold/30 transition-all hover:border-gold hover:-translate-y-1 hover:shadow-lg min-h-[140px] flex flex-col justify-between"
           >
             <div>
-              <div className="font-montserrat uppercase tracking-[0.2em] text-[10px] text-gold">
+              <div className="font-montserrat uppercase tracking-[0.25em] text-[10px] text-gold mb-2">
                 {formatEventDate(event.date)}
               </div>
               {event.tagline && (
-                <div className="font-greatvibes text-gold text-lg leading-none mt-0.5">
+                <div className="font-script text-gold text-xl leading-none mb-1">
                   {event.tagline}
                 </div>
               )}
-              <h5 className="font-cormorant font-semibold text-base text-navy leading-tight mt-0.5">
+              <h5 className="font-tenor text-lg md:text-xl text-navy leading-snug tracking-[0.01em]">
                 {event.title}
               </h5>
             </div>
-            <div className={event.location ? 'text-xs text-navy/65 mt-2' : 'text-xs italic text-navy/40 mt-2'}>
+            <div className={event.location ? 'font-montserrat text-xs text-navy/55 mt-3' : 'font-montserrat text-xs italic text-navy/35 mt-3'}>
               {event.location || 'Lieu à confirmer'}
             </div>
           </a>

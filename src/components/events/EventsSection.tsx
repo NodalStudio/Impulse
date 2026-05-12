@@ -10,9 +10,6 @@ import SouvenirsCarousel from './SouvenirsCarousel';
 type Props = { events: ImpulseEvent[] };
 
 export default function EventsSection({ events }: Props) {
-  // Initial partition uses build-time date (server-side render).
-  // Re-partition on client mount using real "now" — handles the case where
-  // an event has crossed midnight since the last build.
   const [{ upcoming, past }, setPartition] = useState(() => partitionEvents(events, new Date()));
 
   useEffect(() => {
@@ -25,15 +22,22 @@ export default function EventsSection({ events }: Props) {
   const afterNext = upcoming.slice(1, 4);
 
   return (
-    <section id="evenements" className="snap-section section bg-white">
-      <div className="container-impulse px-4 h-full flex flex-col justify-center py-12">
-        <div className="text-center mb-8">
-          <p className="font-montserrat uppercase tracking-[0.3em] text-[11px] text-navy/70">
+    <section id="evenements" className="py-20 md:py-28 bg-blush">
+      <div className="container-impulse px-6 md:px-8">
+        {/* Section header */}
+        <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
+          <div className="flex items-center justify-center mb-8">
+            <div className="h-px w-16 bg-gradient-to-r from-transparent to-gold/30" />
+            <div className="w-1.5 h-1.5 rotate-45 bg-gold/40 mx-5" />
+            <div className="h-px w-16 bg-gradient-to-l from-transparent to-gold/30" />
+          </div>
+          <p className="font-montserrat uppercase tracking-[0.3em] text-[11px] text-gold/70 mb-3">
             Les rendez-vous Impulse
           </p>
-          <p className="font-greatvibes text-gold text-3xl leading-none mt-1">une fois par mois</p>
-          <h2 className="font-cormorant font-semibold text-3xl md:text-4xl text-navy">Événements</h2>
-          <div className="w-12 h-px bg-gradient-to-r from-gold to-transparent mx-auto mt-2" />
+          <h2 className="font-tenor text-3xl md:text-4xl lg:text-5xl text-navy leading-tight">
+            Événements
+          </h2>
+          <p className="font-script text-2xl md:text-3xl text-gold mt-2">une fois par mois</p>
         </div>
 
         <EventHero event={next} />
