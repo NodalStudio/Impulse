@@ -18,68 +18,68 @@ export default function EventDetail({ event, isPast, related = [] }: Props) {
 
   return (
     <article className="min-h-screen bg-blush">
-      <header className="relative overflow-hidden bg-gradient-to-br from-navy to-navy-dark text-blush p-8 md:p-14">
+      <header className="relative overflow-hidden bg-gradient-to-br from-navy to-navy-dark text-blush">
         <svg className="absolute -right-32 top-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none" viewBox="0 0 600 600" fill="none" aria-hidden="true">
           <circle cx="300" cy="300" r="295" stroke="#bf8a3d" strokeWidth="0.5" opacity="0.12" />
           <circle cx="300" cy="300" r="220" stroke="#bf8a3d" strokeWidth="0.5" opacity="0.07" />
           <circle cx="300" cy="300" r="150" stroke="#bf8a3d" strokeWidth="0.5" opacity="0.04" />
         </svg>
-        <div className="relative max-w-3xl mx-auto">
-          <a href="/#calendrier" className="inline-flex items-center font-montserrat uppercase tracking-[0.25em] text-[10px] text-gold/80 hover:text-gold transition-colors">
-            ← {crumbCategory} / {monthLabel}
-          </a>
-          {isPast && (
-            <div className="mt-4">
-              <span className="inline-block border border-blush/20 text-blush/70 font-montserrat uppercase tracking-[0.25em] text-[9px] px-3 py-1.5">
-                Événement passé
-              </span>
-            </div>
-          )}
-          {event.tagline && (
-            <p className="font-script text-gold text-3xl md:text-4xl leading-none mt-5">{event.tagline}</p>
-          )}
-          <h1 className="font-tenor text-3xl md:text-4xl lg:text-5xl leading-tight mt-2 tracking-[0.01em]">
-            {event.title}
-          </h1>
-          <div className="flex flex-wrap gap-x-5 gap-y-2 text-xs md:text-sm text-blush/70 font-montserrat mt-5">
-            <span>{formatEventDate(event.date)}{event.time ? ` · ${event.time}` : ''}</span>
-            <span className="before:content-['—_'] before:text-gold/50 before:mr-1">{event.location}</span>
-            {event.guest && (
-              <span className="before:content-['—_'] before:text-gold/50 before:mr-1">Avec {event.guest.name}</span>
+        <div className="relative max-w-5xl mx-auto p-8 md:p-14 grid gap-10 md:gap-12 md:grid-cols-[1.4fr_1fr] md:items-center">
+          <div>
+            <a href="/#calendrier" className="inline-flex items-center font-montserrat uppercase tracking-[0.25em] text-[10px] text-gold/80 hover:text-gold transition-colors">
+              ← {crumbCategory} / {monthLabel}
+            </a>
+            {isPast && (
+              <div className="mt-4">
+                <span className="inline-block border border-blush/20 text-blush/70 font-montserrat uppercase tracking-[0.25em] text-[9px] px-3 py-1.5">
+                  Événement passé
+                </span>
+              </div>
             )}
-            {event.price && (
-              <span className="before:content-['—_'] before:text-gold/50 before:mr-1">{event.price}</span>
+            {event.tagline && (
+              <p className="font-script text-gold text-3xl md:text-4xl leading-none mt-5">{event.tagline}</p>
+            )}
+            <h1 className="font-tenor text-3xl md:text-4xl lg:text-5xl leading-tight mt-2 tracking-[0.01em]">
+              {event.title}
+            </h1>
+            <div className="flex flex-wrap gap-x-5 gap-y-2 text-xs md:text-sm text-blush/70 font-montserrat mt-5">
+              <span>{formatEventDate(event.date)}{event.time ? ` · ${event.time}` : ''}</span>
+              <span className="before:content-['—_'] before:text-gold/50 before:mr-1">{event.location}</span>
+              {event.guest && (
+                <span className="before:content-['—_'] before:text-gold/50 before:mr-1">Avec {event.guest.name}</span>
+              )}
+              {event.price && (
+                <span className="before:content-['—_'] before:text-gold/50 before:mr-1">{event.price}</span>
+              )}
+            </div>
+            {!isPast && event.reservationUrl && (
+              <a
+                href={event.reservationUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-gold text-white px-7 py-3 font-montserrat text-xs uppercase tracking-[0.2em] mt-7 hover:bg-gold/90 transition-colors"
+              >
+                Réserver ma place →
+              </a>
             )}
           </div>
-          {!isPast && event.reservationUrl && (
-            <a
-              href={event.reservationUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block bg-gold text-white px-7 py-3 font-montserrat text-xs uppercase tracking-[0.2em] mt-7 hover:bg-gold/90 transition-colors"
-            >
-              Réserver ma place →
-            </a>
-          )}
-        </div>
-      </header>
 
-      <div className="max-w-3xl mx-auto px-6 md:px-8">
-        {/* Poster / cover photo */}
-        {event.coverPhoto && (
-          <div className="-mt-10 md:-mt-16 mb-10 relative z-10">
-            <div className="relative aspect-[3/4] max-w-sm mx-auto overflow-hidden shadow-2xl">
+          {event.coverPhoto && (
+            <div className="relative aspect-[3/4] w-full max-w-[260px] md:max-w-none mx-auto md:mx-0 overflow-hidden shadow-2xl">
               <Image
                 src={event.coverPhoto}
                 alt={`Affiche ${event.title}`}
                 fill
                 className="object-cover"
-                sizes="(max-width: 640px) 90vw, 384px"
+                sizes="(max-width: 768px) 260px, 320px"
                 priority
               />
             </div>
-          </div>
-        )}
+          )}
+        </div>
+      </header>
+
+      <div className="max-w-3xl mx-auto px-6 md:px-8">
 
         {paragraphs.length > 0 ? (
           <div className="py-10 md:py-14">
