@@ -22,7 +22,7 @@ export default function EventsSection({ events }: Props) {
   const afterNext = upcoming.slice(1, 4);
 
   return (
-    <section id="evenements" className="py-20 md:py-28 bg-blush">
+    <section id="calendrier" className="py-20 md:py-28 bg-blush">
       <div className="container-impulse px-6 md:px-8">
         {/* Section header */}
         <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
