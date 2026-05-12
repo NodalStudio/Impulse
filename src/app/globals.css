@@ -608,3 +608,22 @@ body {
   opacity: 0.03;
   pointer-events: none;
 }
+
+/* Subtle scrollbar for souvenirs carousel */
+.souvenirs-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(191, 138, 61, 0.35) transparent;
+}
+.souvenirs-scroll::-webkit-scrollbar {
+  height: 4px;
+}
+.souvenirs-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.souvenirs-scroll::-webkit-scrollbar-thumb {
+  background: rgba(191, 138, 61, 0.35);
+  border-radius: 2px;
+}
+.souvenirs-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(191, 138, 61, 0.55);
+}

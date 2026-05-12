@@ -14,12 +14,12 @@ export default function UpcomingStrip({ events }: Props) {
         <div className="h-px w-12 bg-gradient-to-l from-transparent to-gold/30" />
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <div className="flex flex-wrap justify-center gap-6">
         {events.slice(0, 3).map(event => (
           <a
             key={event.slug}
             href={`/evenements/${event.slug}`}
-            className="group bg-white p-6 border-t border-gold/30 transition-all hover:border-gold hover:-translate-y-1 hover:shadow-lg min-h-[140px] flex flex-col justify-between"
+            className="group bg-white p-6 border-t border-gold/30 transition-all hover:border-gold hover:-translate-y-1 hover:shadow-lg min-h-[160px] flex flex-col justify-between basis-full sm:basis-[calc(50%-12px)] md:basis-[calc(33.333%-16px)] sm:max-w-md"
           >
             <div>
               <div className="font-montserrat uppercase tracking-[0.25em] text-[10px] text-gold mb-2">

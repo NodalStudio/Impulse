@@ -19,7 +19,7 @@ export default function SouvenirsCarousel({ events }: Props) {
         <p className="font-montserrat text-sm text-navy/55 mt-3 max-w-md mx-auto">Revivez les soirées qui ont marqué la communauté.</p>
       </div>
 
-      <div className="flex gap-5 overflow-x-auto snap-x snap-mandatory pb-4 -mx-6 px-6 md:-mx-8 md:px-8">
+      <div className="souvenirs-scroll flex gap-5 overflow-x-auto snap-x snap-mandatory pb-2 -mx-6 px-6 md:-mx-8 md:px-8">
         {events.map(event => (
           <SouvenirCard key={event.slug} event={event} />
         ))}
