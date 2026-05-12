@@ -20,9 +20,17 @@ export function getAllEvents(): ImpulseEvent[] {
     const fullPath = path.join(EVENTS_DIR, filename);
     const raw = fs.readFileSync(fullPath, 'utf8');
     const { data } = matter(raw);
+    // gray-matter parses YAML dates (e.g. 2026-06-16) as JS Date objects;
+    // normalise to ISO YYYY-MM-DD string so downstream string helpers work.
+    const normalizedDate =
+      data.date instanceof Date
+        ? data.date.toISOString().slice(0, 10)
+        : String(data.date ?? '');
+
     return {
       slug: filename.replace(/\.md$/, ''),
       ...data,
+      date: normalizedDate,
     } as ImpulseEvent;
   });
 }
