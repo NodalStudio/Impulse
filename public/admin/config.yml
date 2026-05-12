@@ -16,4 +16,39 @@ display_url: https://communaute-impulse.com
 
 locale: 'fr'
 
-collections: []
+collections:
+  - name: 'events'
+    label: 'Événements'
+    label_singular: 'Événement'
+    folder: 'content/events'
+    create: true
+    slug: '{{year}}-{{month}}-{{slug}}'
+    format: 'frontmatter'
+    extension: 'md'
+    summary: "{{date | date('YYYY-MM-DD')}} — {{title}}"
+    sortable_fields: ['date', 'title']
+    fields:
+      - { label: 'Titre', name: 'title', widget: 'string' }
+      - { label: 'Date', name: 'date', widget: 'datetime', date_format: 'YYYY-MM-DD', time_format: false, format: 'YYYY-MM-DD' }
+      - { label: 'Lieu', name: 'location', widget: 'string' }
+      - { label: 'Heure (ex. 19h)', name: 'time', widget: 'string', required: false }
+      - { label: 'Prix / mention tarifaire', name: 'price', widget: 'string', required: false }
+      - { label: 'Lien de réservation', name: 'reservationUrl', widget: 'string', required: false, hint: 'URL externe (Linktree, Eventbrite, etc.)' }
+      - { label: 'Tagline (script doré au-dessus du titre)', name: 'tagline', widget: 'string', required: false, hint: 'Ex. "une soirée pour"' }
+      - { label: 'Description / chapeau', name: 'description', widget: 'text', required: false }
+      - { label: 'Photo de couverture', name: 'coverPhoto', widget: 'image', required: false, hint: 'Utilisée dans le carrousel Souvenirs' }
+      - label: 'Invitée (optionnel)'
+        name: 'guest'
+        widget: 'object'
+        required: false
+        collapsed: true
+        fields:
+          - { label: 'Nom', name: 'name', widget: 'string' }
+          - { label: 'Rôle / titre', name: 'role', widget: 'string', required: false }
+          - { label: 'Photo', name: 'photo', widget: 'image', required: false }
+      - label: 'Galerie photos (à remplir après la soirée)'
+        name: 'gallery'
+        widget: 'list'
+        required: false
+        field: { label: 'Photo', name: 'photo', widget: 'image' }
+      - { label: 'Résumé / debrief de la soirée', name: 'summary', widget: 'text', required: false, hint: 'À remplir après l''événement' }
