@@ -1,8 +1,14 @@
+'use client';
+
+import { useState } from 'react';
 import Image from 'next/image';
+import Lightbox from './Lightbox';
 
 type Props = { photos: string[]; title: string };
 
 export default function EventGallery({ photos, title }: Props) {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
   if (photos.length === 0) return null;
 
   return (
@@ -18,20 +24,31 @@ export default function EventGallery({ photos, title }: Props) {
 
       <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
         {photos.map((src, i) => (
-          <div
+          <button
             key={src}
-            className={`relative overflow-hidden rounded-lg ${i === 0 ? 'md:col-span-2 md:row-span-2 aspect-[4/3]' : 'aspect-square'}`}
+            type="button"
+            onClick={() => setOpenIndex(i)}
+            className={`relative overflow-hidden rounded-lg group ${i === 0 ? 'md:col-span-2 md:row-span-2 aspect-[4/3]' : 'aspect-square'}`}
           >
             <Image
               src={src}
               alt={`${title} — photo ${i + 1}`}
               fill
-              className="object-cover"
+              className="object-cover group-hover:scale-105 transition-transform duration-500"
               sizes="(max-width: 768px) 50vw, 33vw"
             />
-          </div>
+          </button>
         ))}
       </div>
+
+      <Lightbox
+        photos={photos}
+        index={openIndex}
+        title={title}
+        onClose={() => setOpenIndex(null)}
+        onPrev={() => setOpenIndex(i => i === null ? null : (i - 1 + photos.length) % photos.length)}
+        onNext={() => setOpenIndex(i => i === null ? null : (i + 1) % photos.length)}
+      />
     </section>
   );
 }
