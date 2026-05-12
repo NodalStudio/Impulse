@@ -9,6 +9,7 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "gray-matter": "^4.0.3",
     "next": "^16.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
