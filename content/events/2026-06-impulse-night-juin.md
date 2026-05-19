@@ -3,7 +3,7 @@ title: IMPULSE Night
 date: 2026-06-16
 location: Espai Nu, Carrer del Bruc 96, Barcelona
 time: 19h
-price: Solo 37€ - Duo 70€
+price: Solo 37€ · Duo 70€
 reservationUrl: https://entradium.com/events/impulse-night-barcelona
 tagline: une soirée business 100% féminine
 description: >
