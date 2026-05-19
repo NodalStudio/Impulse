@@ -1,6 +1,7 @@
 import Gallery from './Gallery';
+import type { MissionContent } from '@/lib/sections';
 
-export default function Mission() {
+export default function Mission({ content }: { content: MissionContent }) {
   return (
     <section id="mission" className="py-20 md:py-28 bg-white">
       <div className="container-impulse px-6 md:px-8">
@@ -19,31 +20,28 @@ export default function Mission() {
 
             <blockquote className="font-tenor text-lg md:text-xl lg:text-2xl text-navy leading-relaxed mb-8 md:mb-10">
               <p className="mb-4">
-                Parce qu&apos;aucune entrepreneuse ou dirigeante ne devrait être seule face à ses challenges
-                et les freins systémiques qui pèsent sur sa réussite,
+                {content.paragraph1}
               </p>
               <p className="mb-4">
-                nous avons créé une <span className="text-gold font-medium">communauté</span> de professionnelles authentiques et actives
-                qui osent se montrer telles qu&apos;elles sont, avec leurs forces et leurs vulnérabilités
+                {content.paragraph2Before}<span className="text-gold font-medium">{content.paragraph2Gold}</span>{content.paragraph2After}
               </p>
               <p className="mb-4">
-                où les valeurs <span className="text-gold font-medium">d&apos;entraide, de bienveillance et de partage</span> s&apos;expriment
-                dans le cadre de rendez-vous mensuels qui permettent à chacune
+                {content.paragraph3Before}<span className="text-gold font-medium">{content.paragraph3Gold}</span>{content.paragraph3After}
               </p>
               <p>
-                <span className="text-gold font-medium">d&apos;apprendre, de grandir et de rayonner</span> professionnellement.
+                <span className="text-gold font-medium">{content.paragraph4Gold}</span>{content.paragraph4After}
               </p>
             </blockquote>
 
             {/* Tagline */}
             <p className="font-tenor text-xl md:text-2xl text-navy mb-8 md:mb-10 animate-fade-in-up delay-100">
-              Du business empowerment au féminin !
+              {content.tagline}
             </p>
 
             {/* Founders signatures */}
             <div className="border-t border-gold/20 pt-6 animate-fade-in-up delay-200">
               <p className="font-script text-xl md:text-2xl text-navy mb-3">
-                Marina, Anaïs &amp; Sophie
+                {content.signature}
               </p>
               <div className="w-16 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent mx-auto" />
             </div>

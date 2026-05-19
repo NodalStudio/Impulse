@@ -1,6 +1,8 @@
 "use client";
 
-export default function Hero() {
+import type { HeroContent } from '@/lib/sections';
+
+export default function Hero({ content }: { content: HeroContent }) {
   return (
     <section
       id="hero"
@@ -39,11 +41,11 @@ export default function Hero() {
             {/* Main headline */}
             <h1 className="mb-7 md:mb-9">
               <span className="block font-tenor text-[1.75rem] sm:text-[2rem] md:text-[2.75rem] lg:text-[3.5rem] text-blush leading-[1.2] tracking-[0.02em] animate-fade-in-up delay-200">
-                Le rendez-vous business
+                {content.headline1}
               </span>
               <span className="block font-tenor text-[1.75rem] sm:text-[2rem] md:text-[2.75rem] lg:text-[3.5rem] leading-[1.2] tracking-[0.02em] mt-1 animate-fade-in-up delay-300">
-                <span className="text-blush">des </span>
-                <span className="text-gold">femmes d&apos;impact</span>
+                <span className="text-blush">{content.headline2Prefix}</span>
+                <span className="text-gold">{content.headline2Gold}</span>
               </span>
             </h1>
 
@@ -54,17 +56,16 @@ export default function Hero() {
 
             {/* Subtitle */}
             <p className="font-montserrat text-sm md:text-base text-blush/45 max-w-md mx-auto mb-10 md:mb-14 leading-relaxed font-light animate-fade-in-up delay-500">
-              Des événements mensuels à Barcelone pour les femmes entrepreneures
-              qui veulent apprendre, s&apos;entraider et agir ensemble.
+              {content.subtitle}
             </p>
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up delay-600">
-              <a href="#contact" className="hero-btn-primary group text-center">
-                <span className="relative z-10">Rejoindre la communauté</span>
+              <a href={content.ctaPrimaryHref} className="hero-btn-primary group text-center">
+                <span className="relative z-10">{content.ctaPrimaryLabel}</span>
               </a>
-              <a href="#calendrier" className="hero-btn-secondary group text-center">
-                Voir le calendrier
+              <a href={content.ctaSecondaryHref} className="hero-btn-secondary group text-center">
+                {content.ctaSecondaryLabel}
                 <svg
                   className="w-4 h-4 ml-2 inline-block transform group-hover:translate-x-1 transition-transform duration-300"
                   fill="none"
@@ -89,26 +90,26 @@ export default function Hero() {
         {/* Three pillars */}
         <div className="flex items-center justify-center gap-4 sm:gap-6 md:gap-10 mb-8 md:mb-10 animate-fade-in-up delay-700">
           <span className="font-montserrat text-[10px] sm:text-xs text-gold/40 uppercase tracking-[0.2em] sm:tracking-[0.25em] font-light">
-            Apprendre
+            {content.pillar1}
           </span>
           <span className="w-1 h-1 rounded-full bg-gold/25" />
           <span className="font-montserrat text-[10px] sm:text-xs text-gold/40 uppercase tracking-[0.2em] sm:tracking-[0.25em] font-light">
-            S&apos;entraider
+            {content.pillar2}
           </span>
           <span className="w-1 h-1 rounded-full bg-gold/25" />
           <span className="font-montserrat text-[10px] sm:text-xs text-gold/40 uppercase tracking-[0.2em] sm:tracking-[0.25em] font-light">
-            Agir
+            {content.pillar3}
           </span>
         </div>
 
         {/* Scroll indicator */}
         <div className="hidden md:flex flex-col items-center">
           <a
-            href="#mission"
+            href={content.scrollHref}
             className="flex flex-col items-center text-blush/20 hover:text-gold/50 transition-all duration-500 group"
           >
             <span className="font-montserrat text-[10px] uppercase tracking-[0.3em] mb-2 group-hover:tracking-[0.4em] transition-all duration-500">
-              Découvrir
+              {content.scrollLabel}
             </span>
             <svg
               className="w-4 h-4 animate-bounce"

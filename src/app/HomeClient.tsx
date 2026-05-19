@@ -16,10 +16,11 @@ import Testimonials from '@/components/Testimonials';
 import Contact from '@/components/Contact';
 import IntroAnimation from '@/components/IntroAnimation';
 import type { ImpulseEvent } from '@/lib/types';
+import type { AllSectionsContent } from '@/lib/sections';
 
-type Props = { events: ImpulseEvent[] };
+type Props = { events: ImpulseEvent[]; content: AllSectionsContent };
 
-export default function HomeClient({ events }: Props) {
+export default function HomeClient({ events, content }: Props) {
   const [introComplete, setIntroComplete] = useState(false);
   const [showOverlay, setShowOverlay] = useState(true);
   const headerLogoRef = useRef<HTMLAnchorElement>(null);
@@ -52,18 +53,18 @@ export default function HomeClient({ events }: Props) {
       )}
       <Header introComplete={introComplete} logoRef={headerLogoRef} />
       <main>
-        <Hero />
-        <Mission />
-        <Problem />
-        <Solution />
-        <Pillars />
-        <Audience />
-        <HowItWorks />
+        <Hero content={content.hero} />
+        <Mission content={content.mission} />
+        <Problem content={content.problem} />
+        <Solution content={content.solution} />
+        <Pillars content={content.pillars} />
+        <Audience content={content.audience} />
+        <HowItWorks content={content.howitworks} />
         <EventsSection events={events} />
-        <Benefits />
-        <Team />
-        <Testimonials />
-        <Contact />
+        <Benefits content={content.benefits} />
+        <Team content={content.team} />
+        <Testimonials content={content.testimonials} />
+        <Contact content={content.contact} />
       </main>
     </>
   );

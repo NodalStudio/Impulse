@@ -78,3 +78,215 @@ collections:
         required: false
         field: { label: 'Photo', name: 'photo', widget: 'image' }
       - { label: 'Résumé / debrief de la soirée', name: 'summary', widget: 'text', required: false, hint: 'À remplir après l''événement' }
+
+  - name: 'sections'
+    label: 'Contenu du site'
+    label_singular: 'Section'
+    editor:
+      preview: false
+    files:
+      - label: 'Hero (en-tête d''accueil)'
+        name: 'hero'
+        file: 'content/sections/hero.md'
+        fields:
+          - { label: 'Titre — ligne 1', name: 'headline1', widget: 'string' }
+          - { label: 'Titre — ligne 2 (préfixe en rose)', name: 'headline2Prefix', widget: 'string', hint: 'Ex. "des "' }
+          - { label: 'Titre — ligne 2 (mots en doré)', name: 'headline2Gold', widget: 'string' }
+          - { label: 'Sous-titre', name: 'subtitle', widget: 'text' }
+          - { label: 'CTA principal — texte', name: 'ctaPrimaryLabel', widget: 'string' }
+          - { label: 'CTA principal — lien', name: 'ctaPrimaryHref', widget: 'string', hint: 'Ex. #contact' }
+          - { label: 'CTA secondaire — texte', name: 'ctaSecondaryLabel', widget: 'string' }
+          - { label: 'CTA secondaire — lien', name: 'ctaSecondaryHref', widget: 'string', hint: 'Ex. #calendrier' }
+          - { label: 'Pilier 1', name: 'pillar1', widget: 'string' }
+          - { label: 'Pilier 2', name: 'pillar2', widget: 'string' }
+          - { label: 'Pilier 3', name: 'pillar3', widget: 'string' }
+          - { label: 'Libellé scroll', name: 'scrollLabel', widget: 'string' }
+          - { label: 'Ancre scroll', name: 'scrollHref', widget: 'string', hint: 'Ex. #mission' }
+
+      - label: 'Mission (manifeste)'
+        name: 'mission'
+        file: 'content/sections/mission.md'
+        fields:
+          - { label: 'Paragraphe 1', name: 'paragraph1', widget: 'text' }
+          - { label: 'Paragraphe 2 — avant le mot doré', name: 'paragraph2Before', widget: 'text' }
+          - { label: 'Paragraphe 2 — mot doré', name: 'paragraph2Gold', widget: 'string' }
+          - { label: 'Paragraphe 2 — après le mot doré', name: 'paragraph2After', widget: 'text' }
+          - { label: 'Paragraphe 3 — avant le mot doré', name: 'paragraph3Before', widget: 'text' }
+          - { label: 'Paragraphe 3 — mot doré', name: 'paragraph3Gold', widget: 'string' }
+          - { label: 'Paragraphe 3 — après le mot doré', name: 'paragraph3After', widget: 'text' }
+          - { label: 'Paragraphe 4 — mot doré', name: 'paragraph4Gold', widget: 'string' }
+          - { label: 'Paragraphe 4 — fin', name: 'paragraph4After', widget: 'text' }
+          - { label: 'Tagline', name: 'tagline', widget: 'string' }
+          - { label: 'Signature', name: 'signature', widget: 'string' }
+
+      - label: 'Audience (à qui s''adresse Impulse)'
+        name: 'audience'
+        file: 'content/sections/audience.md'
+        fields:
+          - { label: 'Étiquette de section', name: 'eyebrow', widget: 'string' }
+          - { label: 'Titre — préfixe', name: 'headlinePrefix', widget: 'string', hint: 'Ex. "s''adresse aux "' }
+          - { label: 'Titre — mot script doré', name: 'headlineScript', widget: 'string' }
+          - { label: 'Titre — suffixe', name: 'headlineSuffix', widget: 'string', hint: 'Ex. " qui :"' }
+          - label: 'Critères'
+            name: 'criteria'
+            widget: 'list'
+            fields:
+              - { label: 'Texte avant le mot doré', name: 'text', widget: 'string' }
+              - { label: 'Mot doré', name: 'highlight', widget: 'string', required: false }
+              - { label: 'Texte après le mot doré', name: 'textAfter', widget: 'string', required: false }
+              - { label: 'Second mot doré', name: 'highlight2', widget: 'string', required: false }
+
+      - label: 'Problème (constat)'
+        name: 'problem'
+        file: 'content/sections/problem.md'
+        fields:
+          - { label: 'Étiquette de section', name: 'eyebrow', widget: 'string' }
+          - { label: 'Titre — préfixe', name: 'headlinePrefix', widget: 'string' }
+          - { label: 'Titre — mot script doré', name: 'headlineScript', widget: 'string' }
+          - { label: 'Titre — suffixe', name: 'headlineSuffix', widget: 'string', hint: 'Ex. ":"' }
+          - label: 'Problèmes (puces)'
+            name: 'problems'
+            widget: 'list'
+            fields:
+              - { label: 'Texte avant le mot doré', name: 'text', widget: 'string' }
+              - { label: 'Mot doré', name: 'highlight', widget: 'string' }
+              - { label: 'Texte après le mot doré', name: 'textAfter', widget: 'string', required: false }
+
+      - label: 'Solution (intention & ambition)'
+        name: 'solution'
+        file: 'content/sections/solution.md'
+        fields:
+          - { label: 'Étiquette Intention', name: 'intentionEyebrow', widget: 'string' }
+          - { label: 'Intention mobile — avant mot doré', name: 'intentionMobileText1Before', widget: 'string' }
+          - { label: 'Intention mobile — mot doré', name: 'intentionMobileText1Gold', widget: 'string' }
+          - { label: 'Intention mobile — après mot doré', name: 'intentionMobileText1After', widget: 'text' }
+          - { label: 'Intention mobile — phrase script', name: 'intentionMobileScript', widget: 'string' }
+          - { label: 'Intention desktop — avant mot doré', name: 'intentionDesktopBefore', widget: 'string' }
+          - { label: 'Intention desktop — mot doré', name: 'intentionDesktopGold', widget: 'string' }
+          - { label: 'Intention desktop — ligne 2', name: 'intentionDesktopMiddle1', widget: 'string' }
+          - { label: 'Intention desktop — ligne 3', name: 'intentionDesktopMiddle2', widget: 'string' }
+          - { label: 'Intention desktop — phrase script', name: 'intentionDesktopScript', widget: 'string' }
+          - { label: 'Étiquette Ambition', name: 'ambitionEyebrow', widget: 'string' }
+          - { label: 'Ambition — "Faire d''"', name: 'ambitionFaireDe', widget: 'string' }
+          - { label: 'Ambition — nom de marque', name: 'ambitionBrand', widget: 'string' }
+          - { label: 'Ambition — phrase script', name: 'ambitionScript', widget: 'string' }
+          - { label: 'Ambition mobile — préfixe "des "', name: 'ambitionMobileDesPrefix', widget: 'string' }
+          - { label: 'Ambition mobile — mot doré', name: 'ambitionMobileGold', widget: 'string' }
+          - { label: 'Ambition mobile — suffixe (ville)', name: 'ambitionMobileSuffix', widget: 'string' }
+          - { label: 'Ambition desktop — préfixe "des "', name: 'ambitionDesktopDesPrefix', widget: 'string' }
+          - { label: 'Ambition desktop — mot doré', name: 'ambitionDesktopGold', widget: 'string' }
+          - { label: 'Ambition desktop — ville', name: 'ambitionDesktopCity', widget: 'string' }
+
+      - label: 'Piliers (les 3 piliers)'
+        name: 'pillars'
+        file: 'content/sections/pillars.md'
+        fields:
+          - { label: 'Étiquette de section', name: 'eyebrow', widget: 'string' }
+          - label: 'Les 3 piliers (ordre = ordre d''affichage)'
+            name: 'pillars'
+            widget: 'list'
+            max: 3
+            min: 3
+            fields:
+              - { label: 'Titre', name: 'title', widget: 'string' }
+              - { label: 'Description', name: 'description', widget: 'text' }
+
+      - label: 'Fonctionnement (How it works)'
+        name: 'howitworks'
+        file: 'content/sections/howitworks.md'
+        fields:
+          - { label: 'Étiquette de section', name: 'eyebrow', widget: 'string' }
+          - { label: 'Titre — nom de marque', name: 'headlineBrand', widget: 'string' }
+          - { label: 'Titre — préfixe', name: 'headlinePrefix', widget: 'string', hint: 'Inclure les espaces nécessaires' }
+          - { label: 'Titre — mot script doré', name: 'headlineScript', widget: 'string' }
+          - { label: 'Titre — suffixe', name: 'headlineSuffix', widget: 'string' }
+          - label: 'Caractéristiques'
+            name: 'features'
+            widget: 'list'
+            fields:
+              - { label: 'Texte avant le mot doré', name: 'text', widget: 'string' }
+              - { label: 'Mot doré', name: 'highlight', widget: 'string' }
+              - { label: 'Texte après le mot doré', name: 'textAfter', widget: 'string', required: false }
+
+      - label: 'Bénéfices'
+        name: 'benefits'
+        file: 'content/sections/benefits.md'
+        fields:
+          - { label: 'Étiquette de section', name: 'eyebrow', widget: 'string' }
+          - label: 'Bénéfices'
+            name: 'benefits'
+            widget: 'list'
+            fields:
+              - { label: 'Titre', name: 'title', widget: 'string' }
+              - { label: 'Description', name: 'description', widget: 'text' }
+
+      - label: 'Témoignages'
+        name: 'testimonials'
+        file: 'content/sections/testimonials.md'
+        fields:
+          - { label: 'Étiquette de section', name: 'eyebrow', widget: 'string' }
+          - { label: 'Titre mobile des points forts', name: 'mobileHighlightsTitle', widget: 'string' }
+          - label: 'Témoignages (5 attendus pour le layout desktop)'
+            name: 'testimonials'
+            widget: 'list'
+            fields:
+              - { label: 'Citation', name: 'quote', widget: 'text' }
+              - { label: 'Auteure', name: 'author', widget: 'string' }
+          - label: 'Points forts (highlights)'
+            name: 'highlights'
+            widget: 'list'
+            field: { label: 'Point fort', name: 'highlight', widget: 'string' }
+
+      - label: 'Équipe (fondatrices)'
+        name: 'team'
+        file: 'content/sections/team.md'
+        fields:
+          - { label: 'Étiquette de section', name: 'eyebrow', widget: 'string' }
+          - label: 'Fondatrices'
+            name: 'founders'
+            widget: 'list'
+            fields:
+              - { label: 'Nom', name: 'name', widget: 'string' }
+              - { label: 'Rôle', name: 'role', widget: 'string' }
+              - { label: 'Photo', name: 'image', widget: 'image' }
+              - { label: 'Texte alternatif (SEO/a11y)', name: 'alt', widget: 'string' }
+              - { label: 'Bio', name: 'bio', widget: 'text' }
+
+      - label: 'Contact (formulaire)'
+        name: 'contact'
+        file: 'content/sections/contact.md'
+        fields:
+          - { label: 'Étiquette de section', name: 'eyebrow', widget: 'string' }
+          - { label: 'Titre — ligne 1', name: 'headlineLine1', widget: 'string' }
+          - { label: 'Titre — ligne 2', name: 'headlineLine2', widget: 'string' }
+          - { label: 'Intro — nom de marque', name: 'introBrand', widget: 'string' }
+          - { label: 'Intro — phrase tenor', name: 'introTenor', widget: 'string', hint: 'Inclure l''espace initial' }
+          - { label: 'Intro — phrase script doré', name: 'introScript', widget: 'string' }
+          - { label: 'Nom du contact', name: 'contactName', widget: 'string' }
+          - { label: 'Email du contact', name: 'contactEmail', widget: 'string' }
+          - { label: 'URL LinkedIn', name: 'linkedinUrl', widget: 'string' }
+          - { label: 'Libellé LinkedIn', name: 'linkedinLabel', widget: 'string' }
+          - { label: 'URL Instagram', name: 'instagramUrl', widget: 'string' }
+          - { label: 'Libellé Instagram', name: 'instagramLabel', widget: 'string' }
+          - { label: 'Footer — copyright (nom marque)', name: 'footerCopyright', widget: 'string' }
+          - { label: 'Footer — phrase script', name: 'footerScript', widget: 'string' }
+          - { label: 'Formulaire — label nom', name: 'formNameLabel', widget: 'string' }
+          - { label: 'Formulaire — placeholder nom', name: 'formNamePlaceholder', widget: 'string' }
+          - { label: 'Formulaire — label email', name: 'formEmailLabel', widget: 'string' }
+          - { label: 'Formulaire — placeholder email', name: 'formEmailPlaceholder', widget: 'string' }
+          - { label: 'Formulaire — label profession', name: 'formProfessionLabel', widget: 'string' }
+          - { label: 'Formulaire — placeholder profession', name: 'formProfessionPlaceholder', widget: 'string' }
+          - { label: 'Formulaire — label âge', name: 'formAgeLabel', widget: 'string' }
+          - { label: 'Formulaire — placeholder âge', name: 'formAgePlaceholder', widget: 'string' }
+          - { label: 'Formulaire — label localisation', name: 'formLocationLabel', widget: 'string' }
+          - { label: 'Formulaire — placeholder localisation', name: 'formLocationPlaceholder', widget: 'string' }
+          - { label: 'Formulaire — label message', name: 'formMessageLabel', widget: 'string' }
+          - { label: 'Formulaire — placeholder message', name: 'formMessagePlaceholder', widget: 'string' }
+          - { label: 'Bouton — texte par défaut', name: 'formSubmitDefault', widget: 'string' }
+          - { label: 'Bouton — texte pendant envoi', name: 'formSubmitSubmitting', widget: 'string' }
+          - { label: 'Bouton — texte pendant cooldown', name: 'formSubmitCooldown', widget: 'string' }
+          - { label: 'Erreur — rate limited', name: 'errorRateLimited', widget: 'string' }
+          - { label: 'Erreur — réseau', name: 'errorNetwork', widget: 'string' }
+          - { label: 'Erreur — générique', name: 'errorGeneric', widget: 'string' }
+          - { label: 'Succès — titre', name: 'successTitle', widget: 'string' }
+          - { label: 'Succès — sous-titre', name: 'successSubtitle', widget: 'string' }

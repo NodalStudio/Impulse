@@ -1,8 +1,9 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import type { PillarsContent } from '@/lib/sections';
 
-export default function Pillars() {
+export default function Pillars({ content }: { content: PillarsContent }) {
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -23,26 +24,7 @@ export default function Pillars() {
     return () => observer.disconnect();
   }, []);
 
-  const pillars = [
-    {
-      number: "01",
-      title: "apprendre",
-      description:
-        "Des contenus et échanges actionnables pour nourrir votre réflexion et affûter vos compétences.",
-    },
-    {
-      number: "02",
-      title: "s'entraider",
-      description:
-        "Intelligence collective et soutien réel entre femmes qui comprennent vos enjeux.",
-    },
-    {
-      number: "03",
-      title: "agir",
-      description:
-        "Posture, visibilité et décisions alignées pour passer à l'action concrètement.",
-    },
-  ];
+  const pillars = content.pillars;
 
   return (
     <section
@@ -70,7 +52,7 @@ export default function Pillars() {
         {/* Section header */}
         <div className="text-center mb-14 md:mb-20 pillar-animate">
           <p className="font-montserrat uppercase tracking-[0.3em] text-blush/40 text-xs lg:text-sm mb-4">
-            Nos 3 Piliers
+            {content.eyebrow}
           </p>
           <div className="flex items-center justify-center">
             <div className="h-px w-12 bg-gradient-to-r from-transparent to-gold/30" />

@@ -1,0 +1,23 @@
+---
+eyebrow: "Fonctionnement"
+headlineBrand: "Impulse"
+headlinePrefix: " offre un cadre pour "
+headlineScript: "apprendre, échanger et agir"
+headlineSuffix: " :"
+features:
+  - text: "1"
+    highlight: "rendez-vous"
+    textAfter: "mensuel"
+  - text: "un"
+    highlight: "format clair et structuré"
+    textAfter: "(accueil – intervention – échanges)"
+  - text: "des"
+    highlight: "intervenantes"
+    textAfter: "internes et externes"
+  - text: "des livrables"
+    highlight: "concrets & actionnables"
+    textAfter: ""
+  - text: "un suivi et des"
+    highlight: "ressources"
+    textAfter: "entre les sessions"
+---

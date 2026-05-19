@@ -1,37 +1,16 @@
 import Image from "next/image";
+import type { TeamContent } from '@/lib/sections';
 
-const founders = [
-  {
-    name: "Anaïs Derenne",
-    role: "Expérience membre & facilitation",
-    image: "/images/team-anais.png",
-    alt: "Anaïs Derenne, co-fondatrice d'Impulse Barcelone, facilitatrice en talents et fondatrice de BeauBOULOT",
-    bio: "Facilitatrice en talents et fondatrice de BeauBOULOT, Anaïs accompagne depuis plus de 10 ans les décideurs et les équipes sur les enjeux de recrutement, d'évaluation et de sens au travail. Elle rejoint l'équipe d'IMPULSE en 2025, avec l'envie de fédérer un collectif de femmes ambitieuses, inspirantes et engagées dans leur développement professionnel. Elle est garante de l'expérience membre et de la facilitation des ateliers.",
-  },
-  {
-    name: "Marina Serr",
-    role: "Fondatrice & vision Impulse",
-    image: "/images/team-marina.png",
-    alt: "Marina Serr, fondatrice d'Impulse Barcelone, business coach certifiée accompagnant entrepreneurs et dirigeants",
-    bio: "Business coach certifiée, Marina guide entrepreneurs, dirigeants et cadres dans des phases clés de structuration, de transition et de montée en posture. Elle a déjà accompagné plus de 100 leaders. Fondatrice du RDV des entrepreneuses en 2022, devenu IMPULSE en 2026, elle croit en la force d'un collectif exigeant et humain comme levier de réussite pour les femmes. Elle est garante de la vision, du cadre, de la dynamique collective et de la cohérence globale d'IMPULSE.",
-  },
-  {
-    name: "Sophie Bernicke",
-    role: "Structure & cohésion du collectif",
-    image: "/images/team-sophie.png",
-    alt: "Sophie Bernicke, co-fondatrice d'Impulse Barcelone, naturopathe spécialisée dans le mieux vieillir",
-    bio: "Naturopathe spécialisée dans le mieux vieillir, Sophie accompagne les femmes à retrouver énergie et vitalité durablement grâce une approche globale, bienveillante et pragmatique. Engagée au sein d'IMPULSE depuis 2025, elle porte la conviction que la puissance du collectif nourrit l'énergie humaine et soutient une transformation professionnelle durable. Elle est garante de la structure et de la facilitation globale du collectif.",
-  },
-];
+export default function Team({ content }: { content: TeamContent }) {
+  const founders = content.founders;
 
-export default function Team() {
   return (
     <section id="equipe" className="py-20 md:py-28 bg-white">
       <div className="container-impulse px-6 md:px-8">
         {/* Section header */}
         <div className="mb-10 lg:mb-14 animate-fade-in-up">
           <p className="font-montserrat uppercase tracking-[0.3em] text-navy/50 text-xs lg:text-sm mb-3">
-            Équipe
+            {content.eyebrow}
           </p>
           <div className="w-16 h-px bg-gradient-to-r from-gold to-transparent" />
         </div>

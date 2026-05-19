@@ -1,0 +1,22 @@
+---
+eyebrow: "Constat"
+headlinePrefix: "Entreprendre et diriger seule a "
+headlineScript: "un coût invisible"
+headlineSuffix: ":"
+problems:
+  - text: "rester"
+    highlight: "enfermée"
+    textAfter: "dans son propre regard"
+  - text: "manquer d'espaces pour confronter ses"
+    highlight: "angles morts"
+    textAfter: ""
+  - text: "avancer sans miroir exigeant ni"
+    highlight: "soutien"
+    textAfter: "structuré"
+  - text: "porter des"
+    highlight: "décisions lourdes"
+    textAfter: "et seule"
+  - text: "sous exploiter son"
+    highlight: "potentiel"
+    textAfter: ""
+---

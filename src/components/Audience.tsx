@@ -1,25 +1,7 @@
-export default function Audience() {
-  const criteria = [
-    {
-      text: "entreprennent ou dirigent",
-      highlight: ""
-    },
-    {
-      text: "sont engagées dans leur",
-      highlight: "développement business"
-    },
-    {
-      text: "veulent",
-      highlight: "s'entourer",
-      textAfter: "intelligemment"
-    },
-    {
-      text: "recherchent autant la",
-      highlight: "stimulation intellectuelle",
-      textAfter: "que la qualité des",
-      highlight2: "relations humaines"
-    }
-  ];
+import type { AudienceContent } from '@/lib/sections';
+
+export default function Audience({ content }: { content: AudienceContent }) {
+  const criteria = content.criteria;
 
   return (
     <section className="py-20 md:py-28 bg-white">
@@ -27,7 +9,7 @@ export default function Audience() {
         {/* Section header */}
         <div className="mb-10 lg:mb-16 animate-fade-in-up">
           <p className="font-montserrat uppercase tracking-[0.3em] text-navy/50 text-xs lg:text-sm mb-3">
-            Communauté
+            {content.eyebrow}
           </p>
           <div className="w-16 h-px bg-gradient-to-r from-gold to-transparent" />
         </div>
@@ -36,11 +18,11 @@ export default function Audience() {
         <div className="max-w-4xl mb-10 lg:mb-14 animate-fade-in-up delay-100">
           <h2 className="font-tenor text-2xl md:text-3xl lg:text-4xl text-navy leading-relaxed">
             <span className="font-montserrat uppercase tracking-[0.2em] font-semibold">Impulse</span>{' '}
-            s&apos;adresse aux{' '}
+            {content.headlinePrefix}
             <span className="font-script text-3xl md:text-4xl lg:text-5xl text-gold">
-              femmes
-            </span>{' '}
-            qui :
+              {content.headlineScript}
+            </span>
+            {content.headlineSuffix}
           </h2>
         </div>
 

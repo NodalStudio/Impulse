@@ -1,31 +1,7 @@
-export default function HowItWorks() {
-  const features = [
-    {
-      text: "1",
-      highlight: "rendez-vous",
-      textAfter: "mensuel"
-    },
-    {
-      text: "un",
-      highlight: "format clair et structuré",
-      textAfter: "(accueil – intervention – échanges)"
-    },
-    {
-      text: "des",
-      highlight: "intervenantes",
-      textAfter: "internes et externes"
-    },
-    {
-      text: "des livrables",
-      highlight: "concrets & actionnables",
-      textAfter: ""
-    },
-    {
-      text: "un suivi et des",
-      highlight: "ressources",
-      textAfter: "entre les sessions"
-    }
-  ];
+import type { HowItWorksContent } from '@/lib/sections';
+
+export default function HowItWorks({ content }: { content: HowItWorksContent }) {
+  const features = content.features;
 
   return (
     <section className="py-20 md:py-28 bg-blush">
@@ -33,7 +9,7 @@ export default function HowItWorks() {
         {/* Section header */}
         <div className="mb-10 lg:mb-16 animate-fade-in-up">
           <p className="font-montserrat uppercase tracking-[0.3em] text-navy/50 text-xs lg:text-sm mb-3">
-            Fonctionnement
+            {content.eyebrow}
           </p>
           <div className="w-16 h-px bg-gradient-to-r from-gold to-transparent" />
         </div>
@@ -41,12 +17,11 @@ export default function HowItWorks() {
         {/* Main headline */}
         <div className="max-w-4xl mb-10 lg:mb-14 animate-fade-in-up delay-100">
           <h2 className="font-tenor text-2xl md:text-3xl lg:text-4xl text-navy">
-            <span className="font-montserrat uppercase tracking-[0.2em] font-semibold leading-loose">Impulse</span>{' '}
-            offre un cadre pour{' '}
+            <span className="font-montserrat uppercase tracking-[0.2em] font-semibold leading-loose">{content.headlineBrand}</span>{content.headlinePrefix}
             <span className="font-script text-3xl md:text-4xl lg:text-5xl text-gold">
-              apprendre, échanger et agir
+              {content.headlineScript}
             </span>
-            {' '}:
+            {content.headlineSuffix}
           </h2>
         </div>
 

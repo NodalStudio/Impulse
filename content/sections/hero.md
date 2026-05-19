@@ -1,0 +1,15 @@
+---
+headline1: "Le rendez-vous business"
+headline2Prefix: "des "
+headline2Gold: "femmes d'impact"
+subtitle: "Des événements mensuels à Barcelone pour les femmes entrepreneures qui veulent apprendre, s'entraider et agir ensemble."
+ctaPrimaryLabel: "Rejoindre la communauté"
+ctaPrimaryHref: "#contact"
+ctaSecondaryLabel: "Voir le calendrier"
+ctaSecondaryHref: "#calendrier"
+pillar1: "Apprendre"
+pillar2: "S'entraider"
+pillar3: "Agir"
+scrollLabel: "Découvrir"
+scrollHref: "#mission"
+---

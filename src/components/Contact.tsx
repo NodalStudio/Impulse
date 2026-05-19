@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef, FormEvent } from 'react';
+import type { ContactContent } from '@/lib/sections';
 
 const CONTACT_API = process.env.NEXT_PUBLIC_IMPULSE_CONTACT_API || '';
 const COOLDOWN_KEY = 'impulse_contact_cooldown';
@@ -17,10 +18,14 @@ const INITIAL_FORM_DATA = {
   website: ''
 };
 
-const getSubmitLabel = (formState: 'idle' | 'submitting' | 'success' | 'error' | 'network_error' | 'rate_limited', isCooldown: boolean) => {
-  if (formState === 'submitting') return 'Envoi...';
-  if (isCooldown) return 'Veuillez patienter...';
-  return 'Envoyer ma demande';
+const getSubmitLabel = (
+  formState: 'idle' | 'submitting' | 'success' | 'error' | 'network_error' | 'rate_limited',
+  isCooldown: boolean,
+  content: ContactContent
+) => {
+  if (formState === 'submitting') return content.formSubmitSubmitting;
+  if (isCooldown) return content.formSubmitCooldown;
+  return content.formSubmitDefault;
 };
 
 const isBotSubmission = (website: string, firstInteraction: number | null) => {
@@ -35,7 +40,7 @@ const getResponseState = (response: Response) => {
   return 'error' as const;
 };
 
-export default function Contact() {
+export default function Contact({ content }: { content: ContactContent }) {
   const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error' | 'network_error' | 'rate_limited'>('idle');
   const [formData, setFormData] = useState(INITIAL_FORM_DATA);
   const [cooldown, setCooldown] = useState(false);
@@ -88,7 +93,7 @@ export default function Contact() {
     }
   };
 
-  const submitLabel = getSubmitLabel(formState, cooldown);
+  const submitLabel = getSubmitLabel(formState, cooldown, content);
 
   const formContent = (idSuffix: string) => (
     <>
@@ -101,28 +106,28 @@ export default function Contact() {
 
       <div className="grid grid-cols-2 gap-3">
         <div>
-          <label htmlFor={`name-${idSuffix}`} className="block font-montserrat text-xs font-medium text-navy mb-1">Prénom et nom *</label>
+          <label htmlFor={`name-${idSuffix}`} className="block font-montserrat text-xs font-medium text-navy mb-1">{content.formNameLabel}</label>
           <input type="text" id={`name-${idSuffix}`} name="name" required value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
             className="w-full px-3 py-2.5 rounded-sm border border-rose/50 focus:border-gold focus:ring-1 focus:ring-gold/20 outline-none font-montserrat text-sm transition-colors"
-            placeholder="Marie Dupont" />
+            placeholder={content.formNamePlaceholder} />
         </div>
         <div>
-          <label htmlFor={`email-${idSuffix}`} className="block font-montserrat text-xs font-medium text-navy mb-1">Email *</label>
+          <label htmlFor={`email-${idSuffix}`} className="block font-montserrat text-xs font-medium text-navy mb-1">{content.formEmailLabel}</label>
           <input type="email" id={`email-${idSuffix}`} name="email" required value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
             className="w-full px-3 py-2.5 rounded-sm border border-rose/50 focus:border-gold focus:ring-1 focus:ring-gold/20 outline-none font-montserrat text-sm transition-colors"
-            placeholder="marie@exemple.com" />
+            placeholder={content.formEmailPlaceholder} />
         </div>
       </div>
 
       <div className="grid grid-cols-3 gap-3">
         <div>
-          <label htmlFor={`profession-${idSuffix}`} className="block font-montserrat text-xs font-medium text-navy mb-1">Profession *</label>
+          <label htmlFor={`profession-${idSuffix}`} className="block font-montserrat text-xs font-medium text-navy mb-1">{content.formProfessionLabel}</label>
           <select id={`profession-${idSuffix}`} name="profession" required value={formData.profession}
             onChange={(e) => setFormData({ ...formData, profession: e.target.value })}
             className="w-full px-3 py-2.5 rounded-sm border border-rose/50 focus:border-gold focus:ring-1 focus:ring-gold/20 outline-none font-montserrat text-sm bg-white transition-colors">
-            <option value="">Choisir...</option>
+            <option value="">{content.formProfessionPlaceholder}</option>
             <option value="entrepreneure">Entrepreneure</option>
             <option value="dirigeante">Dirigeante</option>
             <option value="cadre">Cadre</option>
@@ -132,11 +137,11 @@ export default function Contact() {
           </select>
         </div>
         <div>
-          <label htmlFor={`age-${idSuffix}`} className="block font-montserrat text-xs font-medium text-navy mb-1">Âge *</label>
+          <label htmlFor={`age-${idSuffix}`} className="block font-montserrat text-xs font-medium text-navy mb-1">{content.formAgeLabel}</label>
           <select id={`age-${idSuffix}`} name="age" required value={formData.age}
             onChange={(e) => setFormData({ ...formData, age: e.target.value })}
             className="w-full px-3 py-2.5 rounded-sm border border-rose/50 focus:border-gold focus:ring-1 focus:ring-gold/20 outline-none font-montserrat text-sm bg-white transition-colors">
-            <option value="">Choisir...</option>
+            <option value="">{content.formAgePlaceholder}</option>
             <option value="25-34">25-34 ans</option>
             <option value="35-44">35-44 ans</option>
             <option value="45-54">45-54 ans</option>
@@ -144,11 +149,11 @@ export default function Contact() {
           </select>
         </div>
         <div>
-          <label htmlFor={`location-${idSuffix}`} className="block font-montserrat text-xs font-medium text-navy mb-1">Localisation *</label>
+          <label htmlFor={`location-${idSuffix}`} className="block font-montserrat text-xs font-medium text-navy mb-1">{content.formLocationLabel}</label>
           <select id={`location-${idSuffix}`} name="location" required value={formData.location}
             onChange={(e) => setFormData({ ...formData, location: e.target.value })}
             className="w-full px-3 py-2.5 rounded-sm border border-rose/50 focus:border-gold focus:ring-1 focus:ring-gold/20 outline-none font-montserrat text-sm bg-white transition-colors">
-            <option value="">Choisir...</option>
+            <option value="">{content.formLocationPlaceholder}</option>
             <option value="barcelone">Barcelone</option>
             <option value="catalogne">Catalogne</option>
             <option value="espagne">Espagne</option>
@@ -159,20 +164,20 @@ export default function Contact() {
       </div>
 
       <div>
-        <label htmlFor={`message-${idSuffix}`} className="block font-montserrat text-xs font-medium text-navy mb-1">Votre message</label>
+        <label htmlFor={`message-${idSuffix}`} className="block font-montserrat text-xs font-medium text-navy mb-1">{content.formMessageLabel}</label>
         <textarea id={`message-${idSuffix}`} name="message" rows={3} value={formData.message}
           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
           className="w-full px-3 py-2.5 rounded-sm border border-rose/50 focus:border-gold focus:ring-1 focus:ring-gold/20 outline-none font-montserrat text-sm resize-none transition-colors"
-          placeholder="Parlez-nous de vous et de vos attentes..." />
+          placeholder={content.formMessagePlaceholder} />
       </div>
 
       {(formState === 'error' || formState === 'network_error' || formState === 'rate_limited') && (
         <div className="bg-red-50 text-red-600 px-3 py-2 rounded-sm font-montserrat text-xs">
           {formState === 'rate_limited'
-            ? 'Trop de demandes, réessayez dans quelques minutes.'
+            ? content.errorRateLimited
             : formState === 'network_error'
-              ? 'Problème de connexion. Vérifiez votre réseau et réessayez.'
-              : 'Une erreur est survenue. Veuillez réessayer.'}
+              ? content.errorNetwork
+              : content.errorGeneric}
         </div>
       )}
 
@@ -190,8 +195,8 @@ export default function Contact() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
         </svg>
       </div>
-      <p className="font-tenor text-xl text-navy mb-2">Message envoyé !</p>
-      <p className="font-montserrat text-sm text-navy/60">Nous vous recontacterons très bientôt.</p>
+      <p className="font-tenor text-xl text-navy mb-2">{content.successTitle}</p>
+      <p className="font-montserrat text-sm text-navy/60">{content.successSubtitle}</p>
     </div>
   );
 
@@ -206,7 +211,7 @@ export default function Contact() {
           {/* Section header */}
           <div className="mb-8 lg:mb-10 animate-fade-in-up">
             <p className="font-montserrat uppercase tracking-[0.3em] text-navy/50 text-xs lg:text-sm mb-3">
-              Contact
+              {content.eyebrow}
             </p>
             <div className="w-16 h-px bg-gradient-to-r from-gold to-transparent" />
           </div>
@@ -215,34 +220,34 @@ export default function Contact() {
             {/* Left — headline + info */}
             <div className="mb-8 lg:mb-0 animate-fade-in-up">
               <h2 className="font-tenor text-3xl md:text-4xl lg:text-5xl text-navy leading-tight mb-4">
-                Rejoignez<br />nous.
+                {content.headlineLine1}<br />{content.headlineLine2}
               </h2>
 
               <div className="max-w-md mb-6">
                 <p className="font-tenor text-base lg:text-lg text-navy leading-relaxed">
-                  <span className="font-montserrat uppercase tracking-wider text-xs">Impulse</span> n&apos;est pas un réseau de contacts.
+                  <span className="font-montserrat uppercase tracking-wider text-xs">{content.introBrand}</span>{content.introTenor}
                 </p>
                 <p className="font-script text-lg lg:text-xl text-gold mt-1">
-                  C&apos;est un espace de travail et de croissance.
+                  {content.introScript}
                 </p>
               </div>
 
               {/* Contact details */}
               <div className="pt-5 border-t border-navy/10">
-                <p className="font-tenor text-base text-navy font-semibold mb-2">Marina Serr</p>
-                <a href="mailto:impulse.rdv@gmail.com" className="font-montserrat text-sm text-navy/60 hover:text-gold transition-colors">
-                  impulse.rdv@gmail.com
+                <p className="font-tenor text-base text-navy font-semibold mb-2">{content.contactName}</p>
+                <a href={`mailto:${content.contactEmail}`} className="font-montserrat text-sm text-navy/60 hover:text-gold transition-colors">
+                  {content.contactEmail}
                 </a>
                 <div className="flex gap-4 mt-3">
-                  <a href="https://www.linkedin.com/company/impulse-barcelone/" target="_blank" rel="noopener noreferrer"
+                  <a href={content.linkedinUrl} target="_blank" rel="noopener noreferrer"
                     className="flex items-center gap-1.5 font-montserrat text-xs text-navy/50 hover:text-gold transition-colors">
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                    Impulse Barcelone
+                    {content.linkedinLabel}
                   </a>
-                  <a href="https://instagram.com/impulse_communaute" target="_blank" rel="noopener noreferrer"
+                  <a href={content.instagramUrl} target="_blank" rel="noopener noreferrer"
                     className="flex items-center gap-1.5 font-montserrat text-xs text-navy/50 hover:text-gold transition-colors">
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                    @impulse_communaute
+                    {content.instagramLabel}
                   </a>
                 </div>
               </div>
@@ -264,10 +269,10 @@ export default function Contact() {
       <div className="bg-navy/5 border-t border-navy/10 py-4 px-6 md:px-8">
         <div className="container-impulse flex justify-between items-center">
           <p className="font-montserrat text-xs text-navy/40">
-            © {currentYear} Impulse
+            © {currentYear} {content.footerCopyright}
           </p>
           <p className="font-script text-gold/60 text-lg">
-            Ensemble, plus loin
+            {content.footerScript}
           </p>
         </div>
       </div>

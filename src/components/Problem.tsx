@@ -1,31 +1,7 @@
-export default function Problem() {
-  const problems = [
-    {
-      highlight: "enfermée",
-      text: "rester",
-      textAfter: "dans son propre regard"
-    },
-    {
-      highlight: "angles morts",
-      text: "manquer d'espaces pour confronter ses",
-      textAfter: ""
-    },
-    {
-      highlight: "soutien",
-      text: "avancer sans miroir exigeant ni",
-      textAfter: "structuré"
-    },
-    {
-      highlight: "décisions lourdes",
-      text: "porter des",
-      textAfter: "et seule"
-    },
-    {
-      highlight: "potentiel",
-      text: "sous exploiter son",
-      textAfter: ""
-    }
-  ];
+import type { ProblemContent } from '@/lib/sections';
+
+export default function Problem({ content }: { content: ProblemContent }) {
+  const problems = content.problems;
 
   return (
     <section className="py-20 md:py-28 bg-blush">
@@ -33,7 +9,7 @@ export default function Problem() {
         {/* Section header */}
         <div className="mb-10 lg:mb-16 animate-fade-in-up">
           <p className="font-montserrat uppercase tracking-[0.3em] text-navy/50 text-xs lg:text-sm mb-3">
-            Constat
+            {content.eyebrow}
           </p>
           <div className="w-16 h-px bg-gradient-to-r from-gold to-transparent" />
         </div>
@@ -41,11 +17,11 @@ export default function Problem() {
         {/* Main headline */}
         <div className="max-w-4xl mb-10 lg:mb-14 animate-fade-in-up delay-100">
           <h2 className="font-tenor text-2xl md:text-3xl lg:text-4xl text-navy leading-relaxed">
-            Entreprendre et diriger seule a{' '}
+            {content.headlinePrefix}
             <span className="font-script text-3xl md:text-4xl lg:text-5xl text-gold">
-              un coût invisible
+              {content.headlineScript}
             </span>
-            &nbsp;:
+            &nbsp;{content.headlineSuffix}
           </h2>
         </div>
 

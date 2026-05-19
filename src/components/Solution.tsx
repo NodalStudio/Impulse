@@ -1,4 +1,6 @@
-export default function Solution() {
+import type { SolutionContent } from '@/lib/sections';
+
+export default function Solution({ content }: { content: SolutionContent }) {
   return (
     <section className="py-20 md:py-28 bg-white">
       <div className="container-impulse px-6 md:px-8">
@@ -8,18 +10,18 @@ export default function Solution() {
           <div className="animate-slide-left">
             <div className="mb-4">
               <p className="font-montserrat uppercase tracking-[0.3em] text-navy/50 text-xs mb-3">
-                Intention
+                {content.intentionEyebrow}
               </p>
               <div className="w-16 h-px bg-gradient-to-r from-gold to-transparent" />
             </div>
 
             <p className="font-tenor text-xl text-navy leading-snug">
-              Offrir aux femmes{' '}
-              <span className="text-gold font-medium">entrepreneuses et dirigeantes</span>
-              {' '}un espace structurant, où transformer leur manière de penser et d&apos;agir
+              {content.intentionMobileText1Before}
+              <span className="text-gold font-medium">{content.intentionMobileText1Gold}</span>
+              {content.intentionMobileText1After}
             </p>
             <p className="font-script text-xl text-navy mt-1">
-              et grandir professionnellement.
+              {content.intentionMobileScript}
             </p>
           </div>
 
@@ -28,19 +30,19 @@ export default function Solution() {
             <div className="relative z-10">
               <div className="mb-4">
                 <p className="font-montserrat uppercase tracking-[0.3em] text-gold/70 text-xs mb-3">
-                  Ambition
+                  {content.ambitionEyebrow}
                 </p>
                 <div className="w-16 h-px bg-gradient-to-r from-gold/50 to-transparent" />
               </div>
 
               <p className="font-tenor text-xl text-blush leading-snug">
-                Faire d&apos;<span className="font-montserrat uppercase tracking-[0.15em] font-semibold text-sm">Impulse</span>
+                {content.ambitionFaireDe}<span className="font-montserrat uppercase tracking-[0.15em] font-semibold text-sm">{content.ambitionBrand}</span>
               </p>
               <p className="font-script text-xl text-blush mt-2">
-                le rendez-vous business incontournable
+                {content.ambitionScript}
               </p>
               <p className="font-tenor text-xl text-blush leading-snug mt-2">
-                des <span className="text-gold font-medium">entrepreneuses et dirigeantes francophones</span> à Barcelone.
+                {content.ambitionMobileDesPrefix}<span className="text-gold font-medium">{content.ambitionMobileGold}</span>{content.ambitionMobileSuffix}
               </p>
             </div>
           </div>
@@ -52,19 +54,19 @@ export default function Solution() {
           <div className="animate-slide-left pt-12">
             <div className="mb-8">
               <p className="font-montserrat uppercase tracking-[0.3em] text-navy/50 text-xs lg:text-sm mb-3">
-                Intention
+                {content.intentionEyebrow}
               </p>
               <div className="w-16 h-px bg-gradient-to-r from-gold to-transparent" />
             </div>
 
             <p className="font-tenor text-3xl text-navy leading-relaxed">
-              Offrir aux femmes <span className="text-gold font-medium">entrepreneuses et dirigeantes</span>
+              {content.intentionDesktopBefore}<span className="text-gold font-medium">{content.intentionDesktopGold}</span>
               <br />
-              un espace structurant,
+              {content.intentionDesktopMiddle1}
               <br />
-              où transformer leur manière de penser et d&apos;agir
+              {content.intentionDesktopMiddle2}
               <br />
-              <span className="font-script text-4xl">et grandir professionnellement.</span>
+              <span className="font-script text-4xl">{content.intentionDesktopScript}</span>
             </p>
           </div>
 
@@ -73,22 +75,22 @@ export default function Solution() {
             <div className="relative z-10">
               <div className="mb-8">
                 <p className="font-montserrat uppercase tracking-[0.3em] text-gold/70 text-xs lg:text-sm mb-3">
-                  Ambition
+                  {content.ambitionEyebrow}
                 </p>
                 <div className="w-16 h-px bg-gradient-to-r from-gold/50 to-transparent" />
               </div>
 
               <p className="font-tenor text-3xl text-blush leading-relaxed">
-                Faire d&apos;<span className="font-montserrat uppercase tracking-[0.2em] font-semibold">Impulse</span>
+                {content.ambitionFaireDe}<span className="font-montserrat uppercase tracking-[0.2em] font-semibold">{content.ambitionBrand}</span>
               </p>
               <p className="font-script text-4xl text-blush mt-4">
-                le rendez-vous business incontournable
+                {content.ambitionScript}
               </p>
               <p className="font-tenor text-3xl mt-4">
-                des <span className="text-gold font-medium">entrepreneuses et dirigeantes francophones</span>
+                {content.ambitionDesktopDesPrefix}<span className="text-gold font-medium">{content.ambitionDesktopGold}</span>
               </p>
               <p className="font-tenor text-3xl text-blush mt-4">
-                à Barcelone.
+                {content.ambitionDesktopCity}
               </p>
             </div>
           </div>

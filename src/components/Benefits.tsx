@@ -1,34 +1,15 @@
-const benefits = [
-  {
-    title: "Élargir sa manière de penser",
-    description: "en confrontant ses points de vue à ceux d'autres entrepreneuses et dirigeantes."
-  },
-  {
-    title: "Renforcer sa posture professionnelle",
-    description: "en prenant du recul sur ses décisions, ses rôles et ses responsabilités."
-  },
-  {
-    title: "Apprendre autrement",
-    description: "par le partage d'expériences, la transmission et l'intelligence collective."
-  },
-  {
-    title: "Ne plus porter seule",
-    description: "ses questionnements, ses doutes ou ses choix structurants."
-  },
-  {
-    title: "Grandir dans un cadre exigeant et sécurisant",
-    description: "qui encourage l'expression, la contribution et la mise en mouvement."
-  }
-];
+import type { BenefitsContent } from '@/lib/sections';
 
-export default function Benefits() {
+export default function Benefits({ content }: { content: BenefitsContent }) {
+  const benefits = content.benefits;
+
   return (
     <section className="py-20 md:py-28 bg-blush">
       <div className="container-impulse px-6 md:px-8">
         {/* Section header */}
         <div className="mb-10 md:mb-14 animate-fade-in-up">
           <p className="font-montserrat uppercase tracking-[0.3em] text-navy/50 text-xs lg:text-sm mb-3">
-            Bénéfices
+            {content.eyebrow}
           </p>
           <div className="w-16 h-px bg-gradient-to-r from-gold to-transparent" />
         </div>
