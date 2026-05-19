@@ -1,12 +1,29 @@
+# Auth DecapBridge (PKCE) — voir https://decapbridge.com
 backend:
   name: git-gateway
+  repo: NodalStudio/Impulse
   branch: main
+  auth_type: pkce
+  base_url: https://auth.decapbridge.com
+  auth_endpoint: /sites/14b82850-81bf-4089-9db2-c239fab21a66/pkce
+  auth_token_endpoint: /sites/14b82850-81bf-4089-9db2-c239fab21a66/token
+  gateway_url: https://gateway.decapbridge.com
   commit_messages:
-    create: 'content: create {{collection}} "{{slug}}"'
-    update: 'content: update {{collection}} "{{slug}}"'
-    delete: 'content: delete {{collection}} "{{slug}}"'
-    uploadMedia: 'content: upload "{{path}}"'
-    deleteMedia: 'content: delete "{{path}}"'
+    create: 'content: create {{collection}} "{{slug}}" — {{author-name}} via DecapBridge'
+    update: 'content: update {{collection}} "{{slug}}" — {{author-name}} via DecapBridge'
+    delete: 'content: delete {{collection}} "{{slug}}" — {{author-name}} via DecapBridge'
+    uploadMedia: 'content: upload "{{path}}" — {{author-name}} via DecapBridge'
+    deleteMedia: 'content: delete "{{path}}" — {{author-name}} via DecapBridge'
+    openAuthoring: 'content: {{message}} — {{author-name}} via DecapBridge'
+
+# Champs PKCE renvoyés par DecapBridge (affichage auteur dans Decap)
+auth:
+  email_claim: email
+  first_name_claim: first_name
+  last_name_claim: last_name
+  avatar_url_claim: avatar_url
+
+logo_url: https://decapbridge.com/decapcms-with-bridge.svg
 
 media_folder: public/images/uploads
 public_folder: /images/uploads
