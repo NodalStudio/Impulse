@@ -9,12 +9,12 @@ backend:
   auth_token_endpoint: /sites/14b82850-81bf-4089-9db2-c239fab21a66/token
   gateway_url: https://gateway.decapbridge.com
   commit_messages:
-    create: 'content: create {{collection}} "{{slug}}" — {{author-name}} via DecapBridge'
-    update: 'content: update {{collection}} "{{slug}}" — {{author-name}} via DecapBridge'
-    delete: 'content: delete {{collection}} "{{slug}}" — {{author-name}} via DecapBridge'
-    uploadMedia: 'content: upload "{{path}}" — {{author-name}} via DecapBridge'
-    deleteMedia: 'content: delete "{{path}}" — {{author-name}} via DecapBridge'
-    openAuthoring: 'content: {{message}} — {{author-name}} via DecapBridge'
+    create: '✨ Create {{collection}} "{{slug}}" — {{author-name}} via DecapBridge'
+    update: '📝 Update {{collection}} "{{slug}}" — {{author-name}} via DecapBridge'
+    delete: '🔥 Delete {{collection}} "{{slug}}" — {{author-name}} via DecapBridge'
+    uploadMedia: '🍱 Upload "{{path}}" — {{author-name}} via DecapBridge'
+    deleteMedia: '🔥 Delete media "{{path}}" — {{author-name}} via DecapBridge'
+    openAuthoring: '📝 {{message}} — {{author-name}} via DecapBridge'
 
 # Champs PKCE renvoyés par DecapBridge (affichage auteur dans Decap)
 auth:
