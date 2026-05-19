@@ -226,15 +226,20 @@ collections:
         fields:
           - { label: 'Étiquette de section', name: 'eyebrow', widget: 'string' }
           - { label: 'Titre mobile des points forts', name: 'mobileHighlightsTitle', widget: 'string' }
-          - label: 'Témoignages (5 attendus pour le layout desktop)'
+          - label: 'Témoignages'
             name: 'testimonials'
             widget: 'list'
+            min: 5
+            max: 5
+            hint: 'Le layout desktop nécessite exactement 5 témoignages — l''ordre détermine la position dans la grille.'
             fields:
               - { label: 'Citation', name: 'quote', widget: 'text' }
               - { label: 'Auteure', name: 'author', widget: 'string' }
           - label: 'Points forts (highlights)'
             name: 'highlights'
             widget: 'list'
+            min: 3
+            hint: 'Mobile affiche les 3 premiers, desktop affiche tous.'
             field: { label: 'Point fort', name: 'highlight', widget: 'string' }
 
       - label: 'Équipe (fondatrices)'
