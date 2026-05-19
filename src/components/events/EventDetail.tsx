@@ -47,7 +47,7 @@ export default function EventDetail({ event, isPast, related = [] }: Props) {
             <div className="flex flex-wrap gap-x-5 gap-y-2 text-xs md:text-sm text-blush/70 font-montserrat mt-5">
               <span>{formatEventDate(event.date)}{event.time ? ` · ${event.time}` : ''}</span>
               <span className="before:content-['—_'] before:text-gold/50 before:mr-1">{event.location}</span>
-              {event.guest && (
+              {event.guest?.name && (
                 <span className="before:content-['—_'] before:text-gold/50 before:mr-1">Avec {event.guest.name}</span>
               )}
               {event.price && (
@@ -124,17 +124,19 @@ export default function EventDetail({ event, isPast, related = [] }: Props) {
           </div>
         )}
 
-        {event.guest && (event.guest.photo || event.guest.bio) && (
+        {event.guest && (event.guest.name || event.guest.photo || event.guest.bio) && (
           <div className="mb-12">
             <div className="text-center mb-6">
               <p className="font-script text-gold text-2xl md:text-3xl leading-none">notre invitée d&apos;honneur</p>
             </div>
             {event.guest.photo && (
               <div className="relative aspect-[16/10] overflow-hidden shadow-xl mb-5">
-                <Image src={event.guest.photo} alt={event.guest.name} fill className="object-cover" sizes="(max-width: 768px) 100vw, 768px" />
+                <Image src={event.guest.photo} alt={event.guest.name ?? 'Invitée'} fill className="object-cover" sizes="(max-width: 768px) 100vw, 768px" />
               </div>
             )}
-            <p className="text-center font-tenor text-xl md:text-2xl text-navy mb-1">{event.guest.name}</p>
+            {event.guest.name && (
+              <p className="text-center font-tenor text-xl md:text-2xl text-navy mb-1">{event.guest.name}</p>
+            )}
             {event.guest.role && (
               <p className="text-center font-montserrat text-sm text-navy/60 mb-5">{event.guest.role}</p>
             )}
@@ -210,7 +212,7 @@ export default function EventDetail({ event, isPast, related = [] }: Props) {
                     {formatEventDate(e.date)}
                   </div>
                   <h3 className="font-tenor text-lg text-navy leading-snug">{e.title}</h3>
-                  {e.guest && (
+                  {e.guest?.name && (
                     <p className="font-montserrat text-xs text-navy/55 mt-2">avec {e.guest.name}</p>
                   )}
                 </a>

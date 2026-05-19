@@ -57,7 +57,7 @@ export default function EventHero({ event }: Props) {
         <div className="relative">
           {event.guest?.photo ? (
             <div className="relative aspect-[4/5] overflow-hidden shadow-2xl">
-              <Image src={event.guest.photo} alt={event.guest.name} fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
+              <Image src={event.guest.photo} alt={event.guest.name ?? 'Invitée'} fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
             </div>
           ) : (
             <EventOrnament variant="hero" />

@@ -55,7 +55,7 @@ function buildEventLd(event: ImpulseEvent, isPast: boolean): string {
     };
   }
 
-  if (event.guest) {
+  if (event.guest?.name) {
     data.performer = {
       '@type': 'Person',
       name: event.guest.name,

@@ -54,13 +54,13 @@ collections:
       - { label: 'Tagline (script doré au-dessus du titre)', name: 'tagline', widget: 'string', required: false, hint: 'Ex. "une soirée pour"' }
       - { label: 'Description / chapeau', name: 'description', widget: 'text', required: false }
       - { label: 'Photo de couverture', name: 'coverPhoto', widget: 'image', required: false, hint: 'Utilisée dans le carrousel Souvenirs' }
-      - label: 'Invitée (optionnel)'
+      - label: 'Invitée'
         name: 'guest'
         widget: 'object'
         required: false
         collapsed: true
         fields:
-          - { label: 'Nom', name: 'name', widget: 'string' }
+          - { label: 'Nom', name: 'name', widget: 'string', required: false }
           - { label: 'Rôle / titre', name: 'role', widget: 'string', required: false }
           - { label: 'Photo', name: 'photo', widget: 'image', required: false }
           - { label: 'Bio / présentation', name: 'bio', widget: 'text', required: false }
