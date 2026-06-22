@@ -257,6 +257,27 @@ collections:
               - { label: 'Texte alternatif (SEO/a11y)', name: 'alt', widget: 'string' }
               - { label: 'Bio', name: 'bio', widget: 'text' }
 
+      - label: 'Partenaires'
+        name: 'partners'
+        file: 'content/sections/partners.md'
+        fields:
+          - { label: 'Étiquette de section', name: 'eyebrow', widget: 'string' }
+          - { label: 'Paragraphe d''intro 1', name: 'intro1', widget: 'text' }
+          - { label: 'Paragraphe d''intro 2', name: 'intro2', widget: 'text' }
+          - label: 'Bénéfices (puces)'
+            name: 'benefits'
+            widget: 'list'
+            fields:
+              - { label: 'Texte', name: 'text', widget: 'string' }
+          - { label: 'Tagline (script doré)', name: 'tagline', widget: 'string' }
+          - label: 'Partenaires (logos)'
+            name: 'partners'
+            widget: 'list'
+            fields:
+              - { label: 'Nom (sert de texte alternatif)', name: 'name', widget: 'string' }
+              - { label: 'Logo', name: 'logo', widget: 'image' }
+              - { label: 'Lien (URL site, optionnel)', name: 'url', widget: 'string', required: false }
+
       - label: 'Contact (formulaire)'
         name: 'contact'
         file: 'content/sections/contact.md'

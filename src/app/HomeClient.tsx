@@ -13,6 +13,7 @@ import EventsSection from '@/components/events/EventsSection';
 import Benefits from '@/components/Benefits';
 import Team from '@/components/Team';
 import Testimonials from '@/components/Testimonials';
+import Partners from '@/components/Partners';
 import Contact from '@/components/Contact';
 import IntroAnimation from '@/components/IntroAnimation';
 import type { ImpulseEvent } from '@/lib/types';
@@ -64,6 +65,7 @@ export default function HomeClient({ events, content }: Props) {
         <Benefits content={content.benefits} />
         <Team content={content.team} />
         <Testimonials content={content.testimonials} />
+        <Partners content={content.partners} />
         <Contact content={content.contact} />
       </main>
     </>

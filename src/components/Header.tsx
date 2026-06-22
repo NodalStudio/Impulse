@@ -8,6 +8,7 @@ const navLinks = [
   { href: '#piliers', label: 'Les 3 Piliers' },
   { href: '#calendrier', label: 'Calendrier' },
   { href: '#equipe', label: 'Équipe' },
+  { href: '#partenaires', label: 'Partenaires' },
   { href: '#contact', label: 'Contact' },
 ];
 

@@ -158,6 +158,23 @@ export type TeamContent = {
 };
 export const getTeamContent = () => readSection<TeamContent>('team');
 
+// ─── Partners ───
+export type PartnerItem = {
+  name: string;
+  logo: string;
+  url?: string;
+};
+export type PartnerBenefit = { text: string };
+export type PartnersContent = {
+  eyebrow: string;
+  intro1: string;
+  intro2: string;
+  benefits: PartnerBenefit[];
+  tagline: string;
+  partners: PartnerItem[];
+};
+export const getPartnersContent = () => readSection<PartnersContent>('partners');
+
 // ─── Contact ───
 export type ContactContent = {
   eyebrow: string;
@@ -209,6 +226,7 @@ export type AllSectionsContent = {
   benefits: BenefitsContent;
   testimonials: TestimonialsContent;
   team: TeamContent;
+  partners: PartnersContent;
   contact: ContactContent;
 };
 export function getAllSectionsContent(): AllSectionsContent {
@@ -223,6 +241,7 @@ export function getAllSectionsContent(): AllSectionsContent {
     benefits: getBenefitsContent(),
     testimonials: getTestimonialsContent(),
     team: getTeamContent(),
+    partners: getPartnersContent(),
     contact: getContactContent(),
   };
 }
