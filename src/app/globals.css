@@ -166,6 +166,35 @@ body {
   to { opacity: 1; }
 }
 
+/* Members marquee — discreet infinite logo banner */
+.marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 50s linear infinite;
+}
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+.marquee-mask:hover .marquee,
+.marquee-wrap:hover .marquee {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    animation: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+  }
+}
+
 .animate-scale-in {
   animation: scaleIn 0.5s ease both;
 }

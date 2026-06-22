@@ -1,41 +1,10 @@
-import Image from 'next/image';
-import type { PartnersContent, PartnerItem } from '@/lib/sections';
-
-function LogoCell({ partner }: { partner: PartnerItem }) {
-  const inner = (
-    <Image
-      src={partner.logo}
-      alt={partner.name}
-      width={240}
-      height={120}
-      className="max-h-24 md:max-h-36 w-auto max-w-[94%] object-contain transition-transform duration-500 group-hover:scale-[1.04]"
-    />
-  );
-
-  const cellClass =
-    'group relative flex items-center justify-center bg-white min-h-[150px] md:min-h-[190px] px-3 py-3 transition-colors duration-300';
-
-  if (partner.url) {
-    return (
-      <a
-        href={partner.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={`${partner.name} — ouvrir le site`}
-        className={`${cellClass} hover:bg-blush/50`}
-      >
-        {inner}
-      </a>
-    );
-  }
-
-  return <div className={`${cellClass} hover:bg-blush/40`}>{inner}</div>;
-}
+import type { PartnersContent } from '@/lib/sections';
+import LogoRibbon from './LogoRibbon';
 
 export default function Partners({ content }: { content: PartnersContent }) {
   return (
     <section id="partenaires" className="relative bg-navy overflow-hidden py-24 md:py-32">
-      {/* Ambient depth + framing rules */}
+      {/* Ambient depth + framing rule */}
       <div
         className="pointer-events-none absolute inset-0 opacity-70"
         style={{
@@ -55,7 +24,7 @@ export default function Partners({ content }: { content: PartnersContent }) {
           <div className="w-16 h-px bg-gradient-to-r from-gold to-transparent" />
         </div>
 
-        {/* Manifesto — two-column on desktop: narrative left, value props right */}
+        {/* Manifesto — narrative left, value props right */}
         <div className="grid lg:grid-cols-2 gap-x-16 gap-y-10 mb-16 md:mb-20">
           <div className="space-y-5 animate-fade-in-up delay-100">
             <p className="font-tenor italic text-xl md:text-2xl lg:text-3xl text-blush leading-snug">
@@ -102,21 +71,20 @@ export default function Partners({ content }: { content: PartnersContent }) {
           <div className="hidden md:block h-px flex-1 bg-gradient-to-l from-transparent to-gold/40" />
         </div>
 
-        {/* The partner board — framed cream cells, hairline-gold grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-px bg-gold/20 rounded-sm overflow-hidden border border-gold/25 shadow-2xl animate-fade-in-up">
-          {content.partners.map((partner, index) => (
-            <LogoCell key={index} partner={partner} />
-          ))}
+        {/* Framed continuous logo strip + fixed "become a partner" cell */}
+        <div className="flex rounded-sm overflow-hidden border border-gold/25 shadow-2xl animate-fade-in-up">
+          {/* Scrolling logo ribbon — hover left edge to rewind, right edge to fast-forward */}
+          <LogoRibbon logos={content.logos} />
 
-          {/* Closing cell — become a partner */}
+          {/* Fixed closing cell — become a partner */}
           <a
             href="#contact"
-            className="group flex flex-col items-center justify-center text-center gap-1.5 bg-gold/95 min-h-[150px] md:min-h-[190px] px-3 py-3 transition-colors duration-300 hover:bg-gold"
+            className="group flex flex-col items-center justify-center text-center gap-1.5 shrink-0 w-[150px] md:w-[280px] bg-gold/95 min-h-[150px] md:min-h-[190px] px-5 py-6 transition-colors duration-300 hover:bg-gold"
           >
-            <span className="font-tenor text-lg md:text-xl text-white leading-tight">
+            <span className="font-tenor text-base md:text-xl text-white leading-tight">
               Devenir partenaire
             </span>
-            <span className="font-montserrat text-xs uppercase tracking-[0.2em] text-white/80 flex items-center gap-1.5">
+            <span className="font-montserrat text-[0.6rem] md:text-xs uppercase tracking-[0.2em] text-white/80 flex items-center gap-1.5">
               Nous écrire
               <svg
                 className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1"

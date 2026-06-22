@@ -171,7 +171,7 @@ export type PartnersContent = {
   intro2: string;
   benefits: PartnerBenefit[];
   tagline: string;
-  partners: PartnerItem[];
+  logos: PartnerItem[];
 };
 export const getPartnersContent = () => readSection<PartnersContent>('partners');
 

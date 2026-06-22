@@ -270,9 +270,10 @@ collections:
             fields:
               - { label: 'Texte', name: 'text', widget: 'string' }
           - { label: 'Tagline (script doré)', name: 'tagline', widget: 'string' }
-          - label: 'Partenaires (logos)'
-            name: 'partners'
+          - label: 'Logos (bandeau défilant)'
+            name: 'logos'
             widget: 'list'
+            hint: 'Tous les logos défilent en continu dans le cadre. L''ordre = ordre de départ.'
             fields:
               - { label: 'Nom (sert de texte alternatif)', name: 'name', widget: 'string' }
               - { label: 'Logo', name: 'logo', widget: 'image' }
