@@ -47,7 +47,7 @@ export default function IntroAnimation({
     });
   }, [headerLogoRef]);
 
-  // Lock scroll, freeze page animations, schedule phase callbacks
+  // Lock scroll, schedule phase callbacks
   useEffect(() => {
     // Respect prefers-reduced-motion
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -57,15 +57,9 @@ export default function IntroAnimation({
     }
 
     document.body.style.overflow = 'hidden';
-    document.documentElement.classList.add('intro-active');
 
     // Logo reaches header position → show real header logo
     const landedTimer = setTimeout(onLogoLanded, 1800);
-
-    // Wipe starts → unfreeze hero animations so they cascade under the wipe
-    const unfreezeTimer = setTimeout(() => {
-      document.documentElement.classList.remove('intro-active');
-    }, 1850);
 
     // Overlay wipe finishes → clean up
     const completeTimer = setTimeout(() => {
@@ -75,10 +69,8 @@ export default function IntroAnimation({
 
     return () => {
       clearTimeout(landedTimer);
-      clearTimeout(unfreezeTimer);
       clearTimeout(completeTimer);
       document.body.style.overflow = '';
-      document.documentElement.classList.remove('intro-active');
     };
   }, [onLogoLanded, onComplete]);
 
