@@ -1,6 +1,28 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
+import { Montserrat, Tenor_Sans, Great_Vibes } from "next/font/google";
 import "./globals.css";
+
+// Self-hosted at build time → removes the render-blocking external Google Fonts
+// request (previously a chained @import in globals.css, ~1.2s on slow 4G).
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-montserrat",
+  display: "swap",
+});
+const tenorSans = Tenor_Sans({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-tenor",
+  display: "swap",
+});
+const greatVibes = Great_Vibes({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-script",
+  display: "swap",
+});
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://communaute-impulse.com";
 
@@ -362,7 +384,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr">
+    <html
+      lang="fr"
+      className={`${montserrat.variable} ${tenorSans.variable} ${greatVibes.variable}`}
+    >
       <head>
         {/* Google Analytics */}
         <Script
@@ -378,9 +403,6 @@ export default function RootLayout({
           `}
         </Script>
 
-        {/* Preconnect to Google Fonts for faster loading */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <script
           type="application/ld+json"
           /* eslint-disable-next-line react/no-danger -- Static JSON-LD is safe */

@@ -41,14 +41,14 @@ const config: Config = {
       },
       fontFamily: {
         tenor: [
-          'Tenor Sans',
+          'var(--font-tenor)',
           'Georgia',
           'Cambria',
           '"Times New Roman"',
           'serif',
         ],
         montserrat: [
-          'Montserrat',
+          'var(--font-montserrat)',
           '"Segoe UI"',
           'system-ui',
           '-apple-system',
@@ -58,7 +58,7 @@ const config: Config = {
           'sans-serif',
         ],
         script: [
-          'Brittany Signature',
+          'var(--font-script)',
           'Great Vibes',
           '"Snell Roundhand"',
           '"Segoe Script"',
