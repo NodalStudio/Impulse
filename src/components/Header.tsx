@@ -71,14 +71,19 @@ export default function Header({ introComplete = true, logoRef }: HeaderProps) {
       <div className="container-impulse flex items-center justify-between px-4 md:px-8">
         {/* Logo — always visible, swaps variant based on background */}
         <a ref={logoRef} href="#hero" className="flex items-center relative h-8 md:h-10">
-          {/* Light logo for dark backgrounds */}
+          {/* Light logo for dark backgrounds.
+              Visibility is NOT gated on introComplete: the intro overlay (z-100)
+              already covers the header while the intro plays, so the logo can
+              paint at first render (server HTML) without waiting for JS
+              hydration. This makes the logo the LCP element paint immediately
+              instead of ~656ms+ later. */}
           <Image
             src="/images/logo-light.svg"
             alt="Impulse"
             width={180}
             height={76}
             className={`h-8 md:h-10 w-auto transition-opacity duration-300 ${
-              isDark && introComplete ? 'opacity-100' : 'opacity-0'
+              isDark ? 'opacity-100' : 'opacity-0'
             }`}
             priority
           />
@@ -89,7 +94,7 @@ export default function Header({ introComplete = true, logoRef }: HeaderProps) {
             width={180}
             height={76}
             className={`h-8 md:h-10 w-auto absolute left-0 top-0 transition-opacity duration-300 ${
-              !isDark && introComplete ? 'opacity-100' : 'opacity-0'
+              !isDark ? 'opacity-100' : 'opacity-0'
             }`}
             priority
           />
