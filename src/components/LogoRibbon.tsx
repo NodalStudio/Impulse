@@ -106,7 +106,14 @@ export default function LogoRibbon({ logos }: { logos: PartnerItem[] }) {
       <div ref={trackRef} className="flex w-max">
         {/* Two identical tracks for a seamless loop */}
         {[0, 1].map((track) => (
-          <div key={track} className="flex shrink-0" aria-hidden={track === 1}>
+          <div
+            key={track}
+            className="flex shrink-0"
+            // The clone track is a visual duplicate for the seamless loop.
+            // `inert` removes it from both the tab order and the accessibility
+            // tree, so its links aren't focusable (a11y + agentic audit fix).
+            {...(track === 1 ? { inert: true } : {})}
+          >
             {logos.map((partner, index) => (
               <LogoCell key={`${track}-${index}`} partner={partner} />
             ))}
