@@ -141,7 +141,7 @@ const jsonLd = {
   "name": "Impulse",
   "description": "Le rendez-vous business mensuel des femmes d'impact",
   "url": siteUrl,
-  "logo": `${siteUrl}/icon.svg`,
+  "logo": `${siteUrl}/images/logo.png`,
   "sameAs": [
     "https://www.linkedin.com/company/impulse-barcelone/",
     "https://www.instagram.com/impulse_communaute"
@@ -295,88 +295,11 @@ const breadcrumbJsonLd = {
   ]
 };
 
-// Reviews and aggregate rating for testimonials
-const reviewsJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "@id": `${siteUrl}/#organization`,
-  "name": "Impulse",
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "5",
-    "bestRating": "5",
-    "worstRating": "1",
-    "ratingCount": "5",
-    "reviewCount": "5"
-  },
-  "review": [
-    {
-      "@type": "Review",
-      "author": {
-        "@type": "Person",
-        "name": "Maud"
-      },
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": "5",
-        "bestRating": "5"
-      },
-      "reviewBody": "Je chéris ces rdv qui ne sont pas networking mais concrets, axés vers la productivité et le développement personnel."
-    },
-    {
-      "@type": "Review",
-      "author": {
-        "@type": "Person",
-        "name": "Laure"
-      },
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": "5",
-        "bestRating": "5"
-      },
-      "reviewBody": "J'aime particulièrement l'efficacité des ateliers de codéveloppement et l'utilisation de l'intelligence collective. Une révélation!"
-    },
-    {
-      "@type": "Review",
-      "author": {
-        "@type": "Person",
-        "name": "Isabelle"
-      },
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": "5",
-        "bestRating": "5"
-      },
-      "reviewBody": "Un cercle intime de femmes bienveillantes et inspirantes, dédié au partage d'outils précieux pour faire grandir son business!"
-    },
-    {
-      "@type": "Review",
-      "author": {
-        "@type": "Person",
-        "name": "Laurita"
-      },
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": "5",
-        "bestRating": "5"
-      },
-      "reviewBody": "Ce groupe de femmes entrepreneuses est vraiment différent de tout ce que j'avais pu expérimenter avant. Bravo d'avoir apporté la touche du collectif (le vrai) !"
-    },
-    {
-      "@type": "Review",
-      "author": {
-        "@type": "Person",
-        "name": "Maud"
-      },
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": "5",
-        "bestRating": "5"
-      },
-      "reviewBody": "Je suis particulièrement enthousiaste à cette idée de pouvoir contribuer en proposant mon sujet."
-    }
-  ]
-};
+// NOTE: Pas de markup Review/AggregateRating auto-référentiel ici.
+// Google n'autorise pas les "self-serving reviews" (avis d'une Organization
+// sur elle-même, sur son propre site) : ils ne sont pas éligibles aux rich
+// results et déclenchent l'erreur Search Console "L'avis contient plusieurs
+// notes cumulées". Les témoignages restent affichés comme contenu visible.
 
 export default function RootLayout({
   children,
@@ -422,11 +345,6 @@ export default function RootLayout({
           type="application/ld+json"
           /* eslint-disable-next-line react/no-danger -- Static JSON-LD is safe, hardcoded breadcrumb data */
           dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-        />
-        <script
-          type="application/ld+json"
-          /* eslint-disable-next-line react/no-danger -- Static JSON-LD is safe, hardcoded review data */
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewsJsonLd) }}
         />
       </head>
       <body className="antialiased">
