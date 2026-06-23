@@ -61,6 +61,17 @@ jobs:
           NEXT_PUBLIC_IMPULSE_CONTACT_API: ${{ vars.NEXT_PUBLIC_IMPULSE_CONTACT_API }}
         run: pnpm build
 
+      # Compress/resize images in the built output before deploy. Catches
+      # CMS-uploaded photos (out/images/uploads) automatically on every deploy,
+      # without touching source files or component code (same filenames/formats).
+      # ImageMagick is preinstalled on GitHub-hosted ubuntu runners.
+      - name: Optimize images
+        run: |
+          find out/images -type f \( -iname '*.jpg' -o -iname '*.jpeg' \) \
+            -exec mogrify -resize '1600x1600>' -strip -interlace Plane -quality 82 {} +
+          find out/images -type f -iname '*.png' \
+            -exec mogrify -resize '1600x1600>' -strip {} +
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
