@@ -228,7 +228,7 @@ export default function EventDetail({ event, isPast, related = [] }: Props) {
       )}
 
       <div className="text-center py-10 bg-blush">
-        <a href="/" className="inline-block font-montserrat uppercase tracking-[0.3em] text-[10px] text-navy/50 hover:text-gold transition-colors">
+        <a href="/" className="inline-block font-montserrat uppercase tracking-[0.3em] text-[10px] text-navy/70 hover:text-gold transition-colors">
           ← Retour à l&apos;accueil
         </a>
       </div>

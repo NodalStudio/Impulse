@@ -9,7 +9,7 @@ export default function Team({ content }: { content: TeamContent }) {
       <div className="container-impulse px-6 md:px-8">
         {/* Section header */}
         <div className="mb-10 lg:mb-14 animate-fade-in-up">
-          <p className="font-montserrat uppercase tracking-[0.3em] text-navy/50 text-xs lg:text-sm mb-3">
+          <p className="font-montserrat uppercase tracking-[0.3em] text-navy/70 text-xs lg:text-sm mb-3">
             {content.eyebrow}
           </p>
           <div className="w-16 h-px bg-gradient-to-r from-gold to-transparent" />
@@ -42,10 +42,10 @@ export default function Team({ content }: { content: TeamContent }) {
                   <p className="font-script text-lg text-navy mb-1">
                     {founder.name}
                   </p>
-                  <p className="font-montserrat uppercase tracking-wider text-[10px] text-gold font-medium mb-2">
+                  <p className="font-montserrat uppercase tracking-wider text-[10px] text-gold-deep font-medium mb-2">
                     {founder.role}
                   </p>
-                  <p className="font-montserrat text-xs text-navy/60 leading-relaxed">
+                  <p className="font-montserrat text-xs text-navy/70 leading-relaxed">
                     {founder.bio}
                   </p>
                 </div>
@@ -91,11 +91,11 @@ export default function Team({ content }: { content: TeamContent }) {
                 {founder.name}
               </p>
 
-              <p className="font-montserrat uppercase tracking-wider text-[10px] xl:text-xs text-gold font-medium mb-4">
+              <p className="font-montserrat uppercase tracking-wider text-[10px] xl:text-xs text-gold-deep font-medium mb-4">
                 {founder.role}
               </p>
 
-              <p className="font-montserrat text-sm text-navy/60 leading-relaxed px-2">
+              <p className="font-montserrat text-sm text-navy/70 leading-relaxed px-2">
                 {founder.bio}
               </p>
             </div>

@@ -8,7 +8,7 @@ export default function Benefits({ content }: { content: BenefitsContent }) {
       <div className="container-impulse px-6 md:px-8">
         {/* Section header */}
         <div className="mb-10 md:mb-14 animate-fade-in-up">
-          <p className="font-montserrat uppercase tracking-[0.3em] text-navy/50 text-xs lg:text-sm mb-3">
+          <p className="font-montserrat uppercase tracking-[0.3em] text-navy/70 text-xs lg:text-sm mb-3">
             {content.eyebrow}
           </p>
           <div className="w-16 h-px bg-gradient-to-r from-gold to-transparent" />
@@ -28,7 +28,7 @@ export default function Benefits({ content }: { content: BenefitsContent }) {
                   <p className="font-tenor text-lg lg:text-xl text-navy mb-1.5">
                     {benefit.title}
                   </p>
-                  <p className="font-montserrat text-sm lg:text-base text-navy/60 leading-relaxed">
+                  <p className="font-montserrat text-sm lg:text-base text-navy/70 leading-relaxed">
                     {benefit.description}
                   </p>
                 </div>

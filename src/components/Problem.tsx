@@ -8,7 +8,7 @@ export default function Problem({ content }: { content: ProblemContent }) {
       <div className="container-impulse px-6 md:px-8">
         {/* Section header */}
         <div className="mb-10 lg:mb-16 animate-fade-in-up">
-          <p className="font-montserrat uppercase tracking-[0.3em] text-navy/50 text-xs lg:text-sm mb-3">
+          <p className="font-montserrat uppercase tracking-[0.3em] text-navy/70 text-xs lg:text-sm mb-3">
             {content.eyebrow}
           </p>
           <div className="w-16 h-px bg-gradient-to-r from-gold to-transparent" />
@@ -18,7 +18,7 @@ export default function Problem({ content }: { content: ProblemContent }) {
         <div className="max-w-4xl mb-10 lg:mb-14 animate-fade-in-up delay-100">
           <h2 className="font-tenor text-2xl md:text-3xl lg:text-4xl text-navy leading-relaxed">
             {content.headlinePrefix}
-            <span className="font-script text-3xl md:text-4xl lg:text-5xl text-gold">
+            <span className="font-script text-3xl md:text-4xl lg:text-5xl text-gold-deep">
               {content.headlineScript}
             </span>
             &nbsp;{content.headlineSuffix}
@@ -36,7 +36,7 @@ export default function Problem({ content }: { content: ProblemContent }) {
               <span className="w-1.5 h-1.5 rounded-full bg-gold flex-shrink-0 mt-3" />
               <p className="font-tenor text-lg md:text-xl lg:text-2xl text-navy">
                 {problem.text}{' '}
-                <span className="text-gold font-medium">{problem.highlight}</span>
+                <span className="text-gold-deep font-medium">{problem.highlight}</span>
                 {problem.textAfter && ` ${problem.textAfter}`}
               </p>
             </div>

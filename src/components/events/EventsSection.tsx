@@ -31,13 +31,13 @@ export default function EventsSection({ events }: Props) {
             <div className="w-1.5 h-1.5 rotate-45 bg-gold/40 mx-5" />
             <div className="h-px w-16 bg-gradient-to-l from-transparent to-gold/30" />
           </div>
-          <p className="font-montserrat uppercase tracking-[0.3em] text-[11px] text-gold/70 mb-3">
+          <p className="font-montserrat uppercase tracking-[0.3em] text-[11px] text-gold-deep mb-3">
             Les rendez-vous Impulse
           </p>
           <h2 className="font-tenor text-3xl md:text-4xl lg:text-5xl text-navy leading-tight">
             Événements
           </h2>
-          <p className="font-script text-2xl md:text-3xl text-gold mt-2">une fois par mois</p>
+          <p className="font-script text-2xl md:text-3xl text-gold-deep mt-2">une fois par mois</p>
         </div>
 
         <EventHero event={next} />

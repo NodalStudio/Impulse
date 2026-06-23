@@ -19,6 +19,10 @@ const config: Config = {
           DEFAULT: '#bf8a3d',
           light: '#d4a456',
           dark: '#a07232',
+          // Accessible gold for TEXT on light (blush/white) backgrounds:
+          // ≥4.5:1 contrast (WCAG AA). The brighter golds above stay for
+          // decoration and for text on the dark navy backgrounds.
+          deep: '#876318',
         },
         blush: {
           DEFAULT: '#f3e9e5',

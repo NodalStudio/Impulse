@@ -36,18 +36,18 @@ export default function SouvenirCard({ event }: Props) {
       </div>
 
       <div className="p-5">
-        <div className="font-script text-gold text-lg leading-none mb-1">retour sur</div>
+        <div className="font-script text-gold-deep text-lg leading-none mb-1">retour sur</div>
         <h4 className="font-tenor text-lg text-navy leading-snug tracking-[0.01em]">
           {event.title}
         </h4>
         {event.summary ? (
-          <p className="font-montserrat text-xs text-navy/60 mt-2 leading-relaxed line-clamp-2">
+          <p className="font-montserrat text-xs text-navy/70 mt-2 leading-relaxed line-clamp-2">
             {event.summary}
           </p>
         ) : (
           <div className="flex items-center gap-2 mt-3">
             <span className="w-4 h-px bg-gold/40" />
-            <span className="font-montserrat text-[10px] uppercase tracking-[0.2em] text-navy/40">Édition Impulse</span>
+            <span className="font-montserrat text-[10px] uppercase tracking-[0.2em] text-navy/70">Édition Impulse</span>
           </div>
         )}
       </div>

@@ -9,7 +9,7 @@ export default function Solution({ content }: { content: SolutionContent }) {
           {/* Intention */}
           <div className="animate-slide-left">
             <div className="mb-4">
-              <p className="font-montserrat uppercase tracking-[0.3em] text-navy/50 text-xs mb-3">
+              <p className="font-montserrat uppercase tracking-[0.3em] text-navy/70 text-xs mb-3">
                 {content.intentionEyebrow}
               </p>
               <div className="w-16 h-px bg-gradient-to-r from-gold to-transparent" />
@@ -17,7 +17,7 @@ export default function Solution({ content }: { content: SolutionContent }) {
 
             <p className="font-tenor text-xl text-navy leading-snug">
               {content.intentionMobileText1Before}
-              <span className="text-gold font-medium">{content.intentionMobileText1Gold}</span>
+              <span className="text-gold-deep font-medium">{content.intentionMobileText1Gold}</span>
               {content.intentionMobileText1After}
             </p>
             <p className="font-script text-xl text-navy mt-1">
@@ -53,14 +53,14 @@ export default function Solution({ content }: { content: SolutionContent }) {
           {/* Left - Intention */}
           <div className="animate-slide-left pt-12">
             <div className="mb-8">
-              <p className="font-montserrat uppercase tracking-[0.3em] text-navy/50 text-xs lg:text-sm mb-3">
+              <p className="font-montserrat uppercase tracking-[0.3em] text-navy/70 text-xs lg:text-sm mb-3">
                 {content.intentionEyebrow}
               </p>
               <div className="w-16 h-px bg-gradient-to-r from-gold to-transparent" />
             </div>
 
             <p className="font-tenor text-3xl text-navy leading-relaxed">
-              {content.intentionDesktopBefore}<span className="text-gold font-medium">{content.intentionDesktopGold}</span>
+              {content.intentionDesktopBefore}<span className="text-gold-deep font-medium">{content.intentionDesktopGold}</span>
               <br />
               {content.intentionDesktopMiddle1}
               <br />

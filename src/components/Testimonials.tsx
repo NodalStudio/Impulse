@@ -9,7 +9,7 @@ export default function Testimonials({ content }: { content: TestimonialsContent
       <div className="container-impulse px-6 md:px-8">
         {/* Section header */}
         <div className="mb-10 animate-fade-in-up">
-          <p className="font-montserrat uppercase tracking-[0.3em] text-navy/50 text-xs lg:text-sm mb-3">
+          <p className="font-montserrat uppercase tracking-[0.3em] text-navy/70 text-xs lg:text-sm mb-3">
             {content.eyebrow}
           </p>
           <div className="w-16 h-px bg-gradient-to-r from-gold to-transparent" />

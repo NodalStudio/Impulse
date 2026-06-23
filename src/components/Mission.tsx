@@ -23,13 +23,13 @@ export default function Mission({ content }: { content: MissionContent }) {
                 {content.paragraph1}
               </p>
               <p className="mb-4">
-                {content.paragraph2Before}<span className="text-gold font-medium">{content.paragraph2Gold}</span>{content.paragraph2After}
+                {content.paragraph2Before}<span className="text-gold-deep font-medium">{content.paragraph2Gold}</span>{content.paragraph2After}
               </p>
               <p className="mb-4">
-                {content.paragraph3Before}<span className="text-gold font-medium">{content.paragraph3Gold}</span>{content.paragraph3After}
+                {content.paragraph3Before}<span className="text-gold-deep font-medium">{content.paragraph3Gold}</span>{content.paragraph3After}
               </p>
               <p>
-                <span className="text-gold font-medium">{content.paragraph4Gold}</span>{content.paragraph4After}
+                <span className="text-gold-deep font-medium">{content.paragraph4Gold}</span>{content.paragraph4After}
               </p>
             </blockquote>
 
