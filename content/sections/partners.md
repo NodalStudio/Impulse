@@ -53,4 +53,6 @@ members:
     logo: /images/partners/so-focus.png
   - name: mon petit pot
     logo: /images/partners/mon-petit-pot.png
+  - name: Altana Expertise Comptable
+    logo: /images/uploads/logo-altana-barcelona-mail-photoroom.png
 ---
