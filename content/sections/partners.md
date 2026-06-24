@@ -31,15 +31,15 @@ members:
     logo: /images/partners/4q.png
   - name: Place to Live
     logo: /images/partners/place-to-live.png
+  - name: Marina Serr
+    logo: /images/uploads/logo-sans-fond.png
+    url: https://www.marinaserr.com/
   - name: Stéphanie Toulemonde
     logo: /images/partners/stephanie-tabernenk.png
   - name: Delphine Dolynny
     logo: /images/partners/delphine-dolynny.png
   - name: mon petit pot
     logo: /images/partners/mon-petit-pot.png
-  - name: Marina Serr
-    logo: /images/uploads/logo-ms-coaching-sans-fond.png
-    url: https://www.marinaserr.com/
   - name: Valla & Long
     logo: /images/partners/valla-long.png
   - name: beau BOULOT
