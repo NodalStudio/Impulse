@@ -39,18 +39,18 @@ members:
   - name: Marina Serr
     logo: /images/uploads/logo-sans-fond.png
     url: https://www.marinaserr.com/
-  - name: Stéphanie Toulemonde
-    logo: /images/partners/stephanie-tabernenk.png
   - name: beau BOULOT
     logo: /images/partners/beau-boulot.png
   - name: Delphine Dolynny
     logo: /images/partners/delphine-dolynny.png
-  - name: mon petit pot
-    logo: /images/partners/mon-petit-pot.png
   - name: Valla & Long
     logo: /images/partners/valla-long.png
+  - name: Stéphanie Toulemonde
+    logo: /images/partners/stephanie-tabernenk.png
   - name: Agathe El Hariri
     logo: /images/uploads/whatsapp-image-2026-05-20-at-16.45.14-photoroom.png
   - name: so.focus
     logo: /images/partners/so-focus.png
+  - name: mon petit pot
+    logo: /images/partners/mon-petit-pot.png
 ---
