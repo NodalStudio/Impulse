@@ -51,6 +51,7 @@ export default function MemberStrip({ logos }: { logos: PartnerItem[] }) {
   const drag = useRef({
     hovering: false,
     down: false,
+    onLink: false,
     dragging: false,
     startX: 0,
     startTime: 0,
@@ -101,6 +102,9 @@ export default function MemberStrip({ logos }: { logos: PartnerItem[] }) {
     s.down = true;
     s.dragging = false;
     s.suppressClick = false;
+    // A press that starts on a linked member is a click target, never a drag —
+    // so those logos stay reliably clickable (the rest of the strip drags).
+    s.onLink = !!(e.target as HTMLElement).closest('a');
     s.startX = e.clientX;
     s.moved = 0;
     s.startTime = (a.currentTime as number) ?? 0;
@@ -108,15 +112,13 @@ export default function MemberStrip({ logos }: { logos: PartnerItem[] }) {
     s.contentW =
       (track.firstElementChild as HTMLElement)?.getBoundingClientRect().width ||
       track.scrollWidth / 2;
-    a.pause(); // hold still during the press, but DON'T capture yet —
-    // capturing here would retarget the click to the container, so a plain
-    // click on a member would never reach its link.
+    a.pause(); // hold still during the press so click/tap lands; resume on up
   };
 
   const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
     const s = drag.current;
     const a = animRef.current;
-    if (!s.down || !a || !s.contentW) return;
+    if (!s.down || s.onLink || !a || !s.contentW) return;
     const dx = e.clientX - s.startX;
     s.moved = Math.max(s.moved, Math.abs(dx));
     if (!s.dragging) {
@@ -139,6 +141,7 @@ export default function MemberStrip({ logos }: { logos: PartnerItem[] }) {
     }
     s.down = false;
     s.dragging = false;
+    s.onLink = false;
     syncPlay();
   };
 
