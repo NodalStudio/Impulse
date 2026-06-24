@@ -13,11 +13,11 @@ const DURATION = 60000; // ms for one full content-width drift
  * The strip drifts slowly on its own, pauses while hovered/focused (so members
  * with a link can be clicked), and can be grabbed and dragged to scrub manually.
  */
-function MemberLogo({ partner }: { partner: PartnerItem }) {
+function MemberLogo({ partner, clone }: { partner: PartnerItem; clone?: boolean }) {
   const img = (
     <Image
       src={partner.logo}
-      alt={partner.name}
+      alt={clone ? '' : partner.name}
       width={160}
       height={64}
       draggable={false}
@@ -36,6 +36,10 @@ function MemberLogo({ partner }: { partner: PartnerItem }) {
         aria-label={`${partner.name} — ouvrir le site`}
         draggable={false}
         className={cellClass}
+        // The seamless loop renders a second copy of every logo. Either copy can
+        // sit under the cursor, so both must be mouse-clickable — but only the
+        // real track is exposed to keyboard/AT; the clone is hidden + untabbable.
+        {...(clone ? { tabIndex: -1, 'aria-hidden': true } : {})}
       >
         {img}
       </a>
@@ -175,17 +179,17 @@ export default function MemberStrip({ logos }: { logos: PartnerItem[] }) {
       }}
     >
       <div ref={trackRef} className="flex w-max">
-        {/* Two identical tracks for a seamless loop */}
+        {/* Two identical tracks for a seamless loop. The clone stays
+            mouse-clickable (either copy can be under the cursor) but its logos
+            are marked as clones → hidden from keyboard/AT to avoid duplicates. */}
         {[0, 1].map((track) => (
-          <div
-            key={track}
-            className="flex shrink-0"
-            // The clone is a visual duplicate for the seamless loop; `inert`
-            // keeps its links out of the tab order and accessibility tree.
-            {...(track === 1 ? { inert: true } : {})}
-          >
+          <div key={track} className="flex shrink-0">
             {logos.map((partner, index) => (
-              <MemberLogo key={`${track}-${index}`} partner={partner} />
+              <MemberLogo
+                key={`${track}-${index}`}
+                partner={partner}
+                clone={track === 1}
+              />
             ))}
           </div>
         ))}
