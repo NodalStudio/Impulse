@@ -17,16 +17,21 @@ partners:
     logo: /images/partners/penedes.png
   - name: Donesvi
     logo: /images/partners/donesvi.png
-  - name: Espai Nu
-    logo: /images/partners/espai-nu.svg
+    url: https://donesvi.com/
+  - name: Mon Entreprise ES
+    url: https://monentreprise.es/
+    logo: /images/uploads/monentreprise.es-logo-2-1-photoroom.png
   - name: Comduty
     logo: /images/partners/com-duti.png
+    url: https://es.comduty.com/quienes-somos/
+  - name: She AI
+    logo: /images/uploads/logo-she-ai-photoroom.png
+    url: https://www.sheai.co/
   - name: Atomic Pastries
     logo: /images/partners/atomic-pastries.png
+  - name: Espai Nu
+    logo: /images/partners/espai-nu.svg
 members:
-  - name: MonEntreprise.es
-    logo: /images/partners/monentreprise-es.png
-    url: https://monentreprise.es/
   - name: 4Q
     logo: /images/partners/4q.png
   - name: Place to Live
@@ -36,16 +41,16 @@ members:
     url: https://www.marinaserr.com/
   - name: Stéphanie Toulemonde
     logo: /images/partners/stephanie-tabernenk.png
+  - name: beau BOULOT
+    logo: /images/partners/beau-boulot.png
   - name: Delphine Dolynny
     logo: /images/partners/delphine-dolynny.png
   - name: mon petit pot
     logo: /images/partners/mon-petit-pot.png
   - name: Valla & Long
     logo: /images/partners/valla-long.png
-  - name: beau BOULOT
-    logo: /images/partners/beau-boulot.png
-  - name: so.focus
-    logo: /images/partners/so-focus.png
   - name: Agathe El Hariri
     logo: /images/uploads/whatsapp-image-2026-05-20-at-16.45.14-photoroom.png
+  - name: so.focus
+    logo: /images/partners/so-focus.png
 ---
