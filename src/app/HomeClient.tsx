@@ -66,7 +66,7 @@ export default function HomeClient({ events, content }: Props) {
         <Team content={content.team} />
         <Testimonials content={content.testimonials} />
         <Partners content={content.partners} />
-        <Contact content={content.contact} />
+        <Contact content={content.contact} members={content.partners.members} />
       </main>
     </>
   );

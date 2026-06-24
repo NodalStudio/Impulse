@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useEffect, useRef, FormEvent } from 'react';
-import type { ContactContent } from '@/lib/sections';
+import type { ContactContent, PartnerItem } from '@/lib/sections';
+import MemberStrip from './MemberStrip';
 
 const CONTACT_API = process.env.NEXT_PUBLIC_IMPULSE_CONTACT_API || '';
 const COOLDOWN_KEY = 'impulse_contact_cooldown';
@@ -40,7 +41,13 @@ const getResponseState = (response: Response) => {
   return 'error' as const;
 };
 
-export default function Contact({ content }: { content: ContactContent }) {
+export default function Contact({
+  content,
+  members = [],
+}: {
+  content: ContactContent;
+  members?: PartnerItem[];
+}) {
   const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error' | 'network_error' | 'rate_limited'>('idle');
   const [formData, setFormData] = useState(INITIAL_FORM_DATA);
   const [cooldown, setCooldown] = useState(false);
@@ -266,8 +273,15 @@ export default function Contact({ content }: { content: ContactContent }) {
       </div>
 
       {/* Mini footer — integrated at bottom */}
-      <div className="bg-navy/5 border-t border-navy/10 py-4 px-6 md:px-8">
-        <div className="container-impulse flex justify-between items-center">
+      <div className="bg-navy/5 border-t border-navy/10">
+        {/* Discreet community colophon — members drift past in a single muted ink */}
+        {members.length > 0 && (
+          <div className="py-3 md:py-3.5 border-b border-navy/10">
+            <MemberStrip logos={members} />
+          </div>
+        )}
+
+        <div className="container-impulse flex justify-between items-center py-4 px-6 md:px-8">
           <p className="font-montserrat text-xs text-navy/70">
             © {currentYear} {content.footerCopyright}
           </p>

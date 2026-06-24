@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import type { PartnersContent, PartnerItem } from '@/lib/sections';
-import LogoRibbon from './LogoRibbon';
 
 function LogoCell({ partner }: { partner: PartnerItem }) {
   const inner = (
@@ -135,23 +134,6 @@ export default function Partners({ content }: { content: PartnersContent }) {
             </span>
           </a>
         </div>
-
-        {/* Members — scrolling ribbon below the partner grid */}
-        {content.members.length > 0 && (
-          <div className="mt-16 md:mt-20">
-            <div className="mb-6 md:mb-8 flex items-center gap-5 animate-fade-in-up">
-              <p className="font-montserrat uppercase tracking-[0.3em] text-gold/80 text-xs lg:text-sm">
-                Nos membres
-              </p>
-              <div className="h-px flex-1 bg-gradient-to-r from-gold/40 to-transparent" />
-            </div>
-
-            {/* Framed continuous logo strip — hover left/right edge to scrub */}
-            <div className="rounded-sm overflow-hidden border border-gold/25 shadow-2xl animate-fade-in-up">
-              <LogoRibbon logos={content.members} />
-            </div>
-          </div>
-        )}
       </div>
     </section>
   );
