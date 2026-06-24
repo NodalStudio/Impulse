@@ -270,10 +270,18 @@ collections:
             fields:
               - { label: 'Texte', name: 'text', widget: 'string' }
           - { label: 'Tagline (script doré)', name: 'tagline', widget: 'string' }
-          - label: 'Logos (bandeau défilant)'
-            name: 'logos'
+          - label: 'Partenaires (grille mise en avant)'
+            name: 'partners'
             widget: 'list'
-            hint: 'Tous les logos défilent en continu dans le cadre. L''ordre = ordre de départ.'
+            hint: 'Logos affichés en grand dans la grille. L''ordre = ordre d''affichage.'
+            fields:
+              - { label: 'Nom (sert de texte alternatif)', name: 'name', widget: 'string' }
+              - { label: 'Logo', name: 'logo', widget: 'image' }
+              - { label: 'Lien (URL site, optionnel)', name: 'url', widget: 'string', required: false }
+          - label: 'Membres (bandeau défilant)'
+            name: 'members'
+            widget: 'list'
+            hint: 'Tous les logos défilent en continu dans le bandeau. L''ordre = ordre de départ.'
             fields:
               - { label: 'Nom (sert de texte alternatif)', name: 'name', widget: 'string' }
               - { label: 'Logo', name: 'logo', widget: 'image' }

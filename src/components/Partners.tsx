@@ -1,5 +1,37 @@
-import type { PartnersContent } from '@/lib/sections';
+import Image from 'next/image';
+import type { PartnersContent, PartnerItem } from '@/lib/sections';
 import LogoRibbon from './LogoRibbon';
+
+function LogoCell({ partner }: { partner: PartnerItem }) {
+  const inner = (
+    <Image
+      src={partner.logo}
+      alt={partner.name}
+      width={240}
+      height={120}
+      className="max-h-24 md:max-h-36 w-auto max-w-[94%] object-contain transition-transform duration-500 group-hover:scale-[1.04]"
+    />
+  );
+
+  const cellClass =
+    'group relative flex items-center justify-center bg-white min-h-[150px] md:min-h-[190px] px-3 py-3 transition-colors duration-300';
+
+  if (partner.url) {
+    return (
+      <a
+        href={partner.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`${partner.name} — ouvrir le site`}
+        className={`${cellClass} hover:bg-blush/50`}
+      >
+        {inner}
+      </a>
+    );
+  }
+
+  return <div className={`${cellClass} hover:bg-blush/40`}>{inner}</div>;
+}
 
 export default function Partners({ content }: { content: PartnersContent }) {
   return (
@@ -71,20 +103,21 @@ export default function Partners({ content }: { content: PartnersContent }) {
           <div className="hidden md:block h-px flex-1 bg-gradient-to-l from-transparent to-gold/40" />
         </div>
 
-        {/* Framed continuous logo strip + fixed "become a partner" cell */}
-        <div className="flex rounded-sm overflow-hidden border border-gold/25 shadow-2xl animate-fade-in-up">
-          {/* Scrolling logo ribbon — hover left edge to rewind, right edge to fast-forward */}
-          <LogoRibbon logos={content.logos} />
+        {/* The partner board — framed cream cells, hairline-gold grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-px bg-gold/20 rounded-sm overflow-hidden border border-gold/25 shadow-2xl animate-fade-in-up">
+          {content.partners.map((partner, index) => (
+            <LogoCell key={index} partner={partner} />
+          ))}
 
-          {/* Fixed closing cell — become a partner */}
+          {/* Closing cell — become a partner */}
           <a
             href="#contact"
-            className="group flex flex-col items-center justify-center text-center gap-1.5 shrink-0 w-[150px] md:w-[280px] bg-gold/95 min-h-[150px] md:min-h-[190px] px-5 py-6 transition-colors duration-300 hover:bg-gold"
+            className="group flex flex-col items-center justify-center text-center gap-1.5 bg-gold/95 min-h-[150px] md:min-h-[190px] px-3 py-3 transition-colors duration-300 hover:bg-gold"
           >
-            <span className="font-tenor text-base md:text-xl text-white leading-tight">
+            <span className="font-tenor text-lg md:text-xl text-white leading-tight">
               Devenir partenaire
             </span>
-            <span className="font-montserrat text-[0.6rem] md:text-xs uppercase tracking-[0.2em] text-white/80 flex items-center gap-1.5">
+            <span className="font-montserrat text-xs uppercase tracking-[0.2em] text-white/80 flex items-center gap-1.5">
               Nous écrire
               <svg
                 className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1"
@@ -102,6 +135,23 @@ export default function Partners({ content }: { content: PartnersContent }) {
             </span>
           </a>
         </div>
+
+        {/* Members — scrolling ribbon below the partner grid */}
+        {content.members.length > 0 && (
+          <div className="mt-16 md:mt-20">
+            <div className="mb-6 md:mb-8 flex items-center gap-5 animate-fade-in-up">
+              <p className="font-montserrat uppercase tracking-[0.3em] text-gold/80 text-xs lg:text-sm">
+                Nos membres
+              </p>
+              <div className="h-px flex-1 bg-gradient-to-r from-gold/40 to-transparent" />
+            </div>
+
+            {/* Framed continuous logo strip — hover left/right edge to scrub */}
+            <div className="rounded-sm overflow-hidden border border-gold/25 shadow-2xl animate-fade-in-up">
+              <LogoRibbon logos={content.members} />
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

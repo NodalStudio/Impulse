@@ -8,9 +8,18 @@ benefits:
   - text: "Association à un événement premium et engagé"
   - text: "Visibilité sur nos supports (présentation, réseaux, communication événement)"
 tagline: "Une marque se retient lorsqu'elle est vécue. Pas seulement lorsqu'elle est vue."
-logos:
+partners:
+  - name: "Penedes"
+    logo: "/images/partners/penedes.svg"
+  - name: "Donesvi"
+    logo: "/images/partners/donesvi.png"
+  - name: "Espai Nu"
+    logo: "/images/partners/espai-nu.png"
+  - name: "Com Duti"
+    logo: "/images/partners/com-duti.svg"
   - name: "Atomic Pastries"
     logo: "/images/partners/atomic-pastries.png"
+members:
   - name: "MonEntreprise.es"
     logo: "/images/partners/monentreprise-es.png"
     url: "https://monentreprise.es/"
