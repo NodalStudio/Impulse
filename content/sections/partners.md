@@ -32,7 +32,7 @@ partners:
   - name: Espai Nu
     logo: /images/partners/espai-nu.svg
 members:
-  - name: 4Q
+  - name: 40A
     logo: /images/partners/4q.png
   - name: Place to Live
     logo: /images/partners/place-to-live.png
