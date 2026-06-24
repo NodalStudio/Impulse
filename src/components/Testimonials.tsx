@@ -38,8 +38,8 @@ export default function Testimonials({ content }: { content: TestimonialsContent
 
           {/* Testimonials grid */}
           <div className="relative max-w-6xl mx-auto">
-            {/* Large decorative quote */}
-            <span className="absolute -top-4 left-0 text-[120px] leading-none text-gold/8 font-serif select-none pointer-events-none">
+            {/* Large decorative quote — overlaps the featured card, in the foreground */}
+            <span className="absolute -top-4 left-0 z-10 text-[120px] leading-none text-navy font-serif select-none pointer-events-none">
               &ldquo;
             </span>
 
