@@ -207,6 +207,7 @@ const localBusinessJsonLd = {
 const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
+  "inLanguage": "fr-FR",
   "mainEntity": [
     {
       "@type": "Question",

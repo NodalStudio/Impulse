@@ -11,6 +11,42 @@ import type { ImpulseEvent } from '@/lib/types';
 
 const BASE_URL = 'https://communaute-impulse.com';
 
+/**
+ * Build a schema.org offer from the free-text `price` field.
+ *
+ * Event prices are authored as human strings ("Solo 37€ · Duo 70€"), so we pull
+ * out the numeric amounts and map them to the right offer shape:
+ *  - 2+ tiers  → AggregateOffer with lowPrice/highPrice (matches the visible,
+ *    tiered pricing so structured data doesn't contradict the page — a Trust /
+ *    Search Console requirement)
+ *  - 1 price   → a plain Offer with that price
+ *  - no number → an Offer with availability/url only (never invent a price)
+ */
+function buildOffer(event: ImpulseEvent): Record<string, unknown> {
+  const base = {
+    url: event.reservationUrl,
+    availability: 'https://schema.org/InStock',
+    priceCurrency: 'EUR',
+  };
+  const amounts = (event.price?.match(/\d+(?:[.,]\d+)?/g) ?? [])
+    .map(n => parseFloat(n.replace(',', '.')))
+    .filter(n => Number.isFinite(n));
+
+  if (amounts.length >= 2) {
+    return {
+      '@type': 'AggregateOffer',
+      ...base,
+      lowPrice: String(Math.min(...amounts)),
+      highPrice: String(Math.max(...amounts)),
+      offerCount: amounts.length,
+    };
+  }
+  if (amounts.length === 1) {
+    return { '@type': 'Offer', ...base, price: String(amounts[0]) };
+  }
+  return { '@type': 'Offer', ...base };
+}
+
 function buildEventLd(event: ImpulseEvent, isPast: boolean): string {
   const startDate = event.time
     ? `${event.date}T${event.time.replace('h', ':').padEnd(5, '0')}:00+02:00`
@@ -38,6 +74,7 @@ function buildEventLd(event: ImpulseEvent, isPast: boolean): string {
       url: BASE_URL,
     },
     description: firstParagraph,
+    inLanguage: 'fr-FR',
   };
 
   if (event.coverPhoto) {
@@ -45,14 +82,7 @@ function buildEventLd(event: ImpulseEvent, isPast: boolean): string {
   }
 
   if (event.reservationUrl && !isPast) {
-    data.offers = {
-      '@type': 'Offer',
-      url: event.reservationUrl,
-      availability: 'https://schema.org/InStock',
-      priceCurrency: 'EUR',
-      price: '37',
-      validFrom: new Date().toISOString(),
-    };
+    data.offers = buildOffer(event);
   }
 
   if (event.guest?.name) {
@@ -60,6 +90,7 @@ function buildEventLd(event: ImpulseEvent, isPast: boolean): string {
       '@type': 'Person',
       name: event.guest.name,
       ...(event.guest.role ? { jobTitle: event.guest.role } : {}),
+      ...(event.guest.bio ? { description: event.guest.bio } : {}),
     };
   }
 

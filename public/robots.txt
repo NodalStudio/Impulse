@@ -4,9 +4,8 @@
 User-agent: *
 Allow: /
 
+# Keep the Decap CMS admin (login UI, no indexable content) out of search results
+Disallow: /admin/
+
 # Sitemap
 Sitemap: https://communaute-impulse.com/sitemap.xml
-
-# Disallow admin/private paths (if any in future)
-# Disallow: /admin/
-# Disallow: /private/

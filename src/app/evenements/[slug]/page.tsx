@@ -51,7 +51,9 @@ export async function generateMetadata({ params }: Props) {
       description,
       url,
       type: 'article',
-      images: event.coverPhoto ? [{ url: `${baseUrl}${event.coverPhoto}` }] : undefined,
+      images: event.coverPhoto
+        ? [{ url: `${baseUrl}${event.coverPhoto}`, alt: `${event.title} — événement Impulse à ${event.location}` }]
+        : undefined,
     },
     twitter: {
       card: 'summary_large_image',
