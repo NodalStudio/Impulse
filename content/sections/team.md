@@ -2,7 +2,7 @@
 eyebrow: Équipe
 founders:
   - name: Marina Serr
-    role: Fondatrice & vision Impulse
+    role: Fondatrice Impulse
     image: /images/team-marina.png
     alt: Marina Serr, fondatrice d'Impulse Barcelone, business coach certifiée
       accompagnant entrepreneurs et dirigeants
