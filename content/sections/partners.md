@@ -29,8 +29,6 @@ partners:
     url: https://www.sheai.co/
   - name: Atomic Pastries
     logo: /images/partners/atomic-pastries.png
-  - name: Espai Nu
-    logo: /images/partners/espai-nu.svg
 members:
   - name: 40A
     logo: /images/partners/4q.png
